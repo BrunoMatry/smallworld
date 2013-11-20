@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="file:///C:/PROGRAM FILES (X86)/MICROSOFT VISUAL STUDIO 11.0/COMMON7/IDE/EXTENSIONS/MICROSOFT/ARCHITECTURE TOOLS/EXTENSIBILITY/Logging/ReverseEngineeringLog.xslt"?>
+<Log xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeGen.RE.Log" Label="Génération de code/Journal de transformation de texte">
+  <MessageClass Name="Message" Label="Message" Option="Afficher les messages d'information" />
+  <MessageClass Name="Warning" Label="Avertissement" Option="Afficher les avertissements" />
+  <MessageClass Name="Error" Label="Erreur" Option="Afficher les erreurs" />
+  <MessageClass Name="Property" Label="Propriété" Option="Afficher les métadonnées" />
+  <MessageClass Name="Diagnostic" Label="Message" Option="Afficher les messages de diagnostic" />
+  <Message Timestamp="2013-11-10T15:46:26" Importance="High" Text="Processus d'ingénierie à rebours démarré." />
+  <Error Timestamp="2013-11-10T15:46:27" Importance="High" Text="La longueur ne peut pas être inférieure à zéro.&#xD;&#xA;Nom du paramètre : length Le processus d'ingénierie à rebours a été arrêté." />
+  <Message Timestamp="2013-11-10T15:46:27" Importance="Diagnostic" Text="Élément ayant fait l'objet d'une ingénierie à rebours dans le modèle UML : 'ModelingProject1::TP1_Modelisation' -  (Package)" />
+  <Message Timestamp="2013-11-10T15:46:27" Importance="High" Text="(0) type(s) ayant fait l'objet d'une ingénierie à rebours complète." />
+  <Message Timestamp="2013-11-10T15:46:27" Importance="High" Text="L'opération d'ingénierie à rebours s'est terminée avec (1) erreur(s) et (0) avertissement(s)." />
+</Log>

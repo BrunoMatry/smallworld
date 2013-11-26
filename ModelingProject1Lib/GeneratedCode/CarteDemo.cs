@@ -8,10 +8,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Collections;
 
 public class CarteDemo : Carte
 {
-	public override Vector<Coordonnee> getEmplacementUnites(int nbJoueurs)
+    public override ArrayList<Coordonnee> getEmplacementUnites(int nbJoueurs)
 	{
 		throw new System.NotImplementedException();
 	}

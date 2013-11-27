@@ -12,3 +12,5 @@ C:\Users\Bruno\Downloads\Modelisation\TestsUnitaires\bin\Debug\Wrapper.pdb
 C:\Users\Bruno\Downloads\Modelisation\TestsUnitaires\obj\Debug\TestsUnitaires.csprojResolveAssemblyReference.cache
 C:\Users\Bruno\Downloads\Modelisation\TestsUnitaires\obj\Debug\TestsUnitaires.dll
 C:\Users\Bruno\Downloads\Modelisation\TestsUnitaires\obj\Debug\TestsUnitaires.pdb
+H:\TP_4INFO\Projet POO\Modelisation\TestsUnitaires\obj\Debug\TestsUnitaires.csprojResolveAssemblyReference.cache
+H:\TP_4INFO\Projet POO\Modelisation\TestsUnitaires\obj\Debug\TestsUnitaires.dll

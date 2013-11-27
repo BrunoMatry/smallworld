@@ -13,6 +13,5 @@ class CarteUnmanaged
 			return carte;
 		};
 
-
 		~CarteUnmanaged() {};
 };

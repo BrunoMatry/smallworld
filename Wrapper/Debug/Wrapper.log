@@ -1,23 +1,26 @@
-﻿La génération a démarré 20/11/2013 08:14:31.
-     1>Projet "C:\Users\Bruno\Downloads\Modelisation\Wrapper\Wrapper.vcxproj" sur le nœud 2 (Rebuild cible(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I../librairiecpp/ /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\\" /AI"C:\Program Files (x86)\Windows Kits\8.0\References\CommonConfiguration\Neutral" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\\" /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDLL /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.dll" /analyze- /errorReport:prompt /clr:nostdlib AssemblyInfo.cpp Wrapper.cpp
-         AssemblyInfo.cpp
-         Wrapper.cpp
-         Génération de code en cours...
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I../librairiecpp/ /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDLL /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /TP /analyze- /errorReport:prompt "C:\Users\Bruno\AppData\Local\Temp\.NETFramework,Version=v4.5.AssemblyAttributes.cpp"
-         .NETFramework,Version=v4.5.AssemblyAttributes.cpp
+﻿La génération a démarré 27/11/2013 09:47:33.
+     1>Projet "H:\TP_4INFO\Projet POO\Modelisation\Wrapper\Wrapper.vcxproj" sur le nœud 2 (Build cible(s)).
+     1>InitializeBuildStatus:
+         Mise à jour de l'horodatage "Debug\Wrapper.unsuccessfulbuild".
+       GenerateTargetFrameworkMonikerAttribute:
+       La cible est ignorée "GenerateTargetFrameworkMonikerAttribute", car tous les fichiers de sortie sont à jour par rapport aux fichiers d'entrée.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I../librairiecpp/ /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\\" /AI"C:\Program Files (x86)\Windows Kits\8.0\References\CommonConfiguration\Neutral" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\\" /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDLL /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.dll" /analyze- /errorReport:prompt /clr:nostdlib WrapperCarte.cpp
+         WrapperCarte.cpp
+     1>h:\tp_4info\projet poo\modelisation\librairiecpp\carteunmanaged.h(13): warning C4172: retourne l'adresse d'une variable locale ou temporaire
+         Toutes les sorties sont à jour.
        ResourceCompile:
-         C:\Program Files (x86)\Windows Kits\8.0\bin\x86\rc.exe /D _UNICODE /D UNICODE /l"0x0409" /nologo /fo"Debug\app.res" app.rc 
+         Toutes les sorties sont à jour.
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Bruno\Downloads\Modelisation\Debug\Wrapper.dll" /INCREMENTAL /NOLOGO /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Bruno\Downloads\Modelisation\Debug\Wrapper.pdb" /ASSEMBLYDEBUG /TLBID:1 /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X86 /DLL Debug\app.res
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"H:\TP_4INFO\Projet POO\Modelisation\Debug\Wrapper.dll" /INCREMENTAL /NOLOGO /LIBPATH:../debug /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"H:\TP_4INFO\Projet POO\Modelisation\Debug\Wrapper.pdb" /ASSEMBLYDEBUG /TLBID:1 /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X86 /DLL Debug\app.res
          Debug\AssemblyInfo.obj
-         Debug\Wrapper.obj
+         Debug\WrapperCarte.obj
          "Debug\.NETFramework,Version=v4.5.AssemblyAttributes.obj"
-            CrÚation de la bibliothÞque C:\Users\Bruno\Downloads\Modelisation\Debug\Wrapper.lib et de l'objet C:\Users\Bruno\Downloads\Modelisation\Debug\Wrapper.exp
-         Wrapper.vcxproj -> C:\Users\Bruno\Downloads\Modelisation\Debug\Wrapper.dll
-     1>Génération du projet "C:\Users\Bruno\Downloads\Modelisation\Wrapper\Wrapper.vcxproj" terminée (Rebuild cible(s)).
+     1>WrapperCarte.obj : error LNK2028: jeton non rÚsolu (0A00000A) "extern "C" int * __cdecl gen_carte(void)" (?gen_carte@@$$J0YAPAHXZ) rÚfÚrencÚ dans la fonction "public: static class System::Collections::Generic::List<int> ^ __clrcall wrapper::WrapperCarte::gencarte(void)" (?gencarte@WrapperCarte@wrapper@@$$FSMP$AAV?$List@H@Generic@Collections@System@@XZ)
+     1>WrapperCarte.obj : error LNK2019: symbole externe non rÚsolu "extern "C" int * __cdecl gen_carte(void)" (?gen_carte@@$$J0YAPAHXZ) rÚfÚrencÚ dans la fonction "public: static class System::Collections::Generic::List<int> ^ __clrcall wrapper::WrapperCarte::gencarte(void)" (?gencarte@WrapperCarte@wrapper@@$$FSMP$AAV?$List@H@Generic@Collections@System@@XZ)
+     1>H:\TP_4INFO\Projet POO\Modelisation\Debug\Wrapper.dll : fatal error LNK1120: 2 externes non rÚsolus
+     1>Génération du projet "H:\TP_4INFO\Projet POO\Modelisation\Wrapper\Wrapper.vcxproj" terminée (Build cible(s)) -- ÉCHEC.
 
-La génération a réussi.
+ÉCHEC de la build.
 
-Temps écoulé 00:00:04.01
+Temps écoulé 00:00:02.06

@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-//using WrapperCarte;
+using Wrapper;
 
 namespace TestsUnitaires
 {
@@ -10,8 +10,7 @@ namespace TestsUnitaires
         [TestMethod]
         public void TestWrapper()
         {
-            WrapperCarte w = new WrapperCarte();
-            Assert.AreEqual(w.nbPtVie(), 10);
+            Assert.AreEqual(WrapperCarte.gen_carte()[0], 1);
         }
     }
 }

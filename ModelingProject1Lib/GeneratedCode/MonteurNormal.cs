@@ -16,17 +16,17 @@ public class MonteurNormal : StrategiePartie
 		throw new System.NotImplementedException();
 	}
 
-	protected override ICarte monterCarte(Vector<TypeCase> grille)
+	protected override ICarte monterCarte(List<TypeCase> grille)
 	{
 		throw new System.NotImplementedException();
 	}
 
-	public override IPartie creerPartie(string tc, Vector<TypePeuple> tp)
+	public override IPartie creerPartie(string tc, List<TypePeuple> tp)
 	{
 		throw new System.NotImplementedException();
 	}
 
-	public override IPartie creerPartie(string tp, Vector<TypePeuple> unites, Vector<Vector<Coordonnee>> grille, Vector<TypeCase> grille)
+	public override IPartie creerPartie(string tp, List<TypePeuple> unites, TypeCase[][] grille, List<TypeCase> grille)
 	{
 		throw new System.NotImplementedException();
 	}

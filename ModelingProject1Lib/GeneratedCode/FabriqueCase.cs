@@ -11,7 +11,7 @@ using System.Text;
 
 public class FabriqueCase : IFabriqueCase
 {
-	public virtual Vector<Case> creerCases(int nbCases, TypeCase t)
+	public virtual List<Case> creerCases(int nbCases, TypeCase t)
 	{
 		throw new System.NotImplementedException();
 	}

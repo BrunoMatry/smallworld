@@ -11,7 +11,7 @@ using System.Text;
 
 public class FabriqueUnite : IFabriqueUnite
 {
-	public virtual Vector<IUnite> creerUnites(TypePeuple type, int nbUnites, int joueur)
+	public virtual List<IUnite> creerUnites(TypePeuple type, int nbUnites, int joueur)
 	{
 		throw new System.NotImplementedException();
 	}

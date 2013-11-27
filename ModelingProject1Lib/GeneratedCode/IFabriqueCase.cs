@@ -11,7 +11,7 @@ using System.Text;
 
 public interface IFabriqueCase 
 {
-	Vector<Case> creerCases(int nbCases, TypeCase t);
+	List<Case> creerCases(int nbCases, TypeCase t);
 
 }
 

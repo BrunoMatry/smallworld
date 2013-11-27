@@ -41,7 +41,7 @@ public class Partie : IPartie
 		set;
 	}
 
-	private Vector<int> _pointsJoueurs
+	private List<int> _pointsJoueurs
 	{
 		get;
 		set;
@@ -53,7 +53,7 @@ public class Partie : IPartie
 		set;
 	}
 
-	public virtual Vector<IUnite> getUnites()
+	public virtual List<IUnite> getUnites()
 	{
 		throw new System.NotImplementedException();
 	}
@@ -83,12 +83,12 @@ public class Partie : IPartie
 		throw new System.NotImplementedException();
 	}
 
-	public virtual Vector<Coordonnee> getDirectionsAutorisees(Coordonnee c)
+	public virtual List<Coordonnee> getDirectionsAutorisees(Coordonnee c)
 	{
 		throw new System.NotImplementedException();
 	}
 
-	public virtual Vector<TypeCase> getGrille()
+	public virtual List<TypeCase> getGrille()
 	{
 		throw new System.NotImplementedException();
 	}
@@ -103,7 +103,7 @@ public class Partie : IPartie
 		throw new System.NotImplementedException();
 	}
 
-	public virtual Vector<int> getPointsJoueurs()
+	public virtual List<int> getPointsJoueurs()
 	{
 		throw new System.NotImplementedException();
 	}
@@ -123,7 +123,7 @@ public class Partie : IPartie
 		throw new System.NotImplementedException();
 	}
 
-	private Vector<IUnite> getUntesCible(Coordonnee c)
+	private List<IUnite> getUntesCible(Coordonnee c)
 	{
 		throw new System.NotImplementedException();
 	}

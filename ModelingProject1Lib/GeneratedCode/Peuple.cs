@@ -11,7 +11,7 @@ using System.Text;
 
 public class Peuple : IPeuple
 {
-	private Vector<IUnite> _unites
+	private List<IUnite> _unites
 	{
 		get;
 		set;
@@ -29,7 +29,7 @@ public class Peuple : IPeuple
 		set;
 	}
 
-	public virtual Vector<IUnite> getUnites()
+	public virtual List<IUnite> getUnites()
 	{
 		throw new System.NotImplementedException();
 	}

@@ -11,13 +11,13 @@ using System.Text;
 
 public interface ICarte 
 {
-	Vector<TypeCase> getGrille();
+	List<TypeCase> getGrille();
 
 	Case getCase(Coordonnee c);
 
-	Vector<Coordonnee> getEmplacementUnites(int nbJoueurs);
+	List<Coordonnee> getEmplacementUnites(int nbJoueurs);
 
-	Vector<Direction> getDirectionsAutorisees(Coordonnee c);
+	List<Direction> getDirectionsAutorisees(Coordonnee c);
 
 }
 

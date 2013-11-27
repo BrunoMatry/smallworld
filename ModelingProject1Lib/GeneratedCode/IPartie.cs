@@ -5,7 +5,7 @@ using System.Text;
 
 public interface IPartie 
 {
-	Vector<IUnite> getUnites();
+	List<IUnite> getUnites();
 
 	void attaque(Direction dir);
 
@@ -17,15 +17,15 @@ public interface IPartie
 
 	bool nouveauTour();
 
-	Vector<Coordonnee> getDirectionsAutorisees(Coordonnee c);
+	List<Coordonnee> getDirectionsAutorisees(Coordonnee c);
 
-	Vector<TypeCase> getGrille();
+	List<TypeCase> getGrille();
 
 	void enregistrer();
 
 	void enregistrerSous();
 
-	Vector<int> getPointsJoueurs();
+	List<int> getPointsJoueurs();
 
 	void passerTourJoueur();
 

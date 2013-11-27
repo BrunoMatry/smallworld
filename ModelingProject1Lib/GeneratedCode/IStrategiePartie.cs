@@ -11,9 +11,9 @@ using System.Text;
 
 public interface IStrategiePartie 
 {
-	IPartie creerPartie(string nomPartie, Vector<TypePeuple> tp);
+	IPartie creerPartie(string nomPartie, List<TypePeuple> tp);
 
-	IPartie creerPartie(string nomPartie, Vector<TypePeuple> tp, Vector<Vector<Coordonnee>> unites, Vector<TypeCase> grille);
+	IPartie creerPartie(string nomPartie, List<TypePeuple> tp, List<List<Coordonnee>> unites, List<TypeCase> grille);
 
 }
 

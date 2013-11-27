@@ -11,7 +11,7 @@ using System.Text;
 
 public interface IPeuple 
 {
-	Vector<IUnite> getUnites();
+	List<IUnite> getUnites();
 
 	int getNombreUnites();
 

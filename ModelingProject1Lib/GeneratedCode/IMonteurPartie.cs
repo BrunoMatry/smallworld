@@ -13,7 +13,7 @@ public interface IMonteurPartie
 {
 	IPartie creerPartie(File p);
 
-	IPartie creerPartie(TypeCarte tc, Vector<TypePeuple> tp, string nomPartie);
+	IPartie creerPartie(TypeCarte tc, List<TypePeuple> tp, string nomPartie);
 
 }
 

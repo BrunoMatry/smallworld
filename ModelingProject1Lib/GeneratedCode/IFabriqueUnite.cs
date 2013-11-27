@@ -11,7 +11,7 @@ using System.Text;
 
 public interface IFabriqueUnite 
 {
-	Vector<IUnite> creerUnites(TypePeuple type, int nbUnites, int joueur);
+	List<IUnite> creerUnites(TypePeuple type, int nbUnites, int joueur);
 
 }
 

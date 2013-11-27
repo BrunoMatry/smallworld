@@ -8,16 +8,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Collections;
 
 public class CarteDemo : Carte
 {
-    public override ArrayList<Coordonnee> getEmplacementUnites(int nbJoueurs)
+    public override List<Coordonnee> getEmplacementUnites(int nbJoueurs)
 	{
 		throw new System.NotImplementedException();
 	}
 
-	public override Vector<Direction> getDirectionsAutorisees(Coordonnee c)
+    public override List<Direction> getDirectionsAutorisees(Coordonnee c)
 	{
 		throw new System.NotImplementedException();
 	}

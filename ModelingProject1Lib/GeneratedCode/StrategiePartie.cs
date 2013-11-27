@@ -11,18 +11,18 @@ using System.Text;
 
 public abstract class StrategiePartie : IStrategiePartie
 {
-	protected virtual Vector<TypeCase> genererGrilleAleatoire(int hauteur, int largeur)
+	protected virtual List<TypeCase> genererGrilleAleatoire(int hauteur, int largeur)
 	{
 		throw new System.NotImplementedException();
 	}
 
-	public abstract IPartie creerPartie(string tc, Vector<TypePeuple> tp);
+	public abstract IPartie creerPartie(string tc, List<TypePeuple> tp);
 
 	protected abstract ICarte monterCarte();
 
-	protected abstract ICarte monterCarte(Vector<TypeCase> grille);
+	protected abstract ICarte monterCarte(List<TypeCase> grille);
 
-	public abstract IPartie creerPartie(string tp, Vector<TypePeuple> unites, Vector<Vector<Coordonnee>> grille, Vector<TypeCase> grille);
+	public abstract IPartie creerPartie(string tp, List<TypePeuple> unites, List<List<Coordonnee>> grille, List<TypeCase> grille);
 
 }
 

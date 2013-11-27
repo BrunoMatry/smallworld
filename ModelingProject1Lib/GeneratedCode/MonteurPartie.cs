@@ -17,12 +17,12 @@ public abstract class MonteurPartie : IMonteurPartie
 		set;
 	}
 
-	private IPartie lancerCreation(string nomPartie, TypeCarte tc, Vector<TypePeuple> tp)
+	private IPartie lancerCreation(string nomPartie, TypeCarte tc, List<TypePeuple> tp)
 	{
 		throw new System.NotImplementedException();
 	}
 
-	private IPartie lancerCreation(string nomPartie, TypeCarte tc, Vector<TypePeuple> tp, Vector<Vector<Coordonnee>> unites, Vector<TypeCase> grille)
+	private IPartie lancerCreation(string nomPartie, TypeCarte tc, List<TypePeuple> tp, List<List<Coordonnee>> unites, List<TypeCase> grille)
 	{
 		throw new System.NotImplementedException();
 	}
@@ -32,7 +32,7 @@ public abstract class MonteurPartie : IMonteurPartie
 		throw new System.NotImplementedException();
 	}
 
-	public virtual IPartie creerPartie(TypeCarte tc, Vector<TypePeuple> tp, string nomPartie)
+	public virtual IPartie creerPartie(TypeCarte tc, List<TypePeuple> tp, string nomPartie)
 	{
 		throw new System.NotImplementedException();
 	}

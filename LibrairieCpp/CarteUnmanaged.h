@@ -10,15 +10,12 @@
 class CarteUnmanaged
 {
 	private:
-		int _nb_type_case;
+		int _pt_vie;
 
     public:
-		DLL int* gen_carte() {
-			int carte[] = {1,2,3};
-			return carte;
-		};
+		DLL int nbPtVie() { return _pt_vie; };
 
-		DLL CarteUnmanaged(int nb_type_case): _nb_type_case(nb_type_case) {};
+		DLL CarteUnmanaged(): _pt_vie(10) {};
 
 		DLL ~CarteUnmanaged() {};
 };

@@ -64,9 +64,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CarteUnmanaged.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="CarteUnmanaged.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

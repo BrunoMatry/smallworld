@@ -15,11 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CarteUnmanaged.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="CarteUnmanaged.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>

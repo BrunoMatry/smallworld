@@ -9,7 +9,7 @@ Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "Modelisation", "Modelisatio
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Librairie Cpp", "LibrairieCpp\Librairie Cpp.vcxproj", "{542EFE05-4D73-435D-9B79-136AC57366EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelingProject1Lib", "ModelingProject1Lib\ModelingProject1Lib.csproj", "{31BBD842-D4EE-404A-85FB-84687A4DDE37}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmallWorld", "ModelingProject1Lib\SmallWorld.csproj", "{31BBD842-D4EE-404A-85FB-84687A4DDE37}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

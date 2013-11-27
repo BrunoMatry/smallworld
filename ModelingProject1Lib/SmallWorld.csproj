@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{31BBD842-D4EE-404A-85FB-84687A4DDE37}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ModelingProject1Lib</RootNamespace>
+    <AssemblyName>ModelingProject1Lib</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GeneratedCode\Carte.cs" />
+    <Compile Include="GeneratedCode\CarteDemo.cs" />
+    <Compile Include="GeneratedCode\CarteNormale.cs" />
+    <Compile Include="GeneratedCode\CartePetit.cs" />
+    <Compile Include="GeneratedCode\Case.cs" />
+    <Compile Include="GeneratedCode\CaseDesert.cs" />
+    <Compile Include="GeneratedCode\CaseEau.cs" />
+    <Compile Include="GeneratedCode\CaseForet.cs" />
+    <Compile Include="GeneratedCode\CaseMontagne.cs" />
+    <Compile Include="GeneratedCode\CasePlaine.cs" />
+    <Compile Include="GeneratedCode\Coordonnee.cs" />
+    <Compile Include="GeneratedCode\Direction.cs" />
+    <Compile Include="GeneratedCode\FabriqueCase.cs" />
+    <Compile Include="GeneratedCode\FabriqueUnite.cs" />
+    <Compile Include="GeneratedCode\ICarte.cs" />
+    <Compile Include="GeneratedCode\IFabriqueCase.cs" />
+    <Compile Include="GeneratedCode\IFabriqueUnite.cs" />
+    <Compile Include="GeneratedCode\IJoueur.cs" />
+    <Compile Include="GeneratedCode\IMonteurPartie.cs" />
+    <Compile Include="GeneratedCode\IPartie.cs" />
+    <Compile Include="GeneratedCode\IPeuple.cs" />
+    <Compile Include="GeneratedCode\IStrategiePartie.cs" />
+    <Compile Include="GeneratedCode\IUnite.cs" />
+    <Compile Include="GeneratedCode\Joueur.cs" />
+    <Compile Include="GeneratedCode\MonteurDemo.cs" />
+    <Compile Include="GeneratedCode\MonteurNormal.cs" />
+    <Compile Include="GeneratedCode\MonteurPartie.cs" />
+    <Compile Include="GeneratedCode\MonteurPetit.cs" />
+    <Compile Include="GeneratedCode\Partie.cs" />
+    <Compile Include="GeneratedCode\Peuple.cs" />
+    <Compile Include="GeneratedCode\StrategiePartie.cs" />
+    <Compile Include="GeneratedCode\TypeCarte.cs" />
+    <Compile Include="GeneratedCode\TypeCase.cs" />
+    <Compile Include="GeneratedCode\TypePeuple.cs" />
+    <Compile Include="GeneratedCode\Unite.cs" />
+    <Compile Include="GeneratedCode\UniteGaulois.cs" />
+    <Compile Include="GeneratedCode\UniteNain.cs" />
+    <Compile Include="GeneratedCode\UniteViking.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

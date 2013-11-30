@@ -5,6 +5,14 @@ using System.Text;
 
 public class CarteDemo : Carte
 {
+    private int LARGEURCARTE = 5;
+    private int HAUTEURCARTE = 5;
+
+    public CarteDemo(TypeCase[][] grille, Dictionary<TypeCase, Case> cases) {
+        this._grille = grille;
+        this._cases = cases;
+    }
+
 	public override List<Coordonnee> getEmplacementUnites(int nbJoueurs)
 	{
 		throw new System.NotImplementedException();
@@ -15,5 +23,10 @@ public class CarteDemo : Carte
 		throw new System.NotImplementedException();
 	}
 
+    protected override Boolean appartient(Coordonnee c) {
+        int x = c.GetX();
+        int y = c.GetY();
+        return x >= 0 && x < LARGEURCARTE && y >= 0 && y < HAUTEURCARTE;
+    }
 }
 

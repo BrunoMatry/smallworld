@@ -11,15 +11,28 @@ using System.Text;
 
 public class CarteNormale : Carte
 {
-	public override List<Coordonnee> getEmplacementUnites(int nbJoueurs)
-	{
-		throw new System.NotImplementedException();
-	}
+    private int LARGEURCARTE = 15;
+    private int HAUTEURCARTE = 15;
 
-	public override List<Direction> getDirectionsAutorisees(Coordonnee c)
-	{
-		throw new System.NotImplementedException();
-	}
+    public CarteNormale(TypeCase[][] grille, Dictionary<TypeCase, Case> cases) {
+        this._grille = grille;
+        this._cases = cases;
+    }
 
+    public override List<Coordonnee> getEmplacementUnites(int nbJoueurs)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override List<Direction> getDirectionsAutorisees(Coordonnee c)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override Boolean appartient(Coordonnee c) {
+        int x = c.GetX();
+        int y = c.GetY();
+        return x >= 0 && x < LARGEURCARTE && y >= 0 && y < HAUTEURCARTE;
+    }
 }
 

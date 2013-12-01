@@ -8,12 +8,29 @@ CarteDemo
 CarteNormale
 CartePetit
 FabriqueCase :- Communication avec le wrapper
+StrategiePartie
+	MonteurDemo
+	MonteurNormal
+	MonteurPetit
+MonteurPartie
+Partie
+Peuple
+Unite
+	UniteGaulois
+	UniteNain
+	UniteViking
 
 DONE:
 Interfaces :
 	ICarte
 	IFabriqueCase
 	IFabriqueUnite
+	IJoueur
+	IMonteurPartie
+	IPartie
+	IPeuple
+	IStrategiePartie
+	IUnite
 Classes :
 	Carte
 	Case
@@ -23,7 +40,11 @@ Classes :
 		CaseMontagne
 		CasePlaine
 	Coordonnee
+	FabriqueUnite
+	Joueur
 
 ENUM OK :
 Direction
-FabriqueUnite
+TypeCarte
+TypeCase
+TypePeuple

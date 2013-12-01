@@ -16,9 +16,9 @@ MonteurPartie
 Partie
 Peuple
 Unite
-	UniteGaulois
-	UniteNain
-	UniteViking
+	UniteGaulois : Deplacer
+	UniteNain : déplacement vers case montagne
+	UniteViking : Nouveau tour (Verifier la type des cases proches) + Deplacer
 
 DONE:
 Interfaces :

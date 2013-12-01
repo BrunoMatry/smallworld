@@ -3,13 +3,33 @@ using System.Collections.Generic;
 
 public class UniteNain : Unite
 {
-	public UniteNain(int j) {
+	public UniteNain(int j, Coordonnee c) {
 		this._joueur = j;
-	}
-	public override void nouveauTour(TypeCase caseActuelle)
-	{
-		throw new System.NotImplementedException();
+		this._coordonnee = c;
+		this._attaque = 2;
+		this._defense = 1;
+		this._pointsDeVie = 2;
+
+		this._pointsDeplacement = 0;
+		this._valeur = -1;
 	}
 
+	public override void nouveauTour(TypeCase caseActuelle) {
+		switch (caseActuelle)
+		{
+			case TypeCase.FORET:
+				this._valeur = 2;
+				break;
+			case TypeCase.PLAINE:
+				this._valeur = 0;
+				break;
+			default:
+				this._valeur = 1;
+				break;
+		}
+		this._pointsDeplacement = 1;
+	}
+
+	// TODO déplacement vers case montagne
 }
 

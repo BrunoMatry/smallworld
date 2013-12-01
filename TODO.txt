@@ -1,9 +1,10 @@
 ********************** TODO Projet SmallWorld **********************
 
 
+WRAPPER
+IHM
 
-
-AIMPLEMENTER:
+A IMPLEMENTER:
 CarteDemo
 CarteNormale
 CartePetit

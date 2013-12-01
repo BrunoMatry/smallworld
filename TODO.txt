@@ -1,0 +1,29 @@
+********************** TODO Projet SmallWorld **********************
+
+
+
+
+AIMPLEMENTER:
+CarteDemo
+CarteNormale
+CartePetit
+FabriqueCase :- Communication avec le wrapper
+
+DONE:
+Interfaces :
+	ICarte
+	IFabriqueCase
+	IFabriqueUnite
+Classes :
+	Carte
+	Case
+		CaseDesert
+		CaseEau
+		CaseForet
+		CaseMontagne
+		CasePlaine
+	Coordonnee
+
+ENUM OK :
+Direction
+FabriqueUnite

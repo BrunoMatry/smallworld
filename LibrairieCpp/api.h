@@ -1,5 +1,4 @@
 #pragma once
-#include "carteunmanaged.h"
 
 #ifdef WANT_DLL_EXPORT
 	#define DLL  __declspec(dllexport)
@@ -8,5 +7,5 @@
 #endif
 
 //extern "C" {
-		DLL int* gen_carte();
+		DLL int* gen_carte(const int nbTypeCase, const int nbCases);
 //}

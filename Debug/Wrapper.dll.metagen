@@ -12,4 +12,4 @@ Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c5619
 Class wrapper.WrapperCarte: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Methods:
-    gencarte(): PrivateScope, Public, Static, HideBySig
+    gencarte(Int32 IsConst, Int32 IsConst): PrivateScope, Public, Static, HideBySig

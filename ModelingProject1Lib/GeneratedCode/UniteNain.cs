@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 public class UniteNain : Unite
 {
+	private int joueur;
+
 	public UniteNain(int j, Coordonnee c) {
 		this._joueur = j;
 		this._coordonnee = c;
@@ -14,7 +16,7 @@ public class UniteNain : Unite
 		this._valeur = -1;
 	}
 
-	public override void nouveauTour(TypeCase caseActuelle) {
+	public override void NouveauTour(TypeCase caseActuelle) {
 		switch (caseActuelle)
 		{
 			case TypeCase.FORET:

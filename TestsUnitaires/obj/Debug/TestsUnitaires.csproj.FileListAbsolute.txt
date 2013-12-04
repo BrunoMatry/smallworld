@@ -14,3 +14,10 @@ C:\Users\Bruno\Downloads\Modelisation\TestsUnitaires\obj\Debug\TestsUnitaires.dl
 C:\Users\Bruno\Downloads\Modelisation\TestsUnitaires\obj\Debug\TestsUnitaires.pdb
 H:\TP_4INFO\Projet POO\Modelisation\TestsUnitaires\obj\Debug\TestsUnitaires.csprojResolveAssemblyReference.cache
 H:\TP_4INFO\Projet POO\Modelisation\TestsUnitaires\obj\Debug\TestsUnitaires.dll
+H:\POO\Nouveau dossier\TestsUnitaires\obj\Debug\TestsUnitaires.csprojResolveAssemblyReference.cache
+H:\POO\Nouveau dossier\TestsUnitaires\obj\Debug\TestsUnitaires.dll
+H:\POO\Nouveau dossier\TestsUnitaires\bin\Debug\TestsUnitaires.dll
+H:\POO\Nouveau dossier\TestsUnitaires\bin\Debug\TestsUnitaires.pdb
+H:\POO\Nouveau dossier\TestsUnitaires\bin\Debug\Wrapper.dll
+H:\POO\Nouveau dossier\TestsUnitaires\bin\Debug\Wrapper.pdb
+H:\POO\Nouveau dossier\TestsUnitaires\obj\Debug\TestsUnitaires.pdb

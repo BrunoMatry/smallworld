@@ -13,12 +13,12 @@ public class CartePetit : Carte
         this._cases = cases;
     }
 
-    public override List<Coordonnee> getEmplacementUnites(int nbJoueurs)
+    public override List<Coordonnee> GetEmplacementUnites(int nbJoueurs)
     {
         throw new System.NotImplementedException();
     }
 
-    public override List<Direction> getDirectionsAutorisees(Coordonnee c)
+    public override List<Direction> GetDirectionsAutorisees(Coordonnee c)
     {
         throw new System.NotImplementedException();
     }

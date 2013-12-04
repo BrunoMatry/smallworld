@@ -12,62 +12,62 @@ public class Partie : IPartie
 	private List<int> _pointsJoueurs;
 	private IJoueur _joueurCourant;
 
-	public virtual List<IUnite> getUnites()
+	public virtual List<IUnite> GetUnites()
 	{
 		throw new System.NotImplementedException();
 	}
 
-	public virtual void attaque(Direction Direction dir)
+	public virtual void Attaque(Direction dir)
 	{
 		throw new System.NotImplementedException();
 	}
 
-	public virtual void deplacement(Direction dir)
+	public virtual void Deplacement(Direction dir)
 	{
 		throw new System.NotImplementedException();
 	}
 
-	public virtual void passerTour()
+	public virtual void PasserTourUniteCourante()
 	{
 		throw new System.NotImplementedException();
 	}
 
-	public virtual IUnite getUniteCourante()
+	public virtual IUnite GetUniteCourante()
 	{
 		throw new System.NotImplementedException();
 	}
 
-	public virtual bool nouveauTour()
+	public virtual bool NouveauTour()
 	{
 		throw new System.NotImplementedException();
 	}
 
-	public virtual List<Coordonnee> getDirectionsAutorisees(Coordonnee c)
+	public virtual List<Coordonnee> GetDirectionsAutorisees(Coordonnee c)
 	{
 		throw new System.NotImplementedException();
 	}
 
-	public virtual List<TypeCase> getGrille()
+	public virtual List<TypeCase> GetGrille()
 	{
 		throw new System.NotImplementedException();
 	}
 
-	public virtual void enregistrer()
+	public virtual void Enregistrer()
 	{
 		throw new System.NotImplementedException();
 	}
 
-	public virtual void enregistrerSous()
+	public virtual void EnregistrerSous()
 	{
 		throw new System.NotImplementedException();
 	}
 
-	public virtual List<int> getPointsJoueurs()
+	public virtual List<int> GetPointsJoueurs()
 	{
 		throw new System.NotImplementedException();
 	}
 
-	public virtual void passerTourJoueur()
+	public virtual void PasserTourJoueur()
 	{
 		throw new System.NotImplementedException();
 	}
@@ -77,7 +77,7 @@ public class Partie : IPartie
 		throw new System.NotImplementedException();
 	}
 
-	public virtual void selectionner(IUnite unite)
+	public virtual void Selectionner(IUnite unite)
 	{
 		throw new System.NotImplementedException();
 	}

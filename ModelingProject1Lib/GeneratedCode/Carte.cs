@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 public abstract class Carte : ICarte
 {
-    protected virtual Dictionary<TypeCase, Case> _cases;
-    protected virtual TypeCase[][] _grille;
+    protected Dictionary<TypeCase, Case> _cases;
+    protected TypeCase[][] _grille;
 
     public virtual TypeCase[][] GetGrille() {
 		return _grille;

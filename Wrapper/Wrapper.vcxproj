@@ -57,7 +57,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies />
+      <AdditionalDependencies>LibrairieCpp.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>../debug</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>

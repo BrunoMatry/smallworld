@@ -7,6 +7,6 @@
 	#define DLL  __declspec(dllimport)
 #endif
 
-extern "C" {
+//extern "C" {
 		DLL int* gen_carte();
-}
+//}

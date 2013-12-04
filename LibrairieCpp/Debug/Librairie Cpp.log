@@ -1,20 +1,26 @@
-﻿La génération a démarré 27/11/2013 09:47:32.
-     1>Projet "H:\TP_4INFO\Projet POO\Modelisation\LibrairieCpp\Librairie Cpp.vcxproj" sur le nœud 2 (Build cible(s)).
-     1>InitializeBuildStatus:
+﻿La génération a démarré 04/12/2013 08:54:00.
+     1>Projet "H:\POO\Nouveau dossier\LibrairieCpp\Librairie Cpp.vcxproj" sur le nœud 2 (Rebuild cible(s)).
+     1>_PrepareForClean:
+         Suppression du fichier "Debug\LibrairieCpp.lastbuildstate".
+       InitializeBuildStatus:
          Création de "Debug\LibrairieCpp.unsuccessfulbuild", car "AlwaysCreate" a été spécifié.
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WANT_DLL_EXPORT /D _WINDLL /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Api.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WANT_DLL_EXPORT /D _WINDLL /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Api.cpp CarteUnmanaged.cpp
+         CarteUnmanaged.cpp
+     1>h:\poo\nouveau dossier\librairiecpp\carteunmanaged.h(13): warning C4172: retourne l'adresse d'une variable locale ou temporaire
          Api.cpp
-     1>h:\tp_4info\projet poo\modelisation\librairiecpp\carteunmanaged.h(13): warning C4172: retourne l'adresse d'une variable locale ou temporaire
+     1>h:\poo\nouveau dossier\librairiecpp\carteunmanaged.h(13): warning C4172: retourne l'adresse d'une variable locale ou temporaire
+         Génération de code en cours...
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"H:\TP_4INFO\Projet POO\Modelisation\Debug\LibrairieCpp.dll" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"H:\TP_4INFO\Projet POO\Modelisation\Debug\LibrairieCpp.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"H:\TP_4INFO\Projet POO\Modelisation\Debug\LibrairieCpp.lib" /MACHINE:X86 /DLL Debug\Api.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"H:\POO\Nouveau dossier\Debug\LibrairieCpp.dll" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"H:\POO\Nouveau dossier\Debug\LibrairieCpp.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"H:\POO\Nouveau dossier\Debug\LibrairieCpp.lib" /MACHINE:X86 /DLL Debug\Api.obj
          Debug\CarteUnmanaged.obj
-         Librairie Cpp.vcxproj -> H:\TP_4INFO\Projet POO\Modelisation\Debug\LibrairieCpp.dll
+            Création de la bibliothèque H:\POO\Nouveau dossier\Debug\LibrairieCpp.lib et de l'objet H:\POO\Nouveau dossier\Debug\LibrairieCpp.exp
+         Librairie Cpp.vcxproj -> H:\POO\Nouveau dossier\Debug\LibrairieCpp.dll
        FinalizeBuildStatus:
          Suppression du fichier "Debug\LibrairieCpp.unsuccessfulbuild".
          Mise à jour de l'horodatage "Debug\LibrairieCpp.lastbuildstate".
-     1>Génération du projet "H:\TP_4INFO\Projet POO\Modelisation\LibrairieCpp\Librairie Cpp.vcxproj" terminée (Build cible(s)).
+     1>Génération du projet "H:\POO\Nouveau dossier\LibrairieCpp\Librairie Cpp.vcxproj" terminée (Rebuild cible(s)).
 
 La génération a réussi.
 
-Temps écoulé 00:00:01.06
+Temps écoulé 00:00:01.09

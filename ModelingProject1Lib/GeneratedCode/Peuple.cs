@@ -16,22 +16,22 @@ public class Peuple : IPeuple
 		this.nbUnites = nbUnites;
 	}
 
-	public virtual List<IUnite> getUnites()
+	public virtual List<IUnite> GetUnites()
 	{
 		throw new System.NotImplementedException();
 	}
 
-	public virtual int getNombreUnites()
+	public virtual int GetNombreUnites()
 	{
 		throw new System.NotImplementedException();
 	}
 
-	public virtual void tuerUnite(IUnite unite)
+	public virtual void TuerUnite(IUnite unite)
 	{
 		throw new System.NotImplementedException();
 	}
 
-	public virtual void creerUnite(int nb, int idJoueur)
+	public virtual void CreerUnite(int nb, int idJoueur)
 	{
 		throw new System.NotImplementedException();
 	}

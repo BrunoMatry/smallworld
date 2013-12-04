@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 public class UniteGaulois : Unite
 {
+	private int joueur;
+
 	public UniteGaulois(int j, Coordonnee c) {
 		this._joueur = j;
 		this._coordonnee = c;
@@ -14,7 +16,7 @@ public class UniteGaulois : Unite
 		this._valeur = -1;
 	}
 
-	public override void nouveauTour(TypeCase caseActuelle) {
+	public override void NouveauTour(TypeCase caseActuelle) {
 		switch (caseActuelle)
 		{
 			case TypeCase.PLAINE:
@@ -32,7 +34,7 @@ public class UniteGaulois : Unite
 		}
 	}
 
-	public override void deplacer(Coordonnee caseCible, TypeCase caseActuelle) {
+	public override void Deplacer(Coordonnee caseCible, TypeCase caseActuelle) {
 
 		throw new System.NotImplementedException();
 	}

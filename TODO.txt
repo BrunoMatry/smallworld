@@ -1,13 +1,11 @@
-********************** TODO Projet SmallWorld **********************
+﻿********************** TODO Projet SmallWorld **********************
 
 
 WRAPPER
 IHM
 
 A IMPLEMENTER:
-CarteDemo
-CarteNormale
-CartePetit
+
 FabriqueCase :- Communication avec le wrapper
 StrategiePartie
 	MonteurDemo
@@ -34,6 +32,9 @@ Interfaces :
 	IUnite
 Classes :
 	Carte
+		CarteDemo
+		CarteNormale
+		CartePetit
 	Case
 		CaseDesert
 		CaseEau

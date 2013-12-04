@@ -2,3 +2,8 @@ H:\POO\Nouveau dossier\ModelingProject1Lib\bin\Debug\ModelingProject1Lib.dll
 H:\POO\Nouveau dossier\ModelingProject1Lib\bin\Debug\ModelingProject1Lib.pdb
 H:\POO\Nouveau dossier\ModelingProject1Lib\obj\Debug\ModelingProject1Lib.dll
 H:\POO\Nouveau dossier\ModelingProject1Lib\obj\Debug\ModelingProject1Lib.pdb
+C:\Users\bmatry\Documents\poo\ModelingProject1Lib\bin\Debug\ModelingProject1Lib.dll
+C:\Users\bmatry\Documents\poo\ModelingProject1Lib\bin\Debug\ModelingProject1Lib.pdb
+C:\Users\bmatry\Documents\poo\ModelingProject1Lib\obj\Debug\SmallWorld.csprojResolveAssemblyReference.cache
+C:\Users\bmatry\Documents\poo\ModelingProject1Lib\obj\Debug\ModelingProject1Lib.dll
+C:\Users\bmatry\Documents\poo\ModelingProject1Lib\obj\Debug\ModelingProject1Lib.pdb

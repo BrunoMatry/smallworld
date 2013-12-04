@@ -28,3 +28,10 @@ C:\Users\bmatry\Documents\Nouveau dossier\TestsUnitaires\bin\Debug\Wrapper.pdb
 C:\Users\bmatry\Documents\Nouveau dossier\TestsUnitaires\obj\Debug\TestsUnitaires.csprojResolveAssemblyReference.cache
 C:\Users\bmatry\Documents\Nouveau dossier\TestsUnitaires\obj\Debug\TestsUnitaires.dll
 C:\Users\bmatry\Documents\Nouveau dossier\TestsUnitaires\obj\Debug\TestsUnitaires.pdb
+C:\Users\bmatry\Documents\poo\TestsUnitaires\bin\Debug\TestsUnitaires.dll
+C:\Users\bmatry\Documents\poo\TestsUnitaires\bin\Debug\TestsUnitaires.pdb
+C:\Users\bmatry\Documents\poo\TestsUnitaires\bin\Debug\Wrapper.dll
+C:\Users\bmatry\Documents\poo\TestsUnitaires\bin\Debug\Wrapper.pdb
+C:\Users\bmatry\Documents\poo\TestsUnitaires\obj\Debug\TestsUnitaires.csprojResolveAssemblyReference.cache
+C:\Users\bmatry\Documents\poo\TestsUnitaires\obj\Debug\TestsUnitaires.dll
+C:\Users\bmatry\Documents\poo\TestsUnitaires\obj\Debug\TestsUnitaires.pdb

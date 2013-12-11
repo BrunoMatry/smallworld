@@ -7,3 +7,15 @@ C:\Users\bmatry\Documents\poo\ModelingProject1Lib\bin\Debug\ModelingProject1Lib.
 C:\Users\bmatry\Documents\poo\ModelingProject1Lib\obj\Debug\SmallWorld.csprojResolveAssemblyReference.cache
 C:\Users\bmatry\Documents\poo\ModelingProject1Lib\obj\Debug\ModelingProject1Lib.dll
 C:\Users\bmatry\Documents\poo\ModelingProject1Lib\obj\Debug\ModelingProject1Lib.pdb
+H:\SmallPoo\ModelingProject1Lib\bin\Debug\ModelingProject1Lib.dll
+H:\SmallPoo\ModelingProject1Lib\bin\Debug\ModelingProject1Lib.pdb
+H:\SmallPoo\ModelingProject1Lib\obj\Debug\SmallWorld.csprojResolveAssemblyReference.cache
+H:\SmallPoo\ModelingProject1Lib\obj\Debug\ModelingProject1Lib.dll
+H:\SmallPoo\ModelingProject1Lib\obj\Debug\ModelingProject1Lib.pdb
+C:\Users\bmatry\Documents\SmallPoo\ModelingProject1Lib\bin\Debug\ModelingProject1Lib.dll
+C:\Users\bmatry\Documents\SmallPoo\ModelingProject1Lib\bin\Debug\ModelingProject1Lib.pdb
+C:\Users\bmatry\Documents\SmallPoo\ModelingProject1Lib\bin\Debug\Wrapper.dll
+C:\Users\bmatry\Documents\SmallPoo\ModelingProject1Lib\bin\Debug\Wrapper.pdb
+C:\Users\bmatry\Documents\SmallPoo\ModelingProject1Lib\obj\Debug\SmallWorld.csprojResolveAssemblyReference.cache
+C:\Users\bmatry\Documents\SmallPoo\ModelingProject1Lib\obj\Debug\ModelingProject1Lib.dll
+C:\Users\bmatry\Documents\SmallPoo\ModelingProject1Lib\obj\Debug\ModelingProject1Lib.pdb

@@ -3,6 +3,6 @@
 public interface IFabriqueCase {
 
 	Dictionary<TypeCase, Case> CreerCases();
-	TypeCase[][] CreerGrille();
+	TypeCase[,] CreerGrille();
 }
 

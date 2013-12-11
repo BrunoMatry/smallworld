@@ -4,11 +4,11 @@ using System.Collections.Generic;
 public abstract class Carte : ICarte
 {
     protected Dictionary<TypeCase, Case> _cases;
-    protected TypeCase[][] _grille;
+    protected TypeCase[,] _grille;
 		protected static int HAUTEURCARTE;
 		protected static int LARGEURCARTE;
 
-    public virtual TypeCase[][] GetGrille() {
+    public virtual TypeCase[,] GetGrille() {
 		return _grille;
 	}
 
@@ -17,7 +17,7 @@ public abstract class Carte : ICarte
         // On verifie si la coordonnee est dans la carte
         if (this.appartient(c)) {
             // retourne l'instance de la case du bon type
-            return _cases[_grille[c.GetX()][c.GetY()]]; 
+            return _cases[_grille[c.GetX(),c.GetY()]]; 
         } else {
             return null;
         }

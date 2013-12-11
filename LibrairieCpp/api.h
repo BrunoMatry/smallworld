@@ -7,5 +7,5 @@
 #endif
 
 //extern "C" {
-		DLL int* gen_carte(const int nbTypeCase, const int nbCases);
+	DLL int* gen_carte(const int nbTypeCase, const int nbCases);
 //}

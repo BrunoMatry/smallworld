@@ -7,8 +7,7 @@ int* gen_carte(const int nbTypeCase, const int nbCases) {
 
 	srand(time(NULL));
 	int* tab = new int[nbCases];
-	int i = 0;
-	for(i = 0 ; i < nbCases ; i++) {
+	for(int i = 0 ; i < nbCases ; i++) {
 		tab[i] = (int)((float)rand()/32767*(nbTypeCase-1));
 	}
 	return tab;

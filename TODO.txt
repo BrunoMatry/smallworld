@@ -6,7 +6,6 @@ IHM
 
 A IMPLEMENTER:
 
-FabriqueCase :- Communication avec le wrapper
 StrategiePartie
 	MonteurDemo
 	MonteurNormal

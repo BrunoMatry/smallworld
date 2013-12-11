@@ -1,4 +1,4 @@
 ﻿public enum TypeCase : int
 {
-	MONTAGNE, DESERT, FORET, PLAINE, EAU
+    DESERT, EAU, FORET, MONTAGNE, PLAINE, NB_VAL
 }

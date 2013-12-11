@@ -35,3 +35,17 @@ C:\Users\bmatry\Documents\poo\TestsUnitaires\bin\Debug\Wrapper.pdb
 C:\Users\bmatry\Documents\poo\TestsUnitaires\obj\Debug\TestsUnitaires.csprojResolveAssemblyReference.cache
 C:\Users\bmatry\Documents\poo\TestsUnitaires\obj\Debug\TestsUnitaires.dll
 C:\Users\bmatry\Documents\poo\TestsUnitaires\obj\Debug\TestsUnitaires.pdb
+H:\SmallPoo\TestsUnitaires\bin\Debug\TestsUnitaires.dll
+H:\SmallPoo\TestsUnitaires\bin\Debug\TestsUnitaires.pdb
+H:\SmallPoo\TestsUnitaires\bin\Debug\Wrapper.dll
+H:\SmallPoo\TestsUnitaires\bin\Debug\Wrapper.pdb
+H:\SmallPoo\TestsUnitaires\obj\Debug\TestsUnitaires.csprojResolveAssemblyReference.cache
+H:\SmallPoo\TestsUnitaires\obj\Debug\TestsUnitaires.dll
+H:\SmallPoo\TestsUnitaires\obj\Debug\TestsUnitaires.pdb
+C:\Users\bmatry\Documents\SmallPoo\TestsUnitaires\bin\Debug\TestsUnitaires.dll
+C:\Users\bmatry\Documents\SmallPoo\TestsUnitaires\bin\Debug\TestsUnitaires.pdb
+C:\Users\bmatry\Documents\SmallPoo\TestsUnitaires\bin\Debug\Wrapper.dll
+C:\Users\bmatry\Documents\SmallPoo\TestsUnitaires\bin\Debug\Wrapper.pdb
+C:\Users\bmatry\Documents\SmallPoo\TestsUnitaires\obj\Debug\TestsUnitaires.csprojResolveAssemblyReference.cache
+C:\Users\bmatry\Documents\SmallPoo\TestsUnitaires\obj\Debug\TestsUnitaires.dll
+C:\Users\bmatry\Documents\SmallPoo\TestsUnitaires\obj\Debug\TestsUnitaires.pdb

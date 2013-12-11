@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public interface IPartie {
 
 	List<IUnite> GetUnites();
-	List<TypeCase> GetGrille();
+    TypeCase[,] GetGrille();
 	List<int> GetPointsJoueurs();
 
 	Boolean NouveauTour();

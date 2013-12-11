@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 
 public class Partie : IPartie
@@ -8,14 +9,40 @@ public class Partie : IPartie
 	private Dictionary<int, IJoueur> _joueurs;
 	private int _toursRestants;
 	private IUnite _uniteCourante;
-	private string _nom;
 	private List<int> _pointsJoueurs;
-	private IJoueur _joueurCourant;
+	private int _joueurCourant;
+    private string _nomPartie;
+    private List<TypePeuple> tp;
+    private ICarte c;
 
-	public virtual List<IUnite> GetUnites()
-	{
-		throw new System.NotImplementedException();
+    public Partie(string nomPartie, 
+                    List<TypePeuple> tp, 
+                    ICarte c, 
+                    Dictionary<int, IJoueur> joueurs, 
+                    int nbTours,
+                    int joueurCourant) {
+        this.c = c;
+        this._joueurs = joueurs;
+        this._toursRestants = nbTours;        
+        this._joueurCourant = joueurCourant;
+        this._nomPartie = nomPartie;
+        this.tp = tp;
+
+        // TODO: Unite courante + calculer points joueurs
+    }
+
+	public virtual List<IUnite> GetUnites() {
+
+        List<IUnite> l = new List<IUnite>();
+        foreach (KeyValuePair<int, IJoueur> j in this._joueurs) {
+            l.Concat(j.Value.GetPeuple().GetUnites());
+        }
+        return l;
 	}
+
+    public virtual IUnite GetUniteCourante() {
+        return this._uniteCourante;
+    }
 
 	public virtual void Attaque(Direction dir)
 	{
@@ -32,10 +59,7 @@ public class Partie : IPartie
 		throw new System.NotImplementedException();
 	}
 
-	public virtual IUnite GetUniteCourante()
-	{
-		throw new System.NotImplementedException();
-	}
+	
 
 	public virtual bool NouveauTour()
 	{
@@ -47,9 +71,9 @@ public class Partie : IPartie
 		throw new System.NotImplementedException();
 	}
 
-	public virtual List<TypeCase> GetGrille()
+	public virtual TypeCase[,] GetGrille()
 	{
-		throw new System.NotImplementedException();
+        return this._carte.GetGrille();
 	}
 
 	public virtual void Enregistrer()
@@ -64,7 +88,7 @@ public class Partie : IPartie
 
 	public virtual List<int> GetPointsJoueurs()
 	{
-		throw new System.NotImplementedException();
+        return this._pointsJoueurs;
 	}
 
 	public virtual void PasserTourJoueur()

@@ -49,3 +49,10 @@ C:\Users\bmatry\Documents\SmallPoo\TestsUnitaires\bin\Debug\Wrapper.pdb
 C:\Users\bmatry\Documents\SmallPoo\TestsUnitaires\obj\Debug\TestsUnitaires.csprojResolveAssemblyReference.cache
 C:\Users\bmatry\Documents\SmallPoo\TestsUnitaires\obj\Debug\TestsUnitaires.dll
 C:\Users\bmatry\Documents\SmallPoo\TestsUnitaires\obj\Debug\TestsUnitaires.pdb
+C:\Users\Sami\Documents\GitHub\smallworld\TestsUnitaires\bin\Debug\TestsUnitaires.dll
+C:\Users\Sami\Documents\GitHub\smallworld\TestsUnitaires\bin\Debug\TestsUnitaires.pdb
+C:\Users\Sami\Documents\GitHub\smallworld\TestsUnitaires\bin\Debug\Wrapper.dll
+C:\Users\Sami\Documents\GitHub\smallworld\TestsUnitaires\bin\Debug\Wrapper.pdb
+C:\Users\Sami\Documents\GitHub\smallworld\TestsUnitaires\obj\Debug\TestsUnitaires.csprojResolveAssemblyReference.cache
+C:\Users\Sami\Documents\GitHub\smallworld\TestsUnitaires\obj\Debug\TestsUnitaires.dll
+C:\Users\Sami\Documents\GitHub\smallworld\TestsUnitaires\obj\Debug\TestsUnitaires.pdb

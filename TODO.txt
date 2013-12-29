@@ -11,14 +11,18 @@ StrategiePartie
 	MonteurNormal
 	MonteurPetit
 MonteurPartie
-Partie
+
 Peuple
 Unite
 	UniteGaulois : Deplacer
 	UniteNain : déplacement vers case montagne
 	UniteViking : Nouveau tour (Verifier la type des cases proches) + Deplacer
 
+Partie: PointJoueur (Ca correspond à quoi ? ) , PasserTourUniteCourante(), NouveauTour(), Enregistrer(),  EnregistrerSous(), PasserTourJoueur(), acualiserPointsJoueurs()
+
 DONE:
+Partie : Attaquer() Déplacer() SelectionnerUniteCourante()
+
 Interfaces :
 	ICarte
 	IFabriqueCase
@@ -28,7 +32,7 @@ Interfaces :
 	IPartie
 	IPeuple
 	IStrategiePartie
-	IUnite
+	IUnite ( Sami : J'ai rajouté une méthode déplacer(Coordonnes cible) )
 Classes :
 	Carte
 		CarteDemo
@@ -40,7 +44,7 @@ Classes :
 		CaseForet
 		CaseMontagne
 		CasePlaine
-	Coordonnee
+	Coordonnee (Sami: J'ai rajouté une methode surchargé "+" pour pouvoir creer une nouvelle coordonnée à partir d'une direction)
 	FabriqueUnite
 	Joueur
 

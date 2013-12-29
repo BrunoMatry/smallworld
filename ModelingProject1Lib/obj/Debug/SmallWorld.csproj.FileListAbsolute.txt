@@ -19,3 +19,10 @@ C:\Users\bmatry\Documents\SmallPoo\ModelingProject1Lib\bin\Debug\Wrapper.pdb
 C:\Users\bmatry\Documents\SmallPoo\ModelingProject1Lib\obj\Debug\SmallWorld.csprojResolveAssemblyReference.cache
 C:\Users\bmatry\Documents\SmallPoo\ModelingProject1Lib\obj\Debug\ModelingProject1Lib.dll
 C:\Users\bmatry\Documents\SmallPoo\ModelingProject1Lib\obj\Debug\ModelingProject1Lib.pdb
+C:\Users\Sami\Documents\GitHub\smallworld\ModelingProject1Lib\obj\Debug\SmallWorld.csprojResolveAssemblyReference.cache
+C:\Users\Sami\Documents\GitHub\smallworld\ModelingProject1Lib\obj\Debug\ModelingProject1Lib.dll
+C:\Users\Sami\Documents\GitHub\smallworld\ModelingProject1Lib\obj\Debug\ModelingProject1Lib.pdb
+C:\Users\Sami\Documents\GitHub\smallworld\ModelingProject1Lib\bin\Debug\ModelingProject1Lib.dll
+C:\Users\Sami\Documents\GitHub\smallworld\ModelingProject1Lib\bin\Debug\ModelingProject1Lib.pdb
+C:\Users\Sami\Documents\GitHub\smallworld\ModelingProject1Lib\bin\Debug\Wrapper.dll
+C:\Users\Sami\Documents\GitHub\smallworld\ModelingProject1Lib\bin\Debug\Wrapper.pdb

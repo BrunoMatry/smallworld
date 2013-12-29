@@ -15,10 +15,11 @@ public abstract class StrategiePartie : IStrategiePartie
         return c;
 	}
 
-    protected abstract ICarte monterCarte(TypeCase[,] grille) {
+    protected ICarte monterCarte(TypeCase[,] grille) {
         FabriqueCase f = new FabriqueCase(LARGEURCARTE, HAUTEURCARTE);
         ICarte c = new CarteDemo(grille, f.CreerCases());
         return c;
     }
+
 }
 

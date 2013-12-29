@@ -31,5 +31,16 @@
     public static Coordonnee operator -(Coordonnee c1, Coordonnee c2) {
         return new Coordonnee((c1._x - c2._x), (c1._y - c2._y));
     }
+    public static Coordonnee operator +(Coordonnee c1, Direction dir)
+    {
+        switch (dir)
+        {
+            case Direction.NORD : return new Coordonnee(c1._x+1, c1._y) ;
+            case Direction.SUD: return new Coordonnee(c1._x - 1, c1._y);
+            case Direction.EST: return new Coordonnee(c1._x, c1._y+1);
+            case Direction.OUEST: return new Coordonnee(c1._x, c1._y-1);
+            default: return c1;
+        }
+    }
 }
 

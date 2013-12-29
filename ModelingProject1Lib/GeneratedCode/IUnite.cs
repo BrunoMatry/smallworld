@@ -3,6 +3,7 @@
 public interface IUnite {
 
 	Boolean Attaquer(IUnite uniteCible);
+    void Deplacer(Coordonnee cible);
   void Deplacer(Coordonnee caseCible, TypeCase caseActuelle);
 	void NouveauTour(TypeCase caseActuelle);
 
@@ -12,5 +13,7 @@ public interface IUnite {
 	int GetValeur();
 	int GetPointsDeVie();
 	int GetPointDeplacement();
+
+  
 }
 

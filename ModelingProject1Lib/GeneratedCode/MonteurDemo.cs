@@ -6,9 +6,7 @@ public class MonteurDemo : StrategiePartie
     protected static int LARGEURCARTE = 5;
     protected static int HAUTEURCARTE = 5;
 
-	protected override ICarte monterCarte(List<TypeCase> grille) {
-		throw new System.NotImplementedException();
-	}
+	
 
 	public override IPartie CreerPartie(string nomPartie, List<TypePeuple> tp) {
 

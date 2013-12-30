@@ -12,6 +12,11 @@ public abstract class Carte : ICarte
 		return _grille;
 	}
 
+    public virtual TypeCase GetTypeCase(Coordonnee c) 
+    {
+        return _grille[c.GetX(), c.GetY()];
+    }
+
 	public virtual Case GetCase(Coordonnee c)
 	{
         // On verifie si la coordonnee est dans la carte

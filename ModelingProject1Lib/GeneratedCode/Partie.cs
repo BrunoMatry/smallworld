@@ -28,7 +28,14 @@ public class Partie : IPartie
         this._nomPartie = nomPartie;
         this.tp = tp;
 
-        // TODO: Unite courante + calculer points joueurs
+        IJoueur j;
+        if (_joueurs.TryGetValue(this._joueurCourant, out j))
+        {
+            this._uniteCourante = j.GetPeuple().GetUnites()[0];
+        }
+
+
+        // TODO: Unite courante (FAIT)+ calculer points joueurs (???)
     }
 
 	public virtual List<IUnite> GetUnites() {
@@ -56,7 +63,8 @@ public class Partie : IPartie
         List<Direction> dirAutorisees = c.GetDirectionsAutorisees(_uniteCourante.GetCoordonnees());
         if (!(dirAutorisees.Contains(dir)))
             throw new Exception("Directions non autorisées !");
-        Coordonnee cible = _uniteCourante.GetCoordonnees() + dir;
+        Coordonnee courante = _uniteCourante.GetCoordonnees();
+        Coordonnee cible = courante + dir;
         List<IUnite> ciblee = getUnitesCible(cible);
         // On vérifie que la liste ciblee n'est pas vide:
         if (!(ciblee.Any()))
@@ -88,7 +96,7 @@ public class Partie : IPartie
                 }
         // Si il n'y a plus d'unites présentes sur la carte cible on effectue un déplacement
             if (!(ciblee.Any()))
-                this._uniteCourante.Deplacer(cible);
+                this._uniteCourante.Deplacer(cible,c.GetTypeCase(courante));
         }
        
 	}
@@ -105,25 +113,46 @@ public class Partie : IPartie
         List<Direction> dirAutorisees = c.GetDirectionsAutorisees(_uniteCourante.GetCoordonnees());
         if (!(dirAutorisees.Contains(dir)))
             throw new Exception("Directions non autorisées !");
-        Coordonnee cible = _uniteCourante.GetCoordonnees() + dir;
+        Coordonnee courante = _uniteCourante.GetCoordonnees();
+        Coordonnee cible = courante + dir;
         List<IUnite> ciblee = getUnitesCible(cible);
         // On vérifie qu'il n'y a pas d'unite sur la case cible:
         if (!(ciblee.Any()))
-            this._uniteCourante.Deplacer(cible);
+            this._uniteCourante.Deplacer(cible,c.GetTypeCase(courante));
 
 	}
 
 	public virtual void PasserTourUniteCourante()
 	{
-		throw new System.NotImplementedException();
+        // On récupére le joueur courant du dictionnaire
+        IJoueur j;
+        if (_joueurs.TryGetValue(this._joueurCourant, out j))
+        {
+            int idUniteCourante = j.GetPeuple().GetUnites().IndexOf(this._uniteCourante); 
+            // Correspond à la place de l'unite courante dans la list Unites du peuple courant (numéroté de 0 à n-1)
+            if (idUniteCourante < j.GetPeuple().GetNombreUnites()-1)
+            {
+                this._uniteCourante = j.GetPeuple().GetUnites()[idUniteCourante +1];
+            }
+            else
+            {
+                this._uniteCourante = j.GetPeuple().GetUnites()[0];
+            }
+        }
 	}
 
 	
 
 	public virtual bool NouveauTour()
 	{
-		throw new System.NotImplementedException();
-	}
+        if(_toursRestants > 0)
+        {
+            _joueurCourant = (_joueurCourant +1) % 2;
+            _toursRestants--;
+            return true;
+	    }
+            return false;
+    }
 
 	public virtual List<Coordonnee> GetDirectionsAutorisees(Coordonnee c) // Ne sert à rien je crois car méthode déjà présente dans la care
 	{
@@ -140,7 +169,7 @@ public class Partie : IPartie
 		throw new System.NotImplementedException();
 	}
 
-	public virtual void EnregistrerSous()
+	public virtual void EnregistrerSous(string )
 	{
 		throw new System.NotImplementedException();
 	}
@@ -152,8 +181,8 @@ public class Partie : IPartie
 
 	public virtual void PasserTourJoueur()
 	{
-		throw new System.NotImplementedException();
-	}
+        NouveauTour();
+    }
 
 	private void acualiserPointsJoueurs()
 	{

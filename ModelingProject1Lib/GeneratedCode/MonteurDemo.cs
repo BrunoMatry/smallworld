@@ -13,7 +13,7 @@ public class MonteurDemo : StrategiePartie
         ICarte c = monterCarte();
         Dictionary<int, IJoueur> joueurs = new Dictionary<int, IJoueur>();
         joueurs.Add(0, new Joueur(tp[0],4));
-        joueurs.Add(0, new Joueur(tp[1], 4));
+        joueurs.Add(1, new Joueur(tp[1], 4));
         Random begin = new Random();
         return new Partie(nomPartie, tp, c, joueurs, 5, begin.Next(0, 2));
 	}

@@ -17,6 +17,6 @@ public interface IPartie {
 	void PasserTourJoueur();
 
 	void Enregistrer();
-	void EnregistrerSous();
+	void EnregistrerSous(string chemin);
 }
 

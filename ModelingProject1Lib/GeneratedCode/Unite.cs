@@ -17,11 +17,7 @@ public abstract class Unite : IUnite
 		// On aura verifie au prealable la validite de la case cible
 		this._coordonnee = caseCible;
 	}
-    public virtual void Deplacer(Coordonnee caseCible)
-    {
-        // On aura verifie au prealable la validite de la case cible
-        this._coordonnee = caseCible;
-    }
+
 
 	public virtual Boolean Attaquer(IUnite uniteCible) {
         // Realiser les calculs d'attaque

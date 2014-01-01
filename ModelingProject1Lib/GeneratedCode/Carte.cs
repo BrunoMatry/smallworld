@@ -8,16 +8,7 @@ public abstract class Carte : ICarte
 	protected static int HAUTEURCARTE;
 	protected static int LARGEURCARTE;
 
-    public virtual TypeCase[,] GetGrille() {
-		return _grille;
-	}
-
-    public virtual TypeCase GetTypeCase(Coordonnee c) 
-    {
-        return _grille[c.GetX(), c.GetY()];
-    }
-
-	public virtual Case GetCase(Coordonnee c)
+	public Case GetCase(Coordonnee c)
 	{
         // On verifie si la coordonnee est dans la carte
         if (this.appartient(c)) {
@@ -42,8 +33,7 @@ public abstract class Carte : ICarte
 		return emplacements;
 	}
 
-	public List<Direction> GetDirectionsAutorisees(Coordonnee c)
-	{
+	public List<Direction> GetDirectionsAutorisees(Coordonnee c) {
 		int x = c.GetX();
 		int y = c.GetY();
 		List<Direction> dirAutorisees = new List<Direction>();
@@ -57,11 +47,14 @@ public abstract class Carte : ICarte
 			dirAutorisees.Add(Direction.OUEST);
 		return dirAutorisees;
 	}
-	protected Boolean appartient(Coordonnee c)
-	{
+
+	protected Boolean appartient(Coordonnee c) {
 		int x = c.GetX();
 		int y = c.GetY();
 		return x >= 0 && x < LARGEURCARTE && y >= 0 && y < HAUTEURCARTE;
 	}
+
+	public TypeCase[,] GetGrille() { return _grille; }
+	public TypeCase GetTypeCase(Coordonnee c) { return _grille[c.GetX(), c.GetY()]; }
 }
 

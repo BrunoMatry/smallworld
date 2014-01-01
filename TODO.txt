@@ -11,8 +11,6 @@ StrategiePartie
 	MonteurNormal
 	MonteurPetit
 MonteurPartie
-
-Peuple
 Unite
 	UniteGaulois : Deplacer
 	UniteNain : déplacement vers case montagne

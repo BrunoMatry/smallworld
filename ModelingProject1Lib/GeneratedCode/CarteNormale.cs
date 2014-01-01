@@ -12,8 +12,5 @@ public class CarteNormale : Carte
         this._grille = grille;
         this._cases = cases;
     }
-
-
-
 }
 

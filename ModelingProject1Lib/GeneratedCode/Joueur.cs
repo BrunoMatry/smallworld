@@ -6,9 +6,9 @@ public class Joueur : IJoueur
 	private static int NOMBREJOUEUR = 0;
 	private IPeuple _peuple;
 
-	public Joueur(TypePeuple t, int nbUnites) {
+	public Joueur(TypePeuple t, int nbUnites, Coordonnee posInit) {
 		this._id = NOMBREJOUEUR++;
-		this._peuple = new Peuple(t, nbUnites);
+		this._peuple = new Peuple(t, nbUnites, this._id, posInit);
 	}
 
 	public int GetId() { return this._id; }

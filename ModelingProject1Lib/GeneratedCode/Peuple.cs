@@ -22,18 +22,12 @@ public class Peuple : IPeuple
 		this._nbUnites = nb;
 	}
 
-
-	public virtual List<IUnite> GetUnites() {
-		return this._unites;
-	}
-
-	public virtual int GetNombreUnites() {
-		return this._nbUnites;
-	}
-
 	public virtual void TuerUnite(IUnite unite) {
 		this._unites.Remove(unite);
 		this._nbUnites--;
 	}
+
+	public virtual List<IUnite> GetUnites() { return this._unites; }
+	public virtual int GetNombreUnites() { return this._nbUnites; }
 }
 

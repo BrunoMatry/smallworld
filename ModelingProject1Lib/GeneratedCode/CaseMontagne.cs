@@ -1,4 +1,3 @@
-﻿public class CaseMontagne : Case
-{
+﻿public class CaseMontagne : Case {
 }
 

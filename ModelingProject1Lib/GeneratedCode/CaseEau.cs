@@ -1,4 +1,3 @@
-﻿public class CaseEau : Case
-{
+﻿public class CaseEau : Case {
 }
 

@@ -1,4 +1,3 @@
-﻿public class CasePlaine : Case
-{
+﻿public class CasePlaine : Case {
 }
 

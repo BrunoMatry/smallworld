@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 
 
-public class Partie : IPartie
-{
+public class Partie : IPartie {
+
 	private ICarte _carte;
 	private Dictionary<int, IJoueur> _joueurs;
 	private int _toursRestants;

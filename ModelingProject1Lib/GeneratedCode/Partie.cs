@@ -36,12 +36,14 @@ public class Partie : IPartie {
 		this.recalculerPoints();
     }
 
-	public List<IUnite> GetUnites() {
-        List<IUnite> l = new List<IUnite>();
-        foreach (KeyValuePair<int, IJoueur> j in this._joueurs) {
-            l.Concat(j.Value.GetPeuple().GetUnites());
-        }
-        return l;
+	public Dictionary<Coordonnee, IUnite> GetUnitesGrille() {
+		Dictionary<Coordonnee, IUnite> res = new Dictionary<Coordonnee, IUnite>();
+		foreach (KeyValuePair<int, IJoueur> j in this._joueurs) {
+			foreach (Unite u in j.Value.GetPeuple().GetUnites()) {
+				res.Add(u.GetCoordonnees(), u);
+			}
+		}
+        return res;
 	}
 
 	public virtual void Attaque(Direction dir)
@@ -168,16 +170,16 @@ public class Partie : IPartie {
         throw new System.NotImplementedException();
     }
 
-	public virtual void Selectionner(IUnite unite)
-	{
-        this._uniteCourante = unite;
-    }
+	public void Selectionner(IUnite unite) { this._uniteCourante = unite; }
 
 	/* Accesseurs */
 	public IUnite GetUniteCourante() { return this._uniteCourante; }
 	public TypeCase[,] GetGrille() { return this._carte.GetGrille(); }
 	public List<int> GetPointsJoueurs() { return this._pointsJoueurs; }
 
+	/**
+	 * Methode permettant d'obtenir les unites adverses sur la case de coordonnees c
+	 */
 	private List<IUnite> getUnitesCible(Coordonnee c) {
 		List<IUnite> l = new List<IUnite>();
         foreach (KeyValuePair<int, IJoueur> j in this._joueurs) {

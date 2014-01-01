@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public interface IPartie {
 
-	List<IUnite> GetUnites();
+	Dictionary<Coordonnee, IUnite> GetUnitesGrille();
     TypeCase[,] GetGrille();
 	List<int> GetPointsJoueurs();
 

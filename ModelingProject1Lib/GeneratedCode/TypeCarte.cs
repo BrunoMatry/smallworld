@@ -1,4 +1,3 @@
-﻿public enum TypeCarte : int
-{
+﻿public enum TypeCarte : int {
 	DEMO, PETIT, NORMAL
 }

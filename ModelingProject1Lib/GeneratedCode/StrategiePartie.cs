@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
-public abstract class StrategiePartie : IStrategiePartie
-{
+public abstract class StrategiePartie : IStrategiePartie {
+
     protected static int LARGEURCARTE;
     protected static int HAUTEURCARTE;
 

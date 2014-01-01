@@ -19,12 +19,15 @@ public class UniteViking : Unite
 	public override void NouveauTour(TypeCase caseActuelle) {
 		switch (caseActuelle) {
 			case TypeCase.EAU:
+				// si l'unite se trouve sur une case de type eau elle ne rapporte pas de point
 				this._valeur = 0;
 				break;
 			case TypeCase.DESERT:
+				// si l'unite se trouve sur une case de type desert elle ne rapporte pas de point
 				this._valeur = 0;
 				break;
 			default:
+				// sinon elle rapporte un point
 				this._valeur = 1;
 				break;
 		}

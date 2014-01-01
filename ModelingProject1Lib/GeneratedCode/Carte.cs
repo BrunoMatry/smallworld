@@ -5,8 +5,8 @@ public abstract class Carte : ICarte
 {
     protected Dictionary<TypeCase, Case> _cases;
     protected TypeCase[,] _grille;
-		protected static int HAUTEURCARTE;
-		protected static int LARGEURCARTE;
+	protected static int HAUTEURCARTE;
+	protected static int LARGEURCARTE;
 
     public virtual TypeCase[,] GetGrille() {
 		return _grille;

@@ -77,19 +77,24 @@ public class Partie : IPartie {
 		 */
         
 		if (this._uniteCourante.Attaquer(meilleurDef)) { // S'il y a victoire
-        // On vérifie si l'unité cible est morte
-            IJoueur j;
-			if (meilleurDef.PointsDeVie == 0)
-				if (_joueurs.TryGetValue(meilleurDef.Joueur, out j))
-                {
-					j.Peuple.TuerUnite(meilleurDef);
+			// On verifie si l'unite cible est morte
+			if (meilleurDef.PointsDeVie <= 0) {
+					_joueurs[meilleurDef.Joueur].Peuple.TuerUnite(meilleurDef);
+					this._carte.GrilleUnites[cible].Remove(meilleurDef);
 					ciblee.Remove(meilleurDef);
-                }
-        // Si il n'y a plus d'unites présentes sur la carte cible on effectue un déplacement
-			if (ciblee == null || ciblee.Count <= 0)
+            }
+			// S'il n'y a plus d'unites présentes sur la carte cible on effectue un déplacement
+			if (ciblee.Count <= 0)
                 this._uniteCourante.Deplacer(cible, this._carte.GetTypeCase(courante));
-        }
-       
+        } else { // S'il y a defaite
+			// On verifie si l'unite courante est morte
+			if (this._uniteCourante.PointsDeVie <= 0) {
+				this._joueurs[this._joueurCourant].Peuple.TuerUnite(this._uniteCourante);
+				this._carte.GrilleUnites[courante].Remove(this._uniteCourante);
+				/* TODO changer d'unite courante */
+			}
+		}
+		/* TODO verifier si un joueur a perdu */	
 	}
 
 	public void Deplacement(Direction dir) {

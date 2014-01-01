@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 public interface IPartie {
 
-	Dictionary<Coordonnee, IUnite> GetUnitesGrille();
     TypeCase[,] GetGrille();
 	List<int> GetPointsJoueurs();
 
@@ -17,5 +16,7 @@ public interface IPartie {
 
 	void Enregistrer();
 	void EnregistrerSous(string chemin);
+
+	Dictionary<Coordonnee, List<IUnite>> UnitesGrille { get; }
 }
 

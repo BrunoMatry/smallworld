@@ -5,11 +5,13 @@ public abstract class Carte : ICarte
 {
     protected Dictionary<TypeCase, Case> _cases;
     protected TypeCase[,] _grille;
+	protected Dictionary<Coordonnee, List<IUnite>> _grilleUnites;
 	protected static int HAUTEURCARTE;
 	protected static int LARGEURCARTE;
 
-	// Propriété (en lecture seule)
+	// Propriétés
 	public TypeCase[,] Grille { get { return this._grille; } }
+	public Dictionary<Coordonnee, List<IUnite>> GrilleUnites { get { return this._grilleUnites; } set { this._grilleUnites = value; } }
 
 	public Case GetCase(Coordonnee c)
 	{

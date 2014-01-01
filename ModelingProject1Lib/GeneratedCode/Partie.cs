@@ -15,11 +15,13 @@ public class Partie : IPartie {
 	private int _nbJoueursRestants;
 	private int _joueurCourant;
     private string _nomPartie;
+	
 
 	// Propriétés
 	public IUnite UniteCourante { get { return this._uniteCourante; } }
 	public TypeCase[,] Grille { get { return this._carte.GetGrille(); } }
 	public List<int> PointsJoueurs { get { return this._pointsJoueurs; } }
+	public Dictionary<Coordonnee, List<IUnite>> GrilleUnites { get { return this._carte.GrilleUnites; } }
 
 	/**
 	 * Constructeur de la classe Partie
@@ -42,88 +44,78 @@ public class Partie : IPartie {
         // Calcul des points de joueurs
 		this.recalculerPoints();
 		this._nbJoueursRestants = joueurs.Count;
+		this.miseAJourCarte();
     }
 
-	public Dictionary<Coordonnee, IUnite> GetUnitesGrille() {
-		Dictionary<Coordonnee, IUnite> res = new Dictionary<Coordonnee, IUnite>();
-		foreach (KeyValuePair<int, IJoueur> j in this._joueurs) {
-			foreach (Unite u in j.Value.Peuple.Unites) {
-				res.Add(u.Coordonnees, u);
-			}
-		}
-        return res;
-	}
+	
 
-	public virtual void Attaque(Direction dir) {
-        //On vérifie que une unité est bien séléctionné
-        if (this._uniteCourante == null)
-            throw new PartieException("Aucune unité n'a été séléctionné", "Selection d'unité");
+	public void Attaque(Direction dir) {
+		// Verification de la validite du deplacement
+		this.mouvement(dir);
 
-        //On vérifie les points de déplacements
-        if (this._uniteCourante.PointsDeplacement < 1)
-            throw new PartieException("Points de déplacement insuffisants", "Deplacement invalide");
-
-        //On vérifie que la case ciblee appartient bien à la liste des cases autorisées
-        List<Direction> dirAutorisees = this._carte.GetDirectionsAutorisees(_uniteCourante.Coordonnees);
-        if (!(dirAutorisees.Contains(dir)))
-			throw new PartieException("Deplacement non autorisé", "Deplacement invalide");
         Coordonnee courante = _uniteCourante.Coordonnees;
         Coordonnee cible = courante + dir;
-        List<IUnite> ciblee = getUnitesCible(cible);
+        List<IUnite> ciblee = unitesEnemiesSurCase(cible);
         // On vérifie que la liste ciblee n'est pas vide:
-        if (!(ciblee.Any()))
-            throw new PartieException("Aucune unité cible sur la case séléctionnée");
+        if (ciblee.Count <= 0)
+            throw new PartieException("Aucune unite cible sur la case séléctionnee");
         // On séléctionne la meilleure unité en défence
-        Unite BestDef = null;
-        int def = 0;
-        foreach (Unite u in ciblee) {
+        IUnite meilleurDef = null;
+        int def = -1;
+        foreach (IUnite u in ciblee) {
             if (u.Defense > def)
                 def = u.Defense;
-                BestDef = u;
+			meilleurDef = u;
         }
        
         /* A BRUNO : Peut etre faudra t il modifier la méthode attaquer de sorte à ce qu'elle prenne l'adresse de l'unité cible 
         afin de pouvoir en modifier les propriétés (points de vie ...) Qu'en penses tu ?
          * Apparemment visual studio n'aime pas trop les pointeurs avec les types managés ... A voir comment on peut gérer sa ...
-         * Parce que j'ai peur que l'en prenant BestDef qui n'est qu'une copie de l'unité cible, l'unité cible ne soit jamais touché*/
-        // Si il y a victoire
-        if (this._uniteCourante.Attaquer(BestDef))
-        {
+         * Parce que j'ai peur que l'en prenant BestDef qui n'est qu'une copie de l'unité cible, l'unité cible ne soit jamais touché
+		 * -> Je vois ce que tu veux dire, ce sera effectivement a surveiller
+		 * -> J'ai cree un objet qui contiendra une association entre une coordonne et 
+		 */
+        
+		if (this._uniteCourante.Attaquer(meilleurDef)) { // S'il y a victoire
         // On vérifie si l'unité cible est morte
             IJoueur j;
-            if (BestDef.PointsDeVie == 0)
-                if (_joueurs.TryGetValue(BestDef.Joueur, out j))
+			if (meilleurDef.PointsDeVie == 0)
+				if (_joueurs.TryGetValue(meilleurDef.Joueur, out j))
                 {
-                j.Peuple.TuerUnite(BestDef);
-                ciblee.Remove(BestDef);
+					j.Peuple.TuerUnite(meilleurDef);
+					ciblee.Remove(meilleurDef);
                 }
         // Si il n'y a plus d'unites présentes sur la carte cible on effectue un déplacement
-            if (!(ciblee.Any()))
+			if (ciblee == null || ciblee.Count <= 0)
                 this._uniteCourante.Deplacer(cible, this._carte.GetTypeCase(courante));
         }
        
 	}
 
-	public virtual void Deplacement(Direction dir)
-	{
-		// On vérifie que une unité est bien séléctionné
-        if (this._uniteCourante == null)
-            throw new PartieException("Aucune unité n'a été séléctionné");
-        // On vérifie les points de déplacements
-        if (this._uniteCourante.PointsDeplacement < 1)
-			throw new PartieException("Points de déplacement insuffisant");
-        // On vérifie que la direction indiquée appartient bien à la liste des directions autorisées
-        List<Direction> dirAutorisees = this._carte.GetDirectionsAutorisees(_uniteCourante.Coordonnees);
-        if (!(dirAutorisees.Contains(dir)))
-			throw new PartieException("Directions non autorisées");
-        Coordonnee courante = _uniteCourante.Coordonnees;
-        Coordonnee cible = courante + dir;
-        List<IUnite> ciblee = getUnitesCible(cible);
-        // On vérifie qu'il n'y a pas d'unite sur la case cible:
-        if (!(ciblee.Any()))
-            this._uniteCourante.Deplacer(cible, this._carte.GetTypeCase(courante));
+	public void Deplacement(Direction dir) {
+		// Verification de la validite du deplacement
+		this.mouvement(dir);
 
+        Coordonnee courante = this._uniteCourante.Coordonnees;
+        Coordonnee cible = courante + dir;
+        // On vérifie qu'il n'y a pas d'unite sur la case cible
+		if (!this.unitesEnemiesSurCase(cible).Any()) {
+			// On appelle la methode deplacer de l'unite courante
+            this._uniteCourante.Deplacer(cible, this._carte.GetTypeCase(courante));
+			// On retire l'unite de son ancien emplacement sur la grille
+			this._carte.GrilleUnites[courante].Remove(this._uniteCourante);
+			// S'il n'yavait jamais eu d'unite sur cette case
+			if (this._carte.GrilleUnites[cible] == null)
+				// Initialisation de la liste d'unite associee aux coordonnees "cible"
+				this._carte.GrilleUnites[cible] = new List<IUnite>();
+			// On ajoute l'unite courante a sa nouvelle place
+			this._carte.GrilleUnites[cible].Add(this._uniteCourante);
+		} else {
+			throw new PartieException("Il y a des unites enemies sur la case cible", "Case cible occupee");
+		}
 	}
+
+	
 
 	public void PasserTourUniteCourante() {
         // On recupere le numero de l'unite courante dans les unites du joueur
@@ -160,20 +152,20 @@ public class Partie : IPartie {
 	}
 
 	/**
-	 * Methode permettant d'obtenir les unites adverses sur la case de coordonnees c
+	 * Methode permettant la verification de la validite du deplacement dans une direction donnee
+	 * /!\ ne verifie pas la presence d'unites enemies dans la case cible
 	 */
-	private List<IUnite> getUnitesCible(Coordonnee c) {
-		List<IUnite> l = new List<IUnite>();
-        foreach (KeyValuePair<int, IJoueur> j in this._joueurs) {
-            if (j.Key != _joueurCourant) {
-                foreach (IUnite u in j.Value.Peuple.Unites) {
-                    if (u.Coordonnees == c)
-                        l.Add(u);
-                }
-            }
-
-        }
-        return l;
+	private void mouvement(Direction dir) {
+		// On vérifie que une unité est bien séléctionné
+		if (this._uniteCourante == null)
+			throw new PartieException("Aucune unité n'a été séléctionné");
+		// On vérifie les points de déplacements
+		if (this._uniteCourante.PointsDeplacement < 1)
+			throw new PartieException("Points de déplacement insuffisant");
+		// On vérifie que la direction indiquée appartient bien à la liste des directions autorisées
+		List<Direction> dirAutorisees = this._carte.GetDirectionsAutorisees(_uniteCourante.Coordonnees);
+		if (!(dirAutorisees.Contains(dir)))
+			throw new PartieException("Directions non autorisées");
 	}
 
 	/**
@@ -187,5 +179,33 @@ public class Partie : IPartie {
 			}
 			this._pointsJoueurs[j.Key] = points;
 		}
+	}
+
+	/**
+	 * Mise a jour de la grille d'unites
+	 */
+	private void miseAJourCarte() {
+		Dictionary<Coordonnee, List<IUnite>> res = new Dictionary<Coordonnee, List<IUnite>>();
+		foreach (KeyValuePair<int, IJoueur> j in this._joueurs)	{
+			foreach (Unite u in j.Value.Peuple.Unites) {
+				if(res.ContainsKey(u.Coordonnees)) {
+					res[u.Coordonnees].Add(u);
+				} else {
+					List<IUnite> l = new List<IUnite>();
+					l.Add(u);
+					res.Add(u.Coordonnees, l);
+				}			
+			}
+		}
+		this._carte.GrilleUnites = res;
+	}
+
+	private List<IUnite> unitesEnemiesSurCase(Coordonnee c) {
+		List<IUnite> res = new List<IUnite>();
+		foreach(IUnite u in this._carte.GrilleUnites[c]) {
+			if(u.Joueur != this._joueurCourant)
+				res.Add(u);
+		}
+		return res;
 	}
 }

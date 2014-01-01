@@ -7,6 +7,10 @@ public class Peuple : IPeuple
 	private TypePeuple _type;
 	private int _nbUnites;
 
+	// Propriétés
+	public int NombreUnites { get { return this._nbUnites; } }
+	public List<IUnite> Unites { get { return this._unites; } set { this._unites = value; } }
+
 	/**
 	 * Constructeur de la classe Peuple
 	 * 
@@ -26,12 +30,9 @@ public class Peuple : IPeuple
 	 * Methode permettant la suppression d'une unite dans la table des unites
 	 * et la mise a jour du compteur d'unites
 	 */
-	public virtual void TuerUnite(IUnite unite) {
+	public void TuerUnite(IUnite unite) {
 		this._unites.Remove(unite);
 		this._nbUnites--;
 	}
-
-	public virtual List<IUnite> GetUnites() { return this._unites; }
-	public virtual int GetNombreUnites() { return this._nbUnites; }
 }
 

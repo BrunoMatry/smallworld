@@ -3,6 +3,10 @@
     private int _x;
     private int _y;
 
+	// Propriétés (en lecture seule)
+	public int X { get { return this._x; } }
+	public int Y { get { return this._y; } }
+
 	public Coordonnee(int x, int y) {
         this._x = x;
         this._y = y;
@@ -24,8 +28,7 @@
         return new Coordonnee((c1._x - c2._x), (c1._y - c2._y));
     }
     public static Coordonnee operator +(Coordonnee c1, Direction dir) {
-        switch (dir)
-        {
+        switch (dir) {
             case Direction.NORD : return new Coordonnee(c1._x + 1, c1._y) ;
             case Direction.SUD: return new Coordonnee(c1._x - 1, c1._y);
             case Direction.EST: return new Coordonnee(c1._x, c1._y + 1);
@@ -33,8 +36,5 @@
             default: return c1;
         }
     }
-
-	public int GetX() { return this._x; }
-	public int GetY() { return this._y; }
 }
 

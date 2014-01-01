@@ -6,6 +6,11 @@ public class Joueur : IJoueur
 	private static int NOMBREJOUEUR = 0;
 	private IPeuple _peuple;
 
+	// Propriétés
+	public int Id { get { return this._id; } }
+	public Boolean EnJeu { get { return (this._peuple.NombreUnites <= 0); } }
+	public IPeuple Peuple { get {return this._peuple; } set { this._peuple = value; } }
+
 	/**
 	 * Constructeur de la classe Joueur
 	 * t Le type du peuple
@@ -17,9 +22,5 @@ public class Joueur : IJoueur
 		this._id = NOMBREJOUEUR++;
 		this._peuple = new Peuple(t, nb, this._id, c);
 	}
-
-	public int GetId() { return this._id; }
-	public IPeuple GetPeuple() { return this._peuple; }
-	public Boolean EnJeu() { return (this._peuple.GetNombreUnites() <= 0); }
 }
 

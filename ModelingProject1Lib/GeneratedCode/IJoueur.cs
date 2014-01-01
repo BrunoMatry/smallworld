@@ -2,8 +2,8 @@
 
 public interface IJoueur {
 
-	int GetId();
-	IPeuple GetPeuple();
-	Boolean EnJeu();
+	int Id { get; }
+	Boolean EnJeu { get; }
+	IPeuple Peuple { get; set; }
 }
 

@@ -6,6 +6,8 @@ public class MonteurPetit : StrategiePartie
     protected static int LARGEURCARTE = 10;
     protected static int HAUTEURCARTE = 10;
 
+	public MonteurPetit () {}
+
     public override IPartie CreerPartie(string nomPartie, List<TypePeuple> tp) {
 		/* Meme methode que pour la classe MonteurDemo */
 		FabriqueCase f = new FabriqueCase(LARGEURCARTE, HAUTEURCARTE);

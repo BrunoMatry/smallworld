@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 
 public interface IPeuple {
-	
-	List<IUnite> GetUnites();
-	int GetNombreUnites();
+
+	int NombreUnites { get; }
+	List<IUnite> Unites { get; set; }
 	void TuerUnite(IUnite unite);
 }
 

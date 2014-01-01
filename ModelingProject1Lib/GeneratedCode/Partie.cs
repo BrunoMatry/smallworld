@@ -48,7 +48,7 @@ public class Partie : IPartie {
 		Dictionary<Coordonnee, IUnite> res = new Dictionary<Coordonnee, IUnite>();
 		foreach (KeyValuePair<int, IJoueur> j in this._joueurs) {
 			foreach (Unite u in j.Value.Peuple.Unites) {
-				res.Add(u.GetCoordonnees(), u);
+				res.Add(u.Coordonnees, u);
 			}
 		}
         return res;
@@ -60,14 +60,14 @@ public class Partie : IPartie {
             throw new PartieException("Aucune unité n'a été séléctionné", "Selection d'unité");
 
         //On vérifie les points de déplacements
-        if (this._uniteCourante.GetPointDeplacement() < 1)
+        if (this._uniteCourante.PointsDeplacement < 1)
             throw new PartieException("Points de déplacement insuffisants", "Deplacement invalide");
 
         //On vérifie que la case ciblee appartient bien à la liste des cases autorisées
-        List<Direction> dirAutorisees = this._carte.GetDirectionsAutorisees(_uniteCourante.GetCoordonnees());
+        List<Direction> dirAutorisees = this._carte.GetDirectionsAutorisees(_uniteCourante.Coordonnees);
         if (!(dirAutorisees.Contains(dir)))
 			throw new PartieException("Deplacement non autorisé", "Deplacement invalide");
-        Coordonnee courante = _uniteCourante.GetCoordonnees();
+        Coordonnee courante = _uniteCourante.Coordonnees;
         Coordonnee cible = courante + dir;
         List<IUnite> ciblee = getUnitesCible(cible);
         // On vérifie que la liste ciblee n'est pas vide:
@@ -77,8 +77,8 @@ public class Partie : IPartie {
         Unite BestDef = null;
         int def = 0;
         foreach (Unite u in ciblee) {
-            if (u.GetDefense() > def)
-                def = u.GetDefense();
+            if (u.Defense > def)
+                def = u.Defense;
                 BestDef = u;
         }
        
@@ -91,8 +91,8 @@ public class Partie : IPartie {
         {
         // On vérifie si l'unité cible est morte
             IJoueur j;
-            if (BestDef.GetPointsDeVie() == 0)
-                if (_joueurs.TryGetValue(BestDef.GetIdJoueur(), out j))
+            if (BestDef.PointsDeVie == 0)
+                if (_joueurs.TryGetValue(BestDef.Joueur, out j))
                 {
                 j.Peuple.TuerUnite(BestDef);
                 ciblee.Remove(BestDef);
@@ -110,13 +110,13 @@ public class Partie : IPartie {
         if (this._uniteCourante == null)
             throw new PartieException("Aucune unité n'a été séléctionné");
         // On vérifie les points de déplacements
-        if (this._uniteCourante.GetPointDeplacement() < 1)
-			throw new PartieException("Points de déplacement insuffisant !");
-        // TODO On vérifie que la direction indiquée appartient bien à la liste des directions autorisées
-        List<Direction> dirAutorisees = this._carte.GetDirectionsAutorisees(_uniteCourante.GetCoordonnees());
+        if (this._uniteCourante.PointsDeplacement < 1)
+			throw new PartieException("Points de déplacement insuffisant");
+        // On vérifie que la direction indiquée appartient bien à la liste des directions autorisées
+        List<Direction> dirAutorisees = this._carte.GetDirectionsAutorisees(_uniteCourante.Coordonnees);
         if (!(dirAutorisees.Contains(dir)))
-			throw new PartieException("Directions non autorisées !");
-        Coordonnee courante = _uniteCourante.GetCoordonnees();
+			throw new PartieException("Directions non autorisées");
+        Coordonnee courante = _uniteCourante.Coordonnees;
         Coordonnee cible = courante + dir;
         List<IUnite> ciblee = getUnitesCible(cible);
         // On vérifie qu'il n'y a pas d'unite sur la case cible:
@@ -166,8 +166,8 @@ public class Partie : IPartie {
 		List<IUnite> l = new List<IUnite>();
         foreach (KeyValuePair<int, IJoueur> j in this._joueurs) {
             if (j.Key != _joueurCourant) {
-                foreach (Unite u in j.Value.Peuple.Unites) {
-                    if (u.GetCoordonnees() == c)
+                foreach (IUnite u in j.Value.Peuple.Unites) {
+                    if (u.Coordonnees == c)
                         l.Add(u);
                 }
             }
@@ -183,7 +183,7 @@ public class Partie : IPartie {
 		foreach(KeyValuePair<int, IJoueur> j in this._joueurs) {
 			int points = 0;
 			foreach(IUnite u in j.Value.Peuple.Unites) {
-				points += u.GetValeur();
+				points += u.Valeur;
 			}
 			this._pointsJoueurs[j.Key] = points;
 		}

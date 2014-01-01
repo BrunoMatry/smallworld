@@ -5,11 +5,12 @@ public interface IUnite {
 	Boolean Attaquer(IUnite uniteCible);
 	void Deplacer(Coordonnee caseCible, TypeCase caseActuelle);
 	void NouveauTour(TypeCase caseActuelle);
-	Coordonnee GetCoordonnees();
-	int GetAttaque();
-	int GetDefense();
-	int GetValeur();
-	int GetPointsDeVie();
-	int GetPointDeplacement();
+	int Attaque { get; }
+	int Defense { get; }
+	int Valeur { get; }
+	int PointsDeVie { get; }
+	int PointsDeplacement { get; }
+	int Joueur { get; }
+	Coordonnee Coordonnees { get; }
 }
 

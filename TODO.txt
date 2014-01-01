@@ -10,13 +10,13 @@ StrategiePartie
 	MonteurDemo
 	MonteurNormal
 	MonteurPetit
-MonteurPartie
+
 Unite
 	UniteGaulois : Deplacer
 	UniteNain : déplacement vers case montagne
 	UniteViking : Nouveau tour (Verifier la type des cases proches) + Deplacer
 
-Partie: PointJoueur (Ca correspond à quoi ? ) , PasserTourUniteCourante(), NouveauTour(), Enregistrer(),  EnregistrerSous(), PasserTourJoueur(), acualiserPointsJoueurs()
+Partie: PasserTourUniteCourante(), NouveauTour(), Enregistrer(),  EnregistrerSous(), PasserTourJoueur(), acualiserPointsJoueurs()
 
 DONE:
 Partie : Attaquer() Déplacer() SelectionnerUniteCourante()
@@ -42,9 +42,10 @@ Classes :
 		CaseForet
 		CaseMontagne
 		CasePlaine
-	Coordonnee (Sami: J'ai rajouté une methode surchargé "+" pour pouvoir creer une nouvelle coordonnée à partir d'une direction)
+	Coordonnee
 	FabriqueUnite
 	Joueur
+	MonteurPartie
 
 ENUM OK :
 Direction

@@ -11,6 +11,9 @@ public class FabriqueCase : IFabriqueCase
         HAUTEURCARTE = h;
     }
 
+	/**
+	 * Methode retournant les instances (singleton) des classes Case associees a leur type
+	 */
 	public Dictionary<TypeCase, Case> CreerCases() {
         Dictionary<TypeCase, Case> res = new Dictionary<TypeCase, Case>();
         // Ajout des differents types de case
@@ -22,6 +25,9 @@ public class FabriqueCase : IFabriqueCase
         return res;
 	}
 
+	/**
+	 * Methode permettant de generer une nouvelle grille en utilisant le wrapper
+	 */
     public TypeCase[,] CreerGrille() {
         List<int> lcases = WrapperCarte.wrap_gen_carte((int)TypeCase.NB_VAL, (LARGEURCARTE * HAUTEURCARTE));
         TypeCase[,] grille = new TypeCase[LARGEURCARTE, HAUTEURCARTE];

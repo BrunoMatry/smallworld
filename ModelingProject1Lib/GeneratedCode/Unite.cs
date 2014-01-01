@@ -11,6 +11,10 @@ public abstract class Unite : IUnite
     protected int _valeur;
     protected int _joueur;
 
+	/**
+	 * Methode permettant la mise a jour des attributs de l'unite
+	 * avant de commencer un nouveau tour
+	 */
 	public abstract void NouveauTour(TypeCase caseActuelle);
 
 	public virtual void Deplacer(Coordonnee caseCible, TypeCase caseActuelle) {
@@ -20,13 +24,13 @@ public abstract class Unite : IUnite
 
 
 	public virtual Boolean Attaquer(IUnite uniteCible) {
-        // Realiser les calculs d'attaque
+        // TODO calculs d'attaque
 		throw new System.NotImplementedException();
 	}
 
-
+	/* Accesseurs */
 	public int GetAttaque() { return this._attaque; }
-  public Coordonnee GetCoordonnees() { return this._coordonnee; }
+	public Coordonnee GetCoordonnees() { return this._coordonnee; }
 	public int GetDefense() { return this._defense; }
 	public int GetValeur() { return this._valeur; }
 	public int GetPointsDeVie() { return this._pointsDeVie; }

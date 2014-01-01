@@ -22,6 +22,10 @@ public class Peuple : IPeuple
 		this._nbUnites = nb;
 	}
 
+	/**
+	 * Methode permettant la suppression d'une unite dans la table des unites
+	 * et la mise a jour du compteur d'unites
+	 */
 	public virtual void TuerUnite(IUnite unite) {
 		this._unites.Remove(unite);
 		this._nbUnites--;

@@ -6,9 +6,16 @@ public class Joueur : IJoueur
 	private static int NOMBREJOUEUR = 0;
 	private IPeuple _peuple;
 
-	public Joueur(TypePeuple t, int nbUnites, Coordonnee posInit) {
+	/**
+	 * Constructeur de la classe Joueur
+	 * t Le type du peuple
+	 * nb Le nombre d'unites a creer
+	 * c La coordonnee a laquelle seront placees les unites au depart
+	 * /!\ Cette case ne doit pas contenir d'unites enemies
+	 */
+	public Joueur(TypePeuple t, int nb, Coordonnee c) {
 		this._id = NOMBREJOUEUR++;
-		this._peuple = new Peuple(t, nbUnites, this._id, posInit);
+		this._peuple = new Peuple(t, nb, this._id, c);
 	}
 
 	public int GetId() { return this._id; }

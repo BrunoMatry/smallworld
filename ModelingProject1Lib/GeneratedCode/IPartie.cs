@@ -12,7 +12,6 @@ public interface IPartie {
 	IUnite GetUniteCourante();
 	void Attaque(Direction dir);
 	void Deplacement(Direction dir);
-	List<Coordonnee> GetDirectionsAutorisees(Coordonnee c);
 	void PasserTourUniteCourante();
 	void PasserTourJoueur();
 

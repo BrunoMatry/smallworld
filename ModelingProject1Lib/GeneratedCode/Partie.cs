@@ -9,47 +9,40 @@ public class Partie : IPartie {
 	private Dictionary<int, IJoueur> _joueurs;
 	private int _toursRestants;
 	private IUnite _uniteCourante;
-	private List<int> _pointsJoueurs; // A quoi ca correspond sachant que les joueurs n'ont pas de points mais que ce sont ses unités qui auront des points ?
+	private List<int> _pointsJoueurs;
+	// A quoi ca correspond ?
+	// -> a eviter de recalculer a chaque fois la somme des points des joueurs de chaque adversaire
 	private int _joueurCourant;
     private string _nomPartie;
-    private List<TypePeuple> tp;
-    private ICarte c;
 
-    public Partie(string nomPartie, 
-                    List<TypePeuple> tp, 
-                    ICarte c, 
-                    Dictionary<int, IJoueur> joueurs, 
-                    int nbTours,
-                    int joueurCourant) {
-        this.c = c;
+	/**
+	 * Constructeur de la classe Partie
+	 * nomPartie Le nom de la partie
+	 * c La carte associee a la partie
+	 * joueurs Les joueurs deja initialises associes a leurs numeros respectifs
+	 * nbTours Le nombre de tour a realiser ou restant a la partie
+	 * joueurCourant Le joueur courant
+	 */
+    public Partie(string nomPartie, ICarte c, Dictionary<int, IJoueur> joueurs, int nbTours, int joueurCourant) {
+        this._carte = c;
         this._joueurs = joueurs;
         this._toursRestants = nbTours;        
         this._joueurCourant = joueurCourant;
         this._nomPartie = nomPartie;
-        this.tp = tp;
 
-        IJoueur j;
-        if (_joueurs.TryGetValue(this._joueurCourant, out j))
-        {
-            this._uniteCourante = j.GetPeuple().GetUnites()[0];
-        }
-
-
-        // TODO: Unite courante (FAIT)+ calculer points joueurs (???)
+		// Selection de la premiere unite courante
+		this._uniteCourante = this._joueurs[this._joueurCourant].GetPeuple().GetUnites()[0];
+        // Calcul des points de joueurs
+		this.recalculerPoints();
     }
 
-	public virtual List<IUnite> GetUnites() {
-
+	public List<IUnite> GetUnites() {
         List<IUnite> l = new List<IUnite>();
         foreach (KeyValuePair<int, IJoueur> j in this._joueurs) {
             l.Concat(j.Value.GetPeuple().GetUnites());
         }
         return l;
 	}
-
-    public virtual IUnite GetUniteCourante() {
-        return this._uniteCourante;
-    }
 
 	public virtual void Attaque(Direction dir)
 	{
@@ -143,7 +136,7 @@ public class Partie : IPartie {
 
 	
 
-	public virtual bool NouveauTour()
+	public bool NouveauTour()
 	{
         if(_toursRestants > 0)
         {
@@ -154,30 +147,12 @@ public class Partie : IPartie {
             return false;
     }
 
-	public virtual List<Coordonnee> GetDirectionsAutorisees(Coordonnee c) // Ne sert à rien je crois car méthode déjà présente dans la care
-	{
-		throw new System.NotImplementedException();
-	}
+	//TODO
+	public void Enregistrer() { throw new System.NotImplementedException(); }
+	//TODO
+	public void EnregistrerSous(string s) {	throw new System.NotImplementedException(); }
 
-	public virtual TypeCase[,] GetGrille()
-	{
-        return this._carte.GetGrille();
-	}
-
-	public virtual void Enregistrer()
-	{
-		throw new System.NotImplementedException();
-	}
-
-	public virtual void EnregistrerSous(string )
-	{
-		throw new System.NotImplementedException();
-	}
-
-	public virtual List<int> GetPointsJoueurs()
-	{
-        return this._pointsJoueurs;
-	}
+	
 
 	public virtual void PasserTourJoueur()
 	{
@@ -198,15 +173,16 @@ public class Partie : IPartie {
         this._uniteCourante = unite;
     }
 
-	private List<IUnite> getUnitesCible(Coordonnee c)
-	{
-         List<IUnite> l = new List<IUnite>();
-        foreach (KeyValuePair<int, IJoueur> j in this._joueurs)
-        {
-            if (j.Key != _joueurCourant)
-            {
-                foreach (Unite u in j.Value.GetPeuple().GetUnites())
-                {
+	/* Accesseurs */
+	public IUnite GetUniteCourante() { return this._uniteCourante; }
+	public TypeCase[,] GetGrille() { return this._carte.GetGrille(); }
+	public List<int> GetPointsJoueurs() { return this._pointsJoueurs; }
+
+	private List<IUnite> getUnitesCible(Coordonnee c) {
+		List<IUnite> l = new List<IUnite>();
+        foreach (KeyValuePair<int, IJoueur> j in this._joueurs) {
+            if (j.Key != _joueurCourant) {
+                foreach (Unite u in j.Value.GetPeuple().GetUnites()) {
                     if (u.GetCoordonnees() == c)
                         l.Add(u);
                 }
@@ -216,5 +192,16 @@ public class Partie : IPartie {
         return l;
 	}
 
+	/**
+	 * Methode permettant le recalcul automatique des points de l'ensemble des joueurs
+	 */
+	private void recalculerPoints() {
+		foreach(KeyValuePair<int, IJoueur> j in this._joueurs) {
+			int points = 0;
+			foreach(IUnite u in j.Value.GetPeuple().GetUnites()) {
+				points += u.GetValeur();
+			}
+			this._pointsJoueurs[j.Key] = points;
+		}
+	}
 }
-

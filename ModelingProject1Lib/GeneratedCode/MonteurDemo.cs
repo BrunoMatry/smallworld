@@ -7,7 +7,8 @@ public class MonteurDemo : StrategiePartie
     protected static int HAUTEURCARTE = 5;
 
 	public override IPartie CreerPartie(string nomPartie, List<TypePeuple> tp) {
-        ICarte c = monterCarte();
+		FabriqueCase f = new FabriqueCase(LARGEURCARTE, HAUTEURCARTE);
+		ICarte c = new CarteDemo(f.CreerGrille(), f.CreerCases());
         Dictionary<int, IJoueur> joueurs = new Dictionary<int, IJoueur>();
         joueurs.Add(0, new Joueur(tp[0], 4, new Coordonnee(0, 0)));
         joueurs.Add(1, new Joueur(tp[1], 4, new Coordonnee(4, 4)));

@@ -1,4 +1,4 @@
-﻿La génération a démarré 01/01/2014 18:49:17.
+﻿La génération a démarré 02/01/2014 17:56:11.
      1>Projet "C:\Users\Bruno\Downloads\Smallworld\depot\Wrapper\Wrapper.vcxproj" sur le nœud 2 (Build cible(s)).
        Le fichier projet contient ToolsVersion="12.0". Cet ensemble d'outils est peut-être inconnu ou manquant. Dans ce cas, vous pouvez résoudre le problème en installant la version appropriée de MSBuild. Sinon, il est possible que la build ait été forcée vers un ToolsVersion spécifique pour des raisons liées à une stratégie. Projet traité comme si ToolsVersion="4.0". Pour plus d'informations, consultez http://go.microsoft.com/fwlink/?LinkId=291333.
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V110\Microsoft.Cpp.Platform.targets(44,5): error MSB8020: The builds tools for v120 (Platform Toolset = 'v120') cannot be found. To build using the v120 build tools, either click the Project menu or right-click the solution, and then select "Update VC++ Projects...". Install v120 to build using the v120 build tools.
@@ -6,4 +6,4 @@
 
 ÉCHEC de la build.
 
-Temps écoulé 00:00:00.00
+Temps écoulé 00:00:00.02

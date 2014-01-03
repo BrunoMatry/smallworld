@@ -6,32 +6,24 @@ using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Globalization;
 
-namespace WPF
-{
+namespace WPF {
 	//Convert a boolean in its negation
-	class NegatingConverter : IValueConverter
-	{
-		public object Convert(object value, Type targetType, Object parameter, CultureInfo culture)
-		{
+	class NegatingConverter : IValueConverter {
+
+		public object Convert(object value, Type targetType, Object parameter, CultureInfo culture)	{
 			if (targetType != typeof(bool))
 				throw new InvalidOperationException("The target must be a boolean");
-
 			return !(bool)value;
 		}
 
-		public object ConvertBack(object value, Type targetType, Object param, CultureInfo culture)
-		{
+		public object ConvertBack(object value, Type targetType, Object param, CultureInfo culture) {
 			throw new System.NotImplementedException();
 		}
-
 	}
 
-
 	//Return a text color depending on the value of selectedIndex
-	class SelectedIndexToTextLabelColorConverter : IValueConverter
-	{
-		public object Convert(object value, Type targetType, Object parameter, CultureInfo culture)
-		{
+	class SelectedIndexToTextLabelColorConverter : IValueConverter {
+		public object Convert(object value, Type targetType, Object parameter, CultureInfo culture)	{
 			if (targetType != typeof(System.Windows.Media.Brush))
 				throw new InvalidOperationException("The target must be a System.Windows.Media.Brush");
 
@@ -41,10 +33,8 @@ namespace WPF
 				return System.Windows.Media.Brushes.Black;
 		}
 
-		public object ConvertBack(object value, Type targetType, Object param, CultureInfo culture)
-		{
+		public object ConvertBack(object value, Type targetType, Object param, CultureInfo culture)	{
 			throw new System.NotImplementedException();
 		}
-
 	}
 }

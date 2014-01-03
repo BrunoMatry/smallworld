@@ -10,7 +10,7 @@
 
     <!--Window.Background>
         <ImageBrush ImageSource="sw2.jpg"/>
-    </Window.Background-->
+    </Window.Background
     
     <DockPanel x:Name="panel">
         <StackPanel DockPanel.Dock="Bottom">
@@ -51,4 +51,5 @@
             <StackPanel x:Name="unitInfoPanel" VerticalAlignment="Center" Orientation="Vertical" />
         </StackPanel>
     </DockPanel>
+    -->
 </Window>

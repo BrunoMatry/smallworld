@@ -6,58 +6,48 @@ using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace WPF
-{
-	class ImageFactory
-	{
-		private ImageBrush mountain;
-		private ImageBrush forest;
-		private ImageBrush lowland;
-		private ImageBrush desert;
-		private ImageBrush sea;
+namespace WPF {
+	class ImageFactory {
+		private ImageBrush desert, eau, foret, montagne, plaine;
 
-		public ImageFactory()
-		{
-			BitmapImage _seaImage = new BitmapImage(new Uri(@"../textures/terrains/neige.png", UriKind.Relative));
-			sea = new ImageBrush();
-			sea.ImageSource = _seaImage;
+		public ImageFactory() {
+		
+			BitmapImage _imageDesert = new BitmapImage(new Uri(@"../textures/terrains/desert.png", UriKind.Relative));
+			BitmapImage _imageEau = new BitmapImage(new Uri(@"../textures/terrains/eau.png", UriKind.Relative));
+			BitmapImage _imageForet = new BitmapImage(new Uri(@"../textures/terrains/foret.png", UriKind.Relative));
+			BitmapImage _imageMontagne = new BitmapImage(new Uri(@"../textures/terrains/montagne.png", UriKind.Relative));
+			BitmapImage _imagePlaine = new BitmapImage(new Uri(@"../textures/terrains/plaine.png", UriKind.Relative));
 
-			BitmapImage _lowlandImage = new BitmapImage(new Uri(@"../textures/terrains/plaine.png", UriKind.Relative));
-			lowland = new ImageBrush();
-			lowland.ImageSource = _lowlandImage;
-
-			BitmapImage _mountainImage = new BitmapImage(new Uri(@"../textures/terrains/montagne.png", UriKind.Relative));
-			mountain = new ImageBrush();
-			mountain.ImageSource = _mountainImage;
-
-			BitmapImage _desertImage = new BitmapImage(new Uri(@"../textures/terrains/desert.png", UriKind.Relative));
 			desert = new ImageBrush();
-			desert.ImageSource = _desertImage;
+			eau = new ImageBrush();
+			foret = new ImageBrush();
+			montagne = new ImageBrush();
+			plaine = new ImageBrush();
 
-			BitmapImage _forestImage = new BitmapImage(new Uri(@"../textures/terrains/forest.png", UriKind.Relative));
-			forest = new ImageBrush();
-			forest.ImageSource = _forestImage;
+			desert.ImageSource = _imageDesert;
+			eau.ImageSource = _imageEau;
+			foret.ImageSource = _imageForet;
+			montagne.ImageSource = _imageMontagne;
+			plaine.ImageSource = _imagePlaine;
 		}
 
-		public ImageBrush getImageBrush(Tile t)
-		{
+		public ImageBrush getImageBrush(TypeCase t)	{
 			ImageBrush image = null;
-			switch (t)
-			{
-				case Tile.DESERT:
+			switch (t) {
+				case TypeCase.DESERT:
 					image = desert;
 					break;
-				case Tile.FOREST:
-					image = forest;
+				case TypeCase.EAU:
+					image = eau;
 					break;
-				case Tile.LOWLAND:
-					image = mountain;
+				case TypeCase.FORET:
+					image = foret;
 					break;
-				case Tile.MOUTAIN:
-					image = lowland;
+				case TypeCase.MONTAGNE:
+					image = montagne;
 					break;
-				case Tile.SEA:
-					image = sea;
+				case TypeCase.PLAINE:
+					image = plaine;
 					break;
 				default:
 					break;

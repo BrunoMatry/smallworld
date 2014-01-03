@@ -1,9 +1,39 @@
-﻿La génération a démarré 02/01/2014 17:56:11.
+﻿La génération a démarré 03/01/2014 17:03:20.
      1>Projet "C:\Users\Bruno\Downloads\Smallworld\depot\Wrapper\Wrapper.vcxproj" sur le nœud 2 (Build cible(s)).
        Le fichier projet contient ToolsVersion="12.0". Cet ensemble d'outils est peut-être inconnu ou manquant. Dans ce cas, vous pouvez résoudre le problème en installant la version appropriée de MSBuild. Sinon, il est possible que la build ait été forcée vers un ToolsVersion spécifique pour des raisons liées à une stratégie. Projet traité comme si ToolsVersion="4.0". Pour plus d'informations, consultez http://go.microsoft.com/fwlink/?LinkId=291333.
-     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V110\Microsoft.Cpp.Platform.targets(44,5): error MSB8020: The builds tools for v120 (Platform Toolset = 'v120') cannot be found. To build using the v120 build tools, either click the Project menu or right-click the solution, and then select "Update VC++ Projects...". Install v120 to build using the v120 build tools.
-     1>Génération du projet "C:\Users\Bruno\Downloads\Smallworld\depot\Wrapper\Wrapper.vcxproj" terminée (Build cible(s)) -- ÉCHEC.
+     1>Le projet "C:\Users\Bruno\Downloads\Smallworld\depot\Wrapper\Wrapper.vcxproj" (1) génère "C:\Users\Bruno\Downloads\Smallworld\depot\LibrairieCpp\Librairie Cpp.vcxproj" (2) sur le nœud 2 (GetTargetPath cible(s)).
+       Le fichier projet contient ToolsVersion="12.0". Cet ensemble d'outils est peut-être inconnu ou manquant. Dans ce cas, vous pouvez résoudre le problème en installant la version appropriée de MSBuild. Sinon, il est possible que la build ait été forcée vers un ToolsVersion spécifique pour des raisons liées à une stratégie. Projet traité comme si ToolsVersion="4.0". Pour plus d'informations, consultez http://go.microsoft.com/fwlink/?LinkId=291333.
+     2>Génération du projet "C:\Users\Bruno\Downloads\Smallworld\depot\LibrairieCpp\Librairie Cpp.vcxproj" terminée (GetTargetPath cible(s)).
+     1>Le projet "C:\Users\Bruno\Downloads\Smallworld\depot\Wrapper\Wrapper.vcxproj" (1) génère "C:\Users\Bruno\Downloads\Smallworld\depot\LibrairieCpp\Librairie Cpp.vcxproj" (2:2) sur le nœud 2 (GetNativeManifest cible(s)).
+       Le fichier projet contient ToolsVersion="12.0". Cet ensemble d'outils est peut-être inconnu ou manquant. Dans ce cas, vous pouvez résoudre le problème en installant la version appropriée de MSBuild. Sinon, il est possible que la build ait été forcée vers un ToolsVersion spécifique pour des raisons liées à une stratégie. Projet traité comme si ToolsVersion="4.0". Pour plus d'informations, consultez http://go.microsoft.com/fwlink/?LinkId=291333.
+     2>Génération du projet "C:\Users\Bruno\Downloads\Smallworld\depot\LibrairieCpp\Librairie Cpp.vcxproj" terminée (GetNativeManifest cible(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I../librairiecpp/ /I../Debug /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\\" /AI"C:\Program Files (x86)\Windows Kits\8.0\References\CommonConfiguration\Neutral" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\\" /Zi /clr /nologo /W3 /WX- /O2 /Oy- /D WIN32 /D _DEBUG /D _WINDLL /D _UNICODE /D UNICODE /D NDEBUG /EHa /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.dll" /analyze- /errorReport:prompt /clr:nostdlib AssemblyInfo.cpp WrapperCarte.cpp
+         AssemblyInfo.cpp
+         WrapperCarte.cpp
+         Génération de code en cours...
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I../librairiecpp/ /I../Debug /Zi /clr /nologo /W3 /WX- /O2 /Oy- /D WIN32 /D _DEBUG /D _WINDLL /D _UNICODE /D UNICODE /D NDEBUG /EHa /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /TP /analyze- /errorReport:prompt "C:\Users\Bruno\AppData\Local\Temp\.NETFramework,Version=v4.5.AssemblyAttributes.cpp"
+         .NETFramework,Version=v4.5.AssemblyAttributes.cpp
+       ResourceCompile:
+         C:\Program Files (x86)\Windows Kits\8.0\bin\x86\rc.exe /D _UNICODE /D UNICODE /l"0x0409" /nologo /fo"Debug\app.res" app.rc 
+     1>Le projet "C:\Users\Bruno\Downloads\Smallworld\depot\Wrapper\Wrapper.vcxproj" (1) génère "C:\Users\Bruno\Downloads\Smallworld\depot\LibrairieCpp\Librairie Cpp.vcxproj" (2:3) sur le nœud 2 (GetResolvedLinkLibs cible(s)).
+       Le fichier projet contient ToolsVersion="12.0". Cet ensemble d'outils est peut-être inconnu ou manquant. Dans ce cas, vous pouvez résoudre le problème en installant la version appropriée de MSBuild. Sinon, il est possible que la build ait été forcée vers un ToolsVersion spécifique pour des raisons liées à une stratégie. Projet traité comme si ToolsVersion="4.0". Pour plus d'informations, consultez http://go.microsoft.com/fwlink/?LinkId=291333.
+     2>Génération du projet "C:\Users\Bruno\Downloads\Smallworld\depot\LibrairieCpp\Librairie Cpp.vcxproj" terminée (GetResolvedLinkLibs cible(s)).
+     1>Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Bruno\Downloads\Smallworld\depot\Debug\Wrapper.dll" /INCREMENTAL /NOLOGO /LIBPATH:../debug LibrairieCpp.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Bruno\Downloads\Smallworld\depot\Debug\Wrapper.pdb" /ASSEMBLYDEBUG /TLBID:1 /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X86 /DLL Debug\app.res
+         Debug\AssemblyInfo.obj
+         Debug\WrapperCarte.obj
+         "Debug\.NETFramework,Version=v4.5.AssemblyAttributes.obj"
+         C:\Users\Bruno\Downloads\Smallworld\depot\Debug\LibrairieCpp.lib
+         LibrairieCpp.lib(Api.obj) : .netmodule ou module MSIL compilÚ avec /GL trouvÚá; redÚmarrage de l'Údition de liens avec /LTCGá; ajoutez /LTCG Ó la ligne de commande de l'Údition de liens pour amÚliorer les performances de l'╔diteur de liens
+         GÚnÚration de code en cours
+         Fin de la gÚnÚration du code
+         Wrapper.vcxproj -> C:\Users\Bruno\Downloads\Smallworld\depot\Debug\Wrapper.dll
+     1>Le projet "C:\Users\Bruno\Downloads\Smallworld\depot\Wrapper\Wrapper.vcxproj" (1) génère "C:\Users\Bruno\Downloads\Smallworld\depot\LibrairieCpp\Librairie Cpp.vcxproj" (2:4) sur le nœud 2 (GetCopyToOutputDirectoryItems cible(s)).
+       Le fichier projet contient ToolsVersion="12.0". Cet ensemble d'outils est peut-être inconnu ou manquant. Dans ce cas, vous pouvez résoudre le problème en installant la version appropriée de MSBuild. Sinon, il est possible que la build ait été forcée vers un ToolsVersion spécifique pour des raisons liées à une stratégie. Projet traité comme si ToolsVersion="4.0". Pour plus d'informations, consultez http://go.microsoft.com/fwlink/?LinkId=291333.
+     2>Génération du projet "C:\Users\Bruno\Downloads\Smallworld\depot\LibrairieCpp\Librairie Cpp.vcxproj" terminée (GetCopyToOutputDirectoryItems cible(s)).
+     1>Génération du projet "C:\Users\Bruno\Downloads\Smallworld\depot\Wrapper\Wrapper.vcxproj" terminée (Build cible(s)).
 
-ÉCHEC de la build.
+La génération a réussi.
 
-Temps écoulé 00:00:00.02
+Temps écoulé 00:00:03.89

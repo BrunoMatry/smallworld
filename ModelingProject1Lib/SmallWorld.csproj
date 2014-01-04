@@ -93,12 +93,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Wrapper\Wrapper.vcxproj">
-      <Project>{fd0c3121-2f8a-4842-9498-c97f65644075}</Project>
-      <Name>Wrapper</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

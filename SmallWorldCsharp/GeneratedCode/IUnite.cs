@@ -8,7 +8,7 @@ public interface IUnite {
 	int Attaque { get; }
 	int Defense { get; }
 	int Valeur { get; }
-	int PointsDeVie { get; }
+	int PointsDeVie { get; set; }
 	int PointsDeplacement { get; }
 	int Joueur { get; }
 	Coordonnee Coordonnees { get; }

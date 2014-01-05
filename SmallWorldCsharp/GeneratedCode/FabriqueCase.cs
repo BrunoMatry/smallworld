@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using wrapper;
+using Wrapper;
 
 public class FabriqueCase : IFabriqueCase {
 
@@ -29,7 +29,8 @@ public class FabriqueCase : IFabriqueCase {
 	 * Methode permettant de generer une nouvelle grille en utilisant le wrapper
 	 */
     public TypeCase[,] CreerGrille() {
-        List<int> lcases = WrapperCarte.wrap_gen_carte((int)TypeCase.NB_VAL, (LARGEURCARTE * HAUTEURCARTE));
+		WrapperLib w = new WrapperLib();
+        List<int> lcases =  w.gen_carte((int)TypeCase.NB_VAL, (LARGEURCARTE * HAUTEURCARTE));
         TypeCase[,] grille = new TypeCase[LARGEURCARTE, HAUTEURCARTE];
         for(int i = 0 ; i < LARGEURCARTE ; i++) {
             for (int j = 0; j < HAUTEURCARTE; j++) {

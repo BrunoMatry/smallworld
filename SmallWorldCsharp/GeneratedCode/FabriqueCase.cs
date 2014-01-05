@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using wrapper;
 
-public class FabriqueCase : IFabriqueCase
-{
+public class FabriqueCase : IFabriqueCase {
+
     private static int LARGEURCARTE;
     private static int HAUTEURCARTE;
 

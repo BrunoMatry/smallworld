@@ -13,8 +13,7 @@ public abstract class Carte : ICarte
 	public TypeCase[,] Grille { get { return this._grille; } }
 	public Dictionary<Coordonnee, List<IUnite>> GrilleUnites { get { return this._grilleUnites; } set { this._grilleUnites = value; } }
 
-	public Case GetCase(Coordonnee c)
-	{
+	public Case GetCase(Coordonnee c) {
         // On verifie si la coordonnee est dans la carte
         if (this.appartient(c)) {
             // retourne l'instance de la case du bon type
@@ -24,6 +23,7 @@ public abstract class Carte : ICarte
         }
 	}
 
+	
 	public List<Coordonnee> GetEmplacementUnites(int nbJoueurs)	{
 		List<Coordonnee> emplacements = new List<Coordonnee>();
 		switch (nbJoueurs) {
@@ -53,6 +53,11 @@ public abstract class Carte : ICarte
 		return dirAutorisees;
 	}
 
+	/**
+	 * Methode permettant de savoir si une coordonnee appartient a la carte
+	 * @param c La coordonnée a tester
+	 * @return true si la coordonnee appartient a la carte, false sinon
+	 */
 	protected Boolean appartient(Coordonnee c) {
 		int x = c.X;
 		int y = c.Y;

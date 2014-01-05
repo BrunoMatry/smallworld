@@ -14,6 +14,9 @@ namespace Wrapper {
 		public:
 			WrapperLib(){ api = Api_new(); }
 			~WrapperLib(){ Api_delete(api); }
+			/**
+			 * Methode permettant de recupérer la valeur de la fonction gen_carte de l'API (librairie C++)
+			 */
 			List<int>^ gen_carte(const int ntc, const int nc) {
 				int* tab = api->gen_carte(ntc, nc);
 				List<int>^ res = gcnew List<int>();

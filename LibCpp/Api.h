@@ -32,7 +32,8 @@ class DLL Api {
 		int** gen_carte(const int nbtc) const;
 		/**
 		 * Methode permettant d'obtenir le placement des unites
-		 * @param nbj le nombre de joueurs
+		 * @param nbj le nombre de joueurs 
+		 *	(doit etre strictement positif et inferieur ou egal au nombre de cases)
 		 * @return une matrice de taille nbj * 2,
 		 *	avec les coordonnees des unites en fonction des joueurs
 		 */

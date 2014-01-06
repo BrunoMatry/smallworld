@@ -25,7 +25,16 @@ namespace Wrapper {
 				return res;
 			}
 
-			int** placer_unites(const int nbJ) { return Api_placerUnites(api, nbJ); }
+			List<Tuple<int, int>^>^ placer_unites(const int nbJ) {
+				int** tab = api->placerUnites(nbJ);
+				List<Tuple<int, int>^>^ res = gcnew List<Tuple<int, int>^>();
+				if(nbJ <= 0) return res;
+				for (int i = 0 ; i < nbJ ; i++) {
+					Tuple<int, int>^ tp = gcnew Tuple<int, int>(tab[i][0], tab[i][1]);
+					res->Add(tp);
+				}
+				return res;
+			}
 	};
 }
 #endif

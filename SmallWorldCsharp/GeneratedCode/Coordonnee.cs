@@ -36,5 +36,14 @@
             default: return c1;
         }
     }
+
+	public override bool Equals(object o) {
+		return true;
+	}
+
+	// uncomment the GetHashCode function to resolve
+	public override int GetHashCode() {
+		return 0;
+	}
 }
 

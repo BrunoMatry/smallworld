@@ -40,6 +40,7 @@ public class Partie : IPartie {
 		this._uniteCourante = this._joueurs[this._joueurCourant].Peuple.Unites[0];
 
         // Calcul des points de joueurs
+		this._pointsJoueurs = new List<int>();
 		this.recalculerPoints();
 		this._nbJoueursRestants = joueurs.Count;
 		this.miseAJourCarte();

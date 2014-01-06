@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-public class UniteViking : Unite
-{
-	private int joueur;
+public class UniteViking : Unite {
 
 	public UniteViking(int j, Coordonnee c) {
 		this._joueur = j;

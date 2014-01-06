@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Wrapper;
 
 namespace Test {
 
@@ -16,8 +17,7 @@ namespace Test {
 
 			// Creation d'une partie DEMO ; choix de peuples Gaulois / Nains
 			IPartie p = MonteurPartie.CreerPartie(TypeCarte.DEMO, ld, "partieTestDemo");
-			Assert.IsTrue(p.Joueurs[0].Peuple.Unites[0].Joueur == 0);
-			Assert.IsTrue(p.Joueurs[1].Peuple.Unites[0].Joueur == 1);
+			Assert.IsTrue(p.GrilleUnites.Count == 2);
 		}
 
 		[TestMethod]
@@ -40,7 +40,7 @@ namespace Test {
 		}
 
 		[TestMethod]
-		public void Test_PasserTourJoueurDemo_1() {
+		public void Test_Partie_1() {
 			// Creation de la liste des peuples
 			List<TypePeuple> ld = new List<TypePeuple>();
 			ld.Add(TypePeuple.GAULOIS);
@@ -62,8 +62,7 @@ namespace Test {
 
 			// Creation d'une partie PETITE ; choix de peuples Gaulois / Viking
 			IPartie p = MonteurPartie.CreerPartie(TypeCarte.PETIT, lp, "partieTestPetite");
-			Assert.IsTrue(p.Joueurs[0].Peuple.Unites[0].Joueur == 0);
-			Assert.IsTrue(p.Joueurs[1].Peuple.Unites[0].Joueur == 1);
+			Assert.IsTrue(p.GrilleUnites.Count == 2);
 		}
 
 		[TestMethod]
@@ -75,7 +74,7 @@ namespace Test {
 
 			// Creation d'une partie PETITE ; choix de peuples Gaulois / Viking
 			IPartie p = MonteurPartie.CreerPartie(TypeCarte.PETIT, lp, "partieTestPetite");
-			Assert.IsTrue(p.Joueurs[0].Peuple.Unites[0].Joueur == 0 || p.Joueurs[0].Peuple.Unites[0].Joueur == 1);
+			Assert.IsTrue(p.GrilleUnites.Count == 2);
 		}
 
 		[TestMethod]
@@ -87,8 +86,7 @@ namespace Test {
 
 			// Creation d'une partie NORMALE ; choix de peuples Viking / Gaulois
 			IPartie p = MonteurPartie.CreerPartie(TypeCarte.NORMAL, ln, "partieTestNormale");
-			Assert.IsTrue(p.Joueurs[0].Peuple.Unites[0].Joueur == 0);
-			Assert.IsTrue(p.Joueurs[1].Peuple.Unites[0].Joueur == 1);
+			Assert.IsTrue(p.GrilleUnites.Count == 2);
 		}
 
 		[TestMethod]
@@ -233,5 +231,29 @@ namespace Test {
 			Assert.IsInstanceOfType(d[TypeCase.MONTAGNE], typeof(CaseMontagne));
 			Assert.IsInstanceOfType(d[TypeCase.PLAINE], typeof(CasePlaine));
 		}
+
+		[TestMethod]
+		public void Test_FabriqueCase_2() {
+			IFabriqueCase f = new FabriqueCase();
+			WrapperLib w = new WrapperLib(5, 5);
+			TypeCase[,] grille = f.CreerGrille(w);
+			Assert.IsTrue(grille[3,4] == TypeCase.DESERT
+						|| grille[3,4] == TypeCase.EAU
+						|| grille[3,4] == TypeCase.FORET
+						|| grille[3,4] == TypeCase.MONTAGNE
+						|| grille[3,4] == TypeCase.PLAINE);
+		}
+
+		[TestMethod]
+		public void Test_Carte_1() {
+			IFabriqueCase f = new FabriqueCase();
+			WrapperLib w = new WrapperLib(5, 5);
+			ICarte c = new CarteDemo(f.CreerGrille(w), f.CreerCases());
+			List<Direction> l = c.GetDirectionsAutorisees(new Coordonnee(0, 0));
+			Assert.IsTrue(l.Contains(Direction.EST));
+			Assert.IsTrue(l.Contains(Direction.SUD));
+			Assert.IsTrue(l.Count == 2);
+		}
+
 	}
 }

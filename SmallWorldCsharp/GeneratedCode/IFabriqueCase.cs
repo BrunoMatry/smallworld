@@ -3,7 +3,6 @@ using Wrapper;
 
 public interface IFabriqueCase {
 
-	Dictionary<TypeCase, Case> CreerCases(WrapperLib w);
-	TypeCase[,] CreerGrille();
+	Dictionary<TypeCase, Case> CreerCases();
+	TypeCase[,] CreerGrille(WrapperLib w);
 }
-

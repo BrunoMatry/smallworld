@@ -9,7 +9,6 @@ public class Partie : IPartie {
 	private Dictionary<int, IJoueur> _joueurs;
 	private int _toursRestants;
 	private IUnite _uniteCourante;
-	private List<int> _pointsJoueurs;
 	private int _nbJoueursRestants;
 	private int _joueurCourant;
     private string _nomPartie;
@@ -18,8 +17,8 @@ public class Partie : IPartie {
 	// Propriétés
 	public IUnite UniteCourante { get { return this._uniteCourante; } }
 	public TypeCase[,] Grille { get { return this._carte.Grille; } }
-	public List<int> PointsJoueurs { get { return this._pointsJoueurs; } }
 	public Dictionary<Coordonnee, List<IUnite>> GrilleUnites { get { return this._carte.GrilleUnites; } }
+	public Dictionary<int, IJoueur> Joueurs { get { return this._joueurs; } }
 
 	/**
 	 * Constructeur de la classe Partie
@@ -40,7 +39,6 @@ public class Partie : IPartie {
 		this._uniteCourante = this._joueurs[this._joueurCourant].Peuple.Unites[0];
 
         // Calcul des points de joueurs
-		this._pointsJoueurs = new List<int>();
 		this.recalculerPoints();
 		this._nbJoueursRestants = joueurs.Count;
 		this.miseAJourCarte();
@@ -181,13 +179,8 @@ public class Partie : IPartie {
 	 * Methode permettant le recalcul automatique des points de l'ensemble des joueurs
 	 */
 	private void recalculerPoints() {
-		foreach(KeyValuePair<int, IJoueur> j in this._joueurs) {
-			int points = 0;
-			foreach(IUnite u in j.Value.Peuple.Unites) {
-				points += u.Valeur;
-			}
-			this._pointsJoueurs[j.Key] = points;
-		}
+		foreach(KeyValuePair<int, IJoueur> j in this._joueurs)
+			j.Value.MAJPoints();
 	}
 
 	/**

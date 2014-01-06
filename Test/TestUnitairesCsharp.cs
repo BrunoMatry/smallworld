@@ -29,8 +29,8 @@ namespace Test {
 
 			// Creation d'une partie DEMO ; choix de peuples Gaulois / Nains
 			IPartie p = MonteurPartie.CreerPartie(TypeCarte.DEMO, ld, "partieTestDemo");
-			IUnite uj1 = p.Joueurs[0].Peuple.Unites[0];
-			IUnite uj2 = p.Joueurs[1].Peuple.Unites[0];
+			IUnite uj1 = p.Joueurs[0].Item2.Peuple.Unites[0];
+			IUnite uj2 = p.Joueurs[1].Item2.Peuple.Unites[0];
 			Assert.IsTrue(uj1.Coordonnees.X == 0 || uj1.Coordonnees.X == 4);
 			Assert.IsTrue(uj1.Coordonnees.Y == 0 || uj1.Coordonnees.Y == 4);
 			Assert.IsTrue(uj2.Coordonnees.X == 0 || uj2.Coordonnees.X == 4);
@@ -274,9 +274,9 @@ namespace Test {
 
 			// Creation d'une partie DEMO ; choix de peuples Gaulois / Nains
 			IPartie p = MonteurPartie.CreerPartie(TypeCarte.DEMO, ld, "partieTestDemo");
-			int old_jc = p.UniteCourante.Joueur;
+			int old_jc = p.Joueurs[0].Item1;
 			p.PasserTourJoueur();
-			Assert.IsFalse(p.UniteCourante.Joueur == old_jc);
+			Assert.IsFalse(p.Joueurs[0].Item1 == old_jc);
 		}
 
 		[TestMethod]
@@ -288,7 +288,7 @@ namespace Test {
 
 			// Creation d'une partie DEMO ; choix de peuples Gaulois / Nains
 			IPartie p = MonteurPartie.CreerPartie(TypeCarte.DEMO, ld, "partieTestDemo");
-			IUnite u = p.Joueurs[1].Peuple.Unites[2];
+			IUnite u = p.Joueurs[1].Item2.Peuple.Unites[2];
 			p.Selectionner(u);
 			Assert.IsTrue(p.UniteCourante == u);
 		}
@@ -302,8 +302,8 @@ namespace Test {
 
 			// Creation d'une partie DEMO ; choix de peuples Gaulois / Nains
 			IPartie p = MonteurPartie.CreerPartie(TypeCarte.DEMO, ld, "partieTestDemo");
-			Coordonnee c = p.Joueurs[1].Peuple.Unites[2].Coordonnees;
-			Assert.IsTrue(p.GrilleUnites[c].Contains(p.Joueurs[1].Peuple.Unites[2]));
+			Coordonnee c = p.Joueurs[1].Item2.Peuple.Unites[2].Coordonnees;
+			Assert.IsTrue(p.GrilleUnites[c].Contains(p.Joueurs[1].Item2.Peuple.Unites[2]));
 		}
 
 		[TestMethod]

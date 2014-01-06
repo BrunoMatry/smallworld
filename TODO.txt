@@ -1,54 +1,7 @@
 ﻿********************** TODO Projet SmallWorld **********************
 
-
-WRAPPER
 IHM
 
 A IMPLEMENTER:
 
-StrategiePartie
-	MonteurDemo
-	MonteurNormal
-	MonteurPetit
-
-Unite
-	UniteGaulois : Deplacer
-	UniteNain : déplacement vers case montagne
-	UniteViking : Nouveau tour (Verifier la type des cases proches) + Deplacer
-
-Partie: PasserTourUniteCourante(), NouveauTour(), Enregistrer(),  EnregistrerSous(), PasserTourJoueur(), acualiserPointsJoueurs()
-
-DONE:
-Partie : Attaquer() Déplacer() SelectionnerUniteCourante()
-
-Interfaces :
-	ICarte
-	IFabriqueCase
-	IFabriqueUnite
-	IJoueur
-	IMonteurPartie
-	IPartie
-	IPeuple
-	IStrategiePartie
-	IUnite ( Sami : J'ai rajouté une méthode déplacer(Coordonnes cible) )
-Classes :
-	Carte
-		CarteDemo
-		CarteNormale
-		CartePetit
-	Case
-		CaseDesert
-		CaseEau
-		CaseForet
-		CaseMontagne
-		CasePlaine
-	Coordonnee
-	FabriqueUnite
-	Joueur
-	MonteurPartie
-
-ENUM OK :
-Direction
-TypeCarte
-TypeCase
-TypePeuple
+Partie: Enregistrer()

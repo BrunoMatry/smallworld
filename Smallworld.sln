@@ -1,7 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "Modelisation", "Modelisation\Modelisation.modelproj", "{77E1ADF1-9DA7-4614-8AE6-CC14C63FEA36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF", "WPF\WPF.csproj", "{310D0811-EAA7-4461-921A-48B199FBC726}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LibCpp", "LibCpp\LibCpp.vcxproj", "{DDAFE3A1-AF57-48C9-82A3-30F88BCF0B28}"
 EndProject
@@ -33,6 +37,16 @@ Global
 		{77E1ADF1-9DA7-4614-8AE6-CC14C63FEA36}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{77E1ADF1-9DA7-4614-8AE6-CC14C63FEA36}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{77E1ADF1-9DA7-4614-8AE6-CC14C63FEA36}.Release|Win32.ActiveCfg = Release|Any CPU
+		{310D0811-EAA7-4461-921A-48B199FBC726}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{310D0811-EAA7-4461-921A-48B199FBC726}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{310D0811-EAA7-4461-921A-48B199FBC726}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{310D0811-EAA7-4461-921A-48B199FBC726}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{310D0811-EAA7-4461-921A-48B199FBC726}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{310D0811-EAA7-4461-921A-48B199FBC726}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{310D0811-EAA7-4461-921A-48B199FBC726}.Release|Any CPU.Build.0 = Release|Any CPU
+		{310D0811-EAA7-4461-921A-48B199FBC726}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{310D0811-EAA7-4461-921A-48B199FBC726}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{310D0811-EAA7-4461-921A-48B199FBC726}.Release|Win32.ActiveCfg = Release|Any CPU
 		{DDAFE3A1-AF57-48C9-82A3-30F88BCF0B28}.Debug|Any CPU.ActiveCfg = Debug|Win32
 		{DDAFE3A1-AF57-48C9-82A3-30F88BCF0B28}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
 		{DDAFE3A1-AF57-48C9-82A3-30F88BCF0B28}.Debug|Mixed Platforms.Build.0 = Debug|Win32

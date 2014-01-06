@@ -38,11 +38,12 @@
     }
 
 	public override bool Equals(object o) {
-		Coordonnee c = o as Coordonnee;
-		if (c == null)
-			return false;
-		else
-			return c == this;
+
+        if (o == null)
+            return false;
+       Coordonnee c = o as Coordonnee;
+       return c == this;
+        
 	}
 
 	public override int GetHashCode() {	

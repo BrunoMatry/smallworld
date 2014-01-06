@@ -16,7 +16,7 @@
 
         <Grid Margin="-67,83,139,150" Grid.RowSpan="2" Grid.ColumnSpan="2">
             <Label Content="Taille de la carte: " Margin="0,0,17,0" VerticalAlignment="Top"/>
-            <RadioButton Content="Demo (5 Tours - 5x5 cases" Checked="Carte_Checked" HorizontalAlignment="Left" Margin="10,22,0,0" VerticalAlignment="Top"/>
+            <RadioButton Content="Demo (5 Tours - 5x5 cases)" Checked="Carte_Checked" HorizontalAlignment="Left" Margin="10,22,0,0" VerticalAlignment="Top"/>
             <RadioButton Content="Petit (20 Tours - 10x10 cases)" Checked="Carte_Checked" HorizontalAlignment="Left" Margin="10,43,0,0" VerticalAlignment="Top"/>
             <RadioButton Content="Normale (30 Tours - 15x15 cases)" Checked="Carte_Checked" HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top"/>
         </Grid>

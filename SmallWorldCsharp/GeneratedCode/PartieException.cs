@@ -8,7 +8,7 @@ class PartieException : Exception {
 	private string _type;
  
     // Propriétés (en lecture seule)
-	public string Message { get { return this._message; } }
+	public override string Message { get { return this._message; } }
 	public string Type { get { return this._type; } }
  
     // Constructeur

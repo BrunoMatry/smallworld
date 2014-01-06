@@ -3,8 +3,6 @@ using System.Collections.Generic;
 
 public abstract class MonteurPartie : IMonteurPartie {
 
-	private IStrategiePartie _strategie;
-
 	//TODO
 	public IPartie CreerPartie(String file)	{ throw new System.NotImplementedException(); }
 

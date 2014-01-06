@@ -29,8 +29,8 @@ public class FabriqueCase : IFabriqueCase {
 	 * Methode permettant de generer une nouvelle grille en utilisant le wrapper
 	 */
     public TypeCase[,] CreerGrille() {
-		WrapperLib w = new WrapperLib(LARGEURCARTE,HAUTEURCARTE);
-        List<int> lcases =  w.gen_carte((int)TypeCase.NB_VAL);
+		WrapperLib w = new WrapperLib(LARGEURCARTE, HAUTEURCARTE);
+        List<int> lcases =  w.generer_carte((int) TypeCase.NB_VAL);
         TypeCase[,] grille = new TypeCase[LARGEURCARTE, HAUTEURCARTE];
         for(int i = 0 ; i < LARGEURCARTE ; i++) {
             for (int j = 0; j < HAUTEURCARTE; j++) {

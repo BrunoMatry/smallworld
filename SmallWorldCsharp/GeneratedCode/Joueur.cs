@@ -10,7 +10,7 @@ public class Joueur : IJoueur
 	// Propriétés
 	public int Id { get { return this._id; } }
 	public int Points { get { return this._points; } }
-	public Boolean EnJeu { get { return (this._peuple.NombreUnites <= 0); } }
+	public Boolean EnJeu { get { return (this._peuple.NombreUnites > 0); } }
 	public IPeuple Peuple { get {return this._peuple; } set { this._peuple = value; } }
 
 

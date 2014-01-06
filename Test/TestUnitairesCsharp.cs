@@ -90,5 +90,148 @@ namespace Test {
 			Assert.IsTrue(p.Joueurs[0].Peuple.Unites[0].Joueur == 0);
 			Assert.IsTrue(p.Joueurs[1].Peuple.Unites[0].Joueur == 1);
 		}
+
+		[TestMethod]
+		public void Test_Coordonnee_1() {
+			Coordonnee c = new Coordonnee(0, 1);
+			Assert.IsTrue(c.X == 0);
+			Assert.IsTrue(c.Y == 1);
+		}
+
+		[TestMethod]
+		public void Test_Coordonnee_2() {
+			Coordonnee c1 = new Coordonnee(0, 1);
+			Coordonnee c2 = new Coordonnee(4, 2);
+			Coordonnee c3 = new Coordonnee(0, 1);
+
+			Assert.IsFalse(c1 == c2);
+			Assert.IsTrue(c1 == c3);
+			
+			Assert.IsFalse(c1.Equals(c2));
+			Assert.IsTrue(c1.Equals(c3));
+		}
+
+		[TestMethod]
+		public void Test_UniteGaulois_1() {
+			IUnite u = new UniteGaulois(0, new Coordonnee(0, 0));
+			Assert.IsTrue(u.Attaque == 2);
+			Assert.IsTrue(u.Defense == 1);
+			Assert.IsTrue(u.PointsDeVie == 2);
+
+			u.NouveauTour(TypeCase.PLAINE);
+			Assert.IsTrue(u.Valeur == 2);
+			Assert.IsTrue(u.PointsDeplacement == 2);
+
+			u.NouveauTour(TypeCase.MONTAGNE);
+			Assert.IsTrue(u.Valeur == 0);
+			Assert.IsTrue(u.PointsDeplacement == 1);
+
+			u.NouveauTour(TypeCase.FORET);
+			Assert.IsTrue(u.Valeur == 1);
+			Assert.IsTrue(u.PointsDeplacement == 1);
+		}
+
+		[TestMethod]
+		public void Test_UniteViking_1() {
+			IUnite u = new UniteViking(0, new Coordonnee(0, 0));
+			Assert.IsTrue(u.Attaque == 2);
+			Assert.IsTrue(u.Defense == 1);
+			Assert.IsTrue(u.PointsDeVie == 2);
+
+			u.NouveauTour(TypeCase.DESERT);
+			Assert.IsTrue(u.Valeur == 0);
+			Assert.IsTrue(u.PointsDeplacement == 1);
+
+			u.NouveauTour(TypeCase.MONTAGNE);
+			Assert.IsTrue(u.Valeur == 1);
+			Assert.IsTrue(u.PointsDeplacement == 1);
+		}
+
+		[TestMethod]
+		public void Test_UniteNain_1() {
+			IUnite u = new UniteNain(0, new Coordonnee(0, 0));
+			Assert.IsTrue(u.Attaque == 2);
+			Assert.IsTrue(u.Defense == 1);
+			Assert.IsTrue(u.PointsDeVie == 2);
+
+			u.NouveauTour(TypeCase.FORET);
+			Assert.IsTrue(u.Valeur == 2);
+			Assert.IsTrue(u.PointsDeplacement == 1);
+
+			u.NouveauTour(TypeCase.PLAINE);
+			Assert.IsTrue(u.Valeur == 0);
+			Assert.IsTrue(u.PointsDeplacement == 1);
+
+			u.NouveauTour(TypeCase.MONTAGNE);
+			Assert.IsTrue(u.Valeur == 1);
+			Assert.IsTrue(u.PointsDeplacement == 1);
+		}
+
+		[TestMethod]
+		public void Test_Peuple_1() {
+			IPeuple p = new Peuple(TypePeuple.GAULOIS, 2, 0, new Coordonnee(0, 0));
+			Assert.IsTrue(p.NombreUnites == 2);
+			Assert.IsTrue(p.Unites[0].Coordonnees.Equals(new Coordonnee(0, 0)));
+			Assert.IsTrue(p.Unites[1].Coordonnees.Equals(new Coordonnee(0, 0)));
+			
+
+		}
+
+		[TestMethod]
+		public void Test_Peuple_2() {
+			IPeuple p = new Peuple(TypePeuple.NAINS, 4, 0, new Coordonnee(0, 0));
+			IUnite uKilled = p.Unites[2];
+			Assert.IsTrue(p.NombreUnites == 4);
+			Assert.IsTrue(p.Unites.Count == 4);
+			p.TuerUnite(uKilled);
+			Assert.IsTrue(p.NombreUnites == 3);
+			Assert.IsTrue(p.Unites.Count == 3);
+		}
+
+		[TestMethod]
+		public void Test_Joueur_1() {
+			IJoueur j = new Joueur(TypePeuple.VIKING, 4, new Coordonnee(0, 0));
+			foreach(IUnite u in j.Peuple.Unites) {
+				u.NouveauTour(TypeCase.PLAINE);
+			}
+			j.MAJPoints();
+			Assert.IsTrue(j.Points == 4);
+			Assert.IsTrue(j.EnJeu);
+		}
+
+		[TestMethod]
+		public void Test_Joueur_2() {
+			IJoueur j = new Joueur(TypePeuple.VIKING, 1, new Coordonnee(0, 0));
+			IUnite u = j.Peuple.Unites[0];
+			u.NouveauTour(TypeCase.PLAINE);
+			j.MAJPoints();
+			Assert.IsTrue(j.Points == 1);
+			Assert.IsTrue(j.EnJeu);
+			j.Peuple.TuerUnite(u);
+			j.MAJPoints();
+			Assert.IsTrue(j.Points == 0);
+			Assert.IsFalse(j.EnJeu);
+		}
+
+		[TestMethod]
+		public void Test_FabriqueUnite_1() {
+			IFabriqueUnite f = new FabriqueUnite();
+			List<IUnite> l = f.CreerUnites(TypePeuple.GAULOIS, 2, 0, new Coordonnee(0, 0));
+			Assert.IsTrue(l[0].Coordonnees.Equals(new Coordonnee(0, 0)));
+			Assert.IsTrue(l[1].Coordonnees.Equals(new Coordonnee(0, 0)));
+			Assert.IsTrue(l[0].Joueur == 0);
+			Assert.IsTrue(l[1].Joueur == 0);
+		}
+
+		[TestMethod]
+		public void Test_FabriqueCase_1() {
+			IFabriqueCase f = new FabriqueCase();
+			Dictionary<TypeCase, Case> d = f.CreerCases();
+			Assert.IsInstanceOfType(d[TypeCase.DESERT], typeof(CaseDesert));
+			Assert.IsInstanceOfType(d[TypeCase.EAU], typeof(CaseEau));
+			Assert.IsInstanceOfType(d[TypeCase.FORET], typeof(CaseForet));
+			Assert.IsInstanceOfType(d[TypeCase.MONTAGNE], typeof(CaseMontagne));
+			Assert.IsInstanceOfType(d[TypeCase.PLAINE], typeof(CasePlaine));
+		}
 	}
 }

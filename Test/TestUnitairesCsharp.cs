@@ -251,9 +251,31 @@ namespace Test {
 			ICarte c = new CarteDemo(f.CreerGrille(w), f.CreerCases());
 			List<Direction> l = c.GetDirectionsAutorisees(new Coordonnee(0, 0));
 			Assert.IsTrue(l.Contains(Direction.EST));
-			Assert.IsTrue(l.Contains(Direction.SUD));
+			Assert.IsTrue(l.Contains(Direction.NORD));
 			Assert.IsTrue(l.Count == 2);
 		}
 
+		[TestMethod]
+		public void Test_Carte_2() {
+			IFabriqueCase f = new FabriqueCase();
+			WrapperLib w = new WrapperLib(15, 15);
+			ICarte c = new CarteNormale(f.CreerGrille(w), f.CreerCases());
+			List<Direction> l = c.GetDirectionsAutorisees(new Coordonnee(14, 14));
+			Assert.IsTrue(l.Contains(Direction.SUD));
+			Assert.IsTrue(l.Contains(Direction.OUEST));
+			Assert.IsTrue(l.Count == 2);
+		}
+
+		[TestMethod]
+		public void Test_Carte_1()
+		{
+			IFabriqueCase f = new FabriqueCase();
+			WrapperLib w = new WrapperLib(5, 5);
+			ICarte c = new CarteDemo(f.CreerGrille(w), f.CreerCases());
+			List<Direction> l = c.GetDirectionsAutorisees(new Coordonnee(0, 0));
+			Assert.IsTrue(l.Contains(Direction.EST));
+			Assert.IsTrue(l.Contains(Direction.SUD));
+			Assert.IsTrue(l.Count == 2);
+		}
 	}
 }

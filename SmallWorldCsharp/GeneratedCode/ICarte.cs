@@ -11,10 +11,6 @@ public interface ICarte {
 	 */
 	Case GetCase(Coordonnee c);
 	/**
-	 * TODO Verfifier l'utilite de cette methode...
-	 */
-	List<Coordonnee> GetEmplacementUnites(int nbJoueurs);
-	/**
 	 * Methode permettant d'obtenir les directions autorisees depuis une coordonnee c
 	 * @param c La coordonnée a tester
 	 * @return la liste des directions autorisees

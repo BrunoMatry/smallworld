@@ -23,21 +23,6 @@ public abstract class Carte : ICarte
         }
 	}
 
-	
-	public List<Coordonnee> GetEmplacementUnites(int nbJoueurs)	{
-		List<Coordonnee> emplacements = new List<Coordonnee>();
-		switch (nbJoueurs) {
-			case 2:
-				emplacements.Add(new Coordonnee(0, 0));
-				emplacements.Add(new Coordonnee((HAUTEURCARTE - 1), (LARGEURCARTE - 1)));
-				break;
-			default:
-				emplacements.Add(new Coordonnee(0, 0));
-				break;
-		}
-		return emplacements;
-	}
-
 	public List<Direction> GetDirectionsAutorisees(Coordonnee c) {
 		int x = c.X;
 		int y = c.Y;

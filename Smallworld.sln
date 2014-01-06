@@ -15,7 +15,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wrapper", "Wrapper\Wrapper.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmallWorld", "SmallWorldCsharp\SmallWorld.csproj", "{AD83AC8B-AE97-4DCB-BBB4-68D9FBA814B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApplication1", "WpfApplication1\WpfApplication1.csproj", "{2A4B7A0D-AEA9-456C-BCDC-516D14DDC9E6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmallWorldGraphics", "WpfApplication1\SmallWorldGraphics.csproj", "{2A4B7A0D-AEA9-456C-BCDC-516D14DDC9E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

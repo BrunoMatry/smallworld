@@ -20,32 +20,9 @@ namespace SmallWorldGraphics
     /// </summary>
     public partial class MainWindow : Window
     {
-        private String nomPartie;
-        private String typeCarte;
-        private MonteurPartie mp;
         public MainWindow()
         {
             InitializeComponent();
         }
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            // Get control that raised this event.
-            this.nomPartie = (sender as TextBox).Text;
-           
-        }
-        private void RadioButton_Checked(object sender, RoutedEventArgs e)
-	{
-	    // Get RadioButton reference.
-	    var button = sender as RadioButton;
-
-        typeCarte = button.Content.ToString();
-        switch (typeCarte)
-        {
-          
-        }
-        
-        }
-
-
     }
 }

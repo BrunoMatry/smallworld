@@ -5,15 +5,13 @@ using System.Linq;
 
 public class Partie : IPartie {
 
+	private string _nomPartie;
 	private ICarte _carte;
-	private Dictionary<int, IJoueur> _joueurs;
-	private int _toursRestants;
 	private IUnite _uniteCourante;
-	private int _nbJoueursRestants;
-	private int _joueurCourant;
-    private string _nomPartie;
+	private Dictionary<int, IJoueur> _joueurs;
+	private int _toursRestants, _nbJoueursRestants, _joueurCourant, _cptTourJoueurs;
+	private static int NBMAXJOUEURS;
 	
-
 	// Propriétés
 	public IUnite UniteCourante { get { return this._uniteCourante; } }
 	public TypeCase[,] Grille { get { return this._carte.Grille; } }
@@ -38,10 +36,15 @@ public class Partie : IPartie {
 		// Selection de la premiere unite courante
 		this._uniteCourante = this._joueurs[this._joueurCourant].Peuple.Unites[0];
 
+		// Mise a zero du compteur de joueurs
+		this._cptTourJoueurs = 0;
+
         // Calcul des points de joueurs
 		this.recalculerPoints();
-		this._nbJoueursRestants = joueurs.Count;
+		NBMAXJOUEURS = joueurs.Count;
+		this._nbJoueursRestants = joueurs.Count;	
 		this.miseAJourCarte();
+		
     }
 
 	
@@ -56,7 +59,7 @@ public class Partie : IPartie {
         // On vérifie que la liste ciblee n'est pas vide:
         if (ciblee.Count <= 0)
             throw new PartieException("Aucune unite cible sur la case séléctionnee");
-        // On séléctionne la meilleure unité en défence
+        // On séléctionne la meilleure unité en défense
         IUnite meilleurDef = null;
         int def = -1;
         foreach (IUnite u in ciblee) {
@@ -64,14 +67,6 @@ public class Partie : IPartie {
                 def = u.Defense;
 			meilleurDef = u;
         }
-       
-        /* A BRUNO : Peut etre faudra t il modifier la méthode attaquer de sorte à ce qu'elle prenne l'adresse de l'unité cible 
-        afin de pouvoir en modifier les propriétés (points de vie ...) Qu'en penses tu ?
-         * Apparemment visual studio n'aime pas trop les pointeurs avec les types managés ... A voir comment on peut gérer sa ...
-         * Parce que j'ai peur que l'en prenant BestDef qui n'est qu'une copie de l'unité cible, l'unité cible ne soit jamais touché
-		 * -> Je vois ce que tu veux dire, ce sera effectivement a surveiller
-		 * -> J'ai cree un objet qui contiendra une association entre une coordonne et 
-		 */
         
 		if (this._uniteCourante.Attaquer(meilleurDef)) { // S'il y a victoire
 			// On verifie si l'unite cible est morte
@@ -92,9 +87,16 @@ public class Partie : IPartie {
 					this._uniteCourante = this._joueurs[this._joueurCourant].Peuple.Unites[0];
 			}
 		}
-		if(!_joueurs[meilleurDef.Joueur].EnJeu)
-			throw new Exception("Le joueur " + meilleurDef.Joueur + " a perdu !");
-		/* TODO verifier si un joueur a perdu */	
+		if(!_joueurs[meilleurDef.Joueur].EnJeu) {
+			this._joueurs.Remove(meilleurDef.Joueur);
+			this._nbJoueursRestants--;
+			throw new PartieException("Le joueur " + meilleurDef.Joueur + " a perdu !");
+		} else if(!_joueurs[this._joueurCourant].EnJeu) {
+			this._joueurs.Remove(this._joueurCourant);
+			this._nbJoueursRestants--;
+			this.changerJoueur();
+			throw new PartieException("Le joueur " + this._joueurCourant + " a perdu !");
+		}
 	}
 
 	public void Deplacement(Direction dir) {
@@ -119,8 +121,6 @@ public class Partie : IPartie {
 			throw new PartieException("Il y a des unites enemies sur la case cible", "Case cible occupee");
 		}
 	}
-
-	
 
 	public void PasserTourUniteCourante() {
         // On recupere le numero de l'unite courante dans les unites du joueur
@@ -147,15 +147,38 @@ public class Partie : IPartie {
 	/**
 	 * Methode permettant de changer de joueur et de recompter les points
 	 */
-	private void changerJoueur()
-	{
+	private void changerJoueur() {
+
+		// Recomptage des points des joueurs
 		this.recalculerPoints();
-		if (_toursRestants > 0)
+
+		// Cas fin de partie par manque de tours
+		if (this._toursRestants <= 0)
 			throw new PartieException("La partie est terminé, il ne reste plus de tours à jouer", "Fin de partie");
 		
-		// TODO changement de joueur sans decrementer les tours restants
+		if(this._cptTourJoueurs >= this._nbJoueursRestants) { // Cas fin de boucle
+			this._cptTourJoueurs = 0;
+			this._toursRestants--;
+			for(int i = 0 ; i < NBMAXJOUEURS ; i++) {
+				IJoueur j;
+				if(this._joueurs.TryGetValue(i, out j)) {
+					this._joueurCourant = i;
+					break;
+				}
+			}
+			this._joueurCourant = 0;
+		} else {// Cas milieu de boucle
+			this._cptTourJoueurs--;
+			// On cherche un joueur existant a partir du joueur 
+			for(int i = (this._joueurCourant + 1) ; i < NBMAXJOUEURS ; i++) {
+				IJoueur j;
+				if(this._joueurs.TryGetValue(i, out j)) {
+					this._joueurCourant = i;
+					break;
+				}
+			}
+		}
 		_joueurCourant = (_joueurCourant + 1) % 2;
-		_toursRestants--;
 	}
 
 	/**

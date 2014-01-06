@@ -31,10 +31,5 @@ public class UniteGaulois : Unite {
 				break;
 		}
 	}
-
-	public override void Deplacer(Coordonnee caseCible, TypeCase caseActuelle) {
-
-		throw new System.NotImplementedException();
-	}
 }
 

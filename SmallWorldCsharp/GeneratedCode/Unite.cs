@@ -28,6 +28,7 @@ public abstract class Unite : IUnite
 	public virtual void Deplacer(Coordonnee caseCible, TypeCase caseActuelle) {
 		// On aura verifie au prealable la validite de la case cible
 		this._coordonnee = caseCible;
+		this._pointsDeplacement--;
 	}
 
 	public virtual Boolean Attaquer(IUnite u) {

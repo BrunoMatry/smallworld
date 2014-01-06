@@ -29,7 +29,5 @@ public class UniteNain : Unite {
 		}
 		this._pointsDeplacement = 1;
 	}
-
-	// TODO déplacement vers case montagne
 }
 

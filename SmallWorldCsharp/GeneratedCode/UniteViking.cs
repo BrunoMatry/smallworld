@@ -9,17 +9,12 @@ public class UniteViking : Unite {
 		this._attaque = 2;
 		this._defense = 1;
 		this._pointsDeVie = 2;
-		
 		this._pointsDeplacement = 0;
 		this._valeur = -1;
 	}
 
 	public override void NouveauTour(TypeCase caseActuelle) {
 		switch (caseActuelle) {
-			case TypeCase.EAU:
-				// si l'unite se trouve sur une case de type eau elle ne rapporte pas de point
-				this._valeur = 0;
-				break;
 			case TypeCase.DESERT:
 				// si l'unite se trouve sur une case de type desert elle ne rapporte pas de point
 				this._valeur = 0;
@@ -29,12 +24,7 @@ public class UniteViking : Unite {
 				this._valeur = 1;
 				break;
 		}
-		// TODO Verifier la type des cases proches
 		this._pointsDeplacement = 1;
-	}
-
-	public override void Deplacer(Coordonnee caseCible, TypeCase caseActuelle) {
-		throw new System.NotImplementedException();
 	}
 }
 

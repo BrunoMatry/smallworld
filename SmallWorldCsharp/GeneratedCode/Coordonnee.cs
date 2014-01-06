@@ -38,12 +38,14 @@
     }
 
 	public override bool Equals(object o) {
-		return true;
+		Coordonnee c = o as Coordonnee;
+		if (c == null)
+			return false;
+		else
+			return c == this;
 	}
 
-	// uncomment the GetHashCode function to resolve
-	public override int GetHashCode() {
-		return 0;
+	public override int GetHashCode() {	
+		return _x.GetHashCode() ^ _y.GetHashCode();
 	}
 }
-

@@ -8,7 +8,6 @@ public interface IPartie {
 	Dictionary<Coordonnee, List<IUnite>> GrilleUnites { get; }
 	Dictionary<int, IJoueur> Joueurs { get; }
 
-	bool NouveauTour();
 	void Selectionner(IUnite unite);
 	void Attaque(Direction dir);
 	void Deplacement(Direction dir);

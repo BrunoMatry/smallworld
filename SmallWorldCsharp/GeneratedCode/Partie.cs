@@ -152,8 +152,6 @@ public class Partie : IPartie {
 		// throw new System.NotImplementedException();
 	}
 
-    public bool NouveauTour() { throw new System.NotImplementedException(); }
-
 	public void PasserTourJoueur() { changerJoueur(); }
 	public void Selectionner(IUnite unite) { this._uniteCourante = unite; }
 

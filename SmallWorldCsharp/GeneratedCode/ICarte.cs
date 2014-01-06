@@ -3,7 +3,7 @@
 public interface ICarte {
 
     TypeCase GetTypeCase(Coordonnee c);
-    TypeCase[,] GetGrille();
+    TypeCase[,] Grille { get; }
 	/**
 	 * Methode permettant d'obtenir la case associee a une coordonnee
 	 * @param c La coordonnee a tester
@@ -23,5 +23,7 @@ public interface ICarte {
 
 	// Propriete
 	Dictionary<Coordonnee, List<IUnite>> GrilleUnites { get; set; }
+
+
 }
 

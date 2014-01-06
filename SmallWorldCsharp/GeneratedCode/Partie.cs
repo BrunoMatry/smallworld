@@ -19,7 +19,7 @@ public class Partie : IPartie {
 
 	// Propriétés
 	public IUnite UniteCourante { get { return this._uniteCourante; } }
-	public TypeCase[,] Grille { get { return this._carte.GetGrille(); } }
+	public TypeCase[,] Grille { get { return this._carte.Grille; } }
 	public List<int> PointsJoueurs { get { return this._pointsJoueurs; } }
 	public Dictionary<Coordonnee, List<IUnite>> GrilleUnites { get { return this._carte.GrilleUnites; } }
 
@@ -138,6 +138,8 @@ public class Partie : IPartie {
 	public void Enregistrer() { throw new System.NotImplementedException(); }
 	//TODO
 	public void EnregistrerSous(string s) {	throw new System.NotImplementedException(); }
+
+    private Boolean NouveauTour() { throw new System.NotImplementedException(); }
 
 	public void PasserTourJoueur() { changerJoueur(); }
 	public void Selectionner(IUnite unite) { this._uniteCourante = unite; }

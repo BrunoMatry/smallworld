@@ -6,7 +6,7 @@ public class FabriqueUnite : IFabriqueUnite {
 	 * Methode permettant la creation d'un nombre d'unites donne
 	 * type Le type du peuple des unites a creer
 	 * nb Le nombre d'unites a creer
-	 * j Le joueur auquel seront rattachees les unites
+	 * j Le joueur auquel seront rattachees les unites (Joueur 1 = 0 ; Joueur 2 = 1 ... )
 	 * c La coordonnee a laquelle sont placees les unites au depart
 	 * /!\ Cette case ne doit pas contenir d'unites enemies
 	 */

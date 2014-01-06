@@ -138,7 +138,7 @@ namespace SmallWorldGraphics
                 List<TypePeuple> tPeuple = new List<TypePeuple>();
                 tPeuple.Add(j1);
                 tPeuple.Add(j2);
-               partie = (Partie)MonteurPartie.CreerPartie(typeCarte, tPeuple, nomPartie);
+                partie = MonteurPartie.CreerPartie(typeCarte, tPeuple, nomPartie);
 
 
             }

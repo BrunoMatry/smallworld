@@ -1,3 +1,3 @@
 ﻿public enum TypePeuple : int {
-	GAULOIS, VIKING, NAINS
+	GAULOIS, VIKING, NAINS, INIT
 }

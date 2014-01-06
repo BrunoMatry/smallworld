@@ -34,7 +34,7 @@
             <RadioButton Name= "VikingJ2" Content="Viking" Checked="J2_Checked" HorizontalAlignment="Left" Margin="166,26,0,0" VerticalAlignment="Top"/>
             
         </Grid>
-        <Button Content="Lancer la partie" HorizontalAlignment="Left" Margin="0,168,0,0" Grid.Row="1" VerticalAlignment="Top" Width="112" Grid.ColumnSpan="2"/>
+        <Button Content="Lancer la partie" HorizontalAlignment="Left" Margin="0,168,0,0" Grid.Row="1" VerticalAlignment="Top" Width="112" Grid.ColumnSpan="2" Click="Button_Click"/>
 
 
 

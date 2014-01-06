@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Wrapper;
 
 public class MonteurDemo : StrategiePartie
 {
@@ -15,8 +16,10 @@ public class MonteurDemo : StrategiePartie
 		ICarte c = new CarteDemo(f.CreerGrille(), f.CreerCases());
 		// Remplissage de la table des joueurs en generant deux nouveaux joueurs
         Dictionary<int, IJoueur> joueurs = new Dictionary<int, IJoueur>();
-        joueurs.Add(0, new Joueur(tp[0], 4, new Coordonnee(0, 0)));
-        joueurs.Add(1, new Joueur(tp[1], 4, new Coordonnee(4, 4)));
+		WrapperLib w = new WrapperLib(LARGEURCARTE, HAUTEURCARTE);
+		List<Tuple<int,int>> l = w.placer_unites(2);
+        joueurs.Add(0, new Joueur(tp[0], 4, new Coordonnee(l[0].Item1, l[0].Item2)));
+		joueurs.Add(1, new Joueur(tp[1], 4, new Coordonnee(l[1].Item1, l[1].Item2)));
 		// Choix aleatoire du joueur qui commencera
         Random begin = new Random();
         return new Partie(nomPartie, c, joueurs, 5, begin.Next(0, 2));

@@ -90,9 +90,12 @@ public class Partie : IPartie {
 			if (this._uniteCourante.PointsDeVie <= 0) {
 				this._joueurs[this._joueurCourant].Peuple.TuerUnite(this._uniteCourante);
 				this._carte.GrilleUnites[courante].Remove(this._uniteCourante);
-				/* TODO changer d'unite courante */
+				if(this._joueurs[this._joueurCourant].EnJeu)
+					this._uniteCourante = this._joueurs[this._joueurCourant].Peuple.Unites[0];
 			}
 		}
+		if(!_joueurs[meilleurDef.Joueur].EnJeu)
+			throw new FinPartieException("Le joueur " + meilleurDef.Joueur + " a perdu !");
 		/* TODO verifier si un joueur a perdu */	
 	}
 

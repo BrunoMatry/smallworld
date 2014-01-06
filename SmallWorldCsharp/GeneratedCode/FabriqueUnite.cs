@@ -10,8 +10,7 @@ public class FabriqueUnite : IFabriqueUnite {
 	 * c La coordonnee a laquelle sont placees les unites au depart
 	 * /!\ Cette case ne doit pas contenir d'unites enemies
 	 */
-	public virtual List<IUnite> CreerUnites(TypePeuple type, int nb, int j, Coordonnee c)
-	{
+	public List<IUnite> CreerUnites(TypePeuple type, int nb, int j, Coordonnee c) {
 		List<IUnite> res = new List<IUnite>();
 		switch (type) {
 			case TypePeuple.GAULOIS:
@@ -29,6 +28,8 @@ public class FabriqueUnite : IFabriqueUnite {
 				break;
 
 			default:
+				for (int i = 0; i < nb; i++)
+					res.Add(new UniteViking(j, c));
 				break;
 		}
 		return res;

@@ -14,7 +14,17 @@ namespace Wrapper {
 		public:
 			WrapperLib(const int l, const int h){ api = Api_new(l, h); }
 			~WrapperLib(){ Api_delete(api); }
-			int** generer_carte(const int ntc) { return Api_genCarteApi(api, ntc); }
+			List<int>^ generer_carte(const int ntc) {
+				int** tab = api->gen_carte(ntc);
+				List<int>^ res = gcnew List<int>();
+				int lg = api->getLongueur();
+				int ht = api->getHauteur();
+				for (int i = 0 ; i < ht ; i++)
+					for(int j = 0 ; j < lg ; j++)
+						res->Add(tab[i][j]);
+				return res;
+			}
+
 			int** placer_unites(const int nbJ) { return Api_placerUnites(api, nbJ); }
 	};
 }

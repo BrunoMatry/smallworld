@@ -37,11 +37,10 @@ class DLL Api {
 		 *	avec les coordonnees des unites en fonction des joueurs
 		 */
 		int** placerUnites(const int nbj);
-		/**
-		 * Methode permettant d'obtenur le nombre de case que comprend la carte
-		 * @return le nombre de cases
-		 */
-		int getNbCases() { return _lg * _ht; }
+
+		/* Getters */
+		int getLongueur() { return _lg; }
+		int getHauteur() { return _ht; }
 };
 
 EXTERNC DLL Api* Api_new(const int l, const int h);

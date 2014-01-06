@@ -35,7 +35,7 @@ int** Api::gen_carte(const int nbtc) const {
 
 	// Initialisation de la matrice resultat
 	int** res = (int**) malloc(_ht * sizeof(int *));
-	for (int i = 0; i < _lg ; i++)
+	for (int i = 0; i < _ht ; i++)
 		res[i] = (int*) malloc(_lg * sizeof(int));
 
 	srand(time(NULL));

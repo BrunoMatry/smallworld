@@ -95,7 +95,7 @@ public class Partie : IPartie {
 			}
 		}
 		if(!_joueurs[meilleurDef.Joueur].EnJeu)
-			throw new FinPartieException("Le joueur " + meilleurDef.Joueur + " a perdu !");
+			throw new Exception("Le joueur " + meilleurDef.Joueur + " a perdu !");
 		/* TODO verifier si un joueur a perdu */	
 	}
 

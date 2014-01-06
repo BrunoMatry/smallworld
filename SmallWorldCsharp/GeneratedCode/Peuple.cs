@@ -22,8 +22,8 @@ public class Peuple : IPeuple
 	public Peuple(TypePeuple t, int nb, int j, Coordonnee posInit) {
 		this._type = t;
 		IFabriqueUnite fab = new FabriqueUnite();
+        this._nbUnites = nb;
 		this._unites = fab.CreerUnites(this._type, this._nbUnites, j, posInit);
-		this._nbUnites = nb;
 	}
 
 	/**

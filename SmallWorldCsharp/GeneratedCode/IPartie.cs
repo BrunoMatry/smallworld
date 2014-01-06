@@ -6,7 +6,7 @@ public interface IPartie {
     TypeCase[,] Grille { get ; }
 	IUnite UniteCourante { get; }
 	Dictionary<Coordonnee, List<IUnite>> GrilleUnites { get; }
-	Dictionary<int, IJoueur> Joueurs { get; }
+	List<Tuple<int, IJoueur>> Joueurs { get; }
 
 	void Selectionner(IUnite unite);
 	void Attaque(Direction dir);
@@ -15,7 +15,5 @@ public interface IPartie {
 	void PasserTourJoueur();
 	void Enregistrer();
 	void EnregistrerSous(string chemin);
-
-    
 }
 

@@ -10,19 +10,28 @@ public class MonteurDemo : StrategiePartie
 	public MonteurDemo () {}
 
 	public override IPartie CreerPartie(string nomPartie, List<TypePeuple> tp) {
+
 		// Creation de la fabrique de cases
 		FabriqueCase f = new FabriqueCase();
 		WrapperLib w = new WrapperLib(LARGEURCARTE, HAUTEURCARTE);
+
 		// Generation de la carte par la fabrique
 		ICarte c = new CarteDemo(f.CreerGrille(w), f.CreerCases());
-		// Remplissage de la table des joueurs en generant deux nouveaux joueurs
-        Dictionary<int, IJoueur> joueurs = new Dictionary<int, IJoueur>();
 		List<Tuple<int, int>> l = w.placer_unites(2);
-        joueurs.Add(0, new Joueur(tp[0], 4, new Coordonnee(l[0].Item1, l[0].Item2)));
-		joueurs.Add(1, new Joueur(tp[1], 4, new Coordonnee(l[1].Item1, l[1].Item2)));
-		// Choix aleatoire du joueur qui commencera
-        Random begin = new Random();
-        return new Partie(nomPartie, c, joueurs, 5, begin.Next(0, 2));
+
+		// Tirage aleatoire de l'ordre des joueurs
+		Random begin = new Random();
+		int fst = begin.Next(0, 2);
+		int snd = (fst + 1) % 2;
+
+		// Remplissage de la table des joueurs en generant deux nouveaux joueurs
+		List<Tuple<int, IJoueur>> joueurs = new List<Tuple<int, IJoueur>>();
+		Tuple<int, IJoueur> t1 = new Tuple<int, IJoueur>(fst, new Joueur(tp[fst], 4, new Coordonnee(l[fst].Item1, l[fst].Item2)));
+		Tuple<int, IJoueur> t2 = new Tuple<int, IJoueur>(snd, new Joueur(tp[snd], 4, new Coordonnee(l[snd].Item1, l[snd].Item2)));
+        joueurs.Add(t1);
+		joueurs.Add(t2);    
+
+        return new Partie(nomPartie, c, joueurs, 5);
 	}
 
     public override IPartie CreerPartie(string nomPartie, List<TypePeuple> joueurs, List<List<Coordonnee>> unites, List<TypeCase> grille)

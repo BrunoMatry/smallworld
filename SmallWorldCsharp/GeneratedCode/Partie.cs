@@ -10,7 +10,7 @@ public class Partie : IPartie {
 	private string _nomPartie;
 	private ICarte _carte;
 	private IUnite _uniteCourante;
-	private Dictionary<int, IJoueur> _joueurs;
+	private List<Tuple<int, IJoueur>> _joueurs;
 	private int _toursRestants, _nbJoueursRestants, _joueurCourant, _cptTourJoueurs;
 	private static int NBMAXJOUEURS;
 	
@@ -18,7 +18,7 @@ public class Partie : IPartie {
 	public IUnite UniteCourante { get { return this._uniteCourante; } }
 	public TypeCase[,] Grille { get { return this._carte.Grille; } }
 	public Dictionary<Coordonnee, List<IUnite>> GrilleUnites { get { return this._carte.GrilleUnites; } }
-	public Dictionary<int, IJoueur> Joueurs { get { return this._joueurs; } }
+	public List<Tuple<int, IJoueur>> Joueurs { get { return this._joueurs; } }
 
 	/**
 	 * Constructeur de la classe Partie
@@ -28,15 +28,14 @@ public class Partie : IPartie {
 	 * nbTours Le nombre de tour a realiser ou restant a la partie
 	 * joueurCourant Le joueur courant
 	 */
-    public Partie(string nomPartie, ICarte c, Dictionary<int, IJoueur> joueurs, int nbTours, int joueurCourant) {
+    public Partie(string nomPartie, ICarte c, List<Tuple<int, IJoueur>> joueurs, int nbTours) {
         this._carte = c;
         this._joueurs = joueurs;
         this._toursRestants = nbTours;        
-        this._joueurCourant = joueurCourant;
         this._nomPartie = nomPartie;
 
 		// Selection de la premiere unite courante
-		this._uniteCourante = this._joueurs[this._joueurCourant].Peuple.Unites[0];
+		this._uniteCourante = this._joueurs[0].Item2.Peuple.Unites[0];
 
 		// Mise a zero du compteur de joueurs
 		this._cptTourJoueurs = 0;
@@ -46,7 +45,6 @@ public class Partie : IPartie {
 		NBMAXJOUEURS = joueurs.Count;
 		this._nbJoueursRestants = joueurs.Count;	
 		this.miseAJourCarte();
-		
     }
 
 	
@@ -73,7 +71,7 @@ public class Partie : IPartie {
 		if (this._uniteCourante.Attaquer(meilleurDef)) { // S'il y a victoire
 			// On verifie si l'unite cible est morte
 			if (meilleurDef.PointsDeVie <= 0) {
-					_joueurs[meilleurDef.Joueur].Peuple.TuerUnite(meilleurDef);
+					_joueurs[meilleurDef.Joueur].Item2.Peuple.TuerUnite(meilleurDef);
 					this._carte.GrilleUnites[cible].Remove(meilleurDef);
 					ciblee.Remove(meilleurDef);
             }
@@ -83,21 +81,25 @@ public class Partie : IPartie {
         } else { // S'il y a defaite
 			// On verifie si l'unite courante est morte
 			if (this._uniteCourante.PointsDeVie <= 0) {
-				this._joueurs[this._joueurCourant].Peuple.TuerUnite(this._uniteCourante);
+				this._joueurs[0].Item2.Peuple.TuerUnite(this._uniteCourante);
 				this._carte.GrilleUnites[courante].Remove(this._uniteCourante);
-				if(this._joueurs[this._joueurCourant].EnJeu)
-					this._uniteCourante = this._joueurs[this._joueurCourant].Peuple.Unites[0];
+				if(this._joueurs[0].Item2.EnJeu)
+					this._uniteCourante = this._joueurs[0].Item2.Peuple.Unites[0];
 			}
 		}
-		if(!_joueurs[meilleurDef.Joueur].EnJeu) {
-			this._joueurs.Remove(meilleurDef.Joueur);
+		if(!_joueurs[meilleurDef.Joueur].Item2.EnJeu) {
+			Tuple<int, IJoueur> t = this._joueurs.Find(x => x.Item1 == meilleurDef.Joueur);
+			if(t == null)
+				throw new Exception("Erreur element non trouve");
+			this._joueurs.Remove(t);
 			this._nbJoueursRestants--;
 			throw new PartieException("Le joueur " + meilleurDef.Joueur + " a perdu !");
-		} else if(!_joueurs[this._joueurCourant].EnJeu) {
-			this._joueurs.Remove(this._joueurCourant);
+		} else if(!_joueurs[0].Item2.EnJeu) {
+			Tuple<int, IJoueur> t = this._joueurs[0];
+			this._joueurs.Remove(t);
 			this._nbJoueursRestants--;
 			this.changerJoueur();
-			throw new PartieException("Le joueur " + this._joueurCourant + " a perdu !");
+			throw new PartieException("Le joueur " + this._joueurs[0].Item1 + " a perdu !");
 		}
 	}
 
@@ -126,7 +128,7 @@ public class Partie : IPartie {
 
 	public void PasserTourUniteCourante() {
         // On recupere le numero de l'unite courante dans les unites du joueur
-		IPeuple p = this._joueurs[this._joueurCourant].Peuple;
+		IPeuple p = this._joueurs[0].Item2.Peuple;
 		int id = p.Unites.IndexOf(this._uniteCourante);
 
         // Correspond à la place de l'unite courante dans la list Unites du peuple courant (numéroté de 0 à n-1)
@@ -156,7 +158,6 @@ public class Partie : IPartie {
 	public void Selectionner(IUnite unite) { this._uniteCourante = unite; }
 
 	/**
-	 * TODO refaire cette methode
 	 * Methode permettant de changer de joueur et de recompter les points
 	 */
 	private void changerJoueur() {
@@ -166,31 +167,21 @@ public class Partie : IPartie {
 
 		// Cas fin de partie par manque de tours
 		if (this._toursRestants <= 0)
-			throw new PartieException("La partie est terminé, il ne reste plus de tours à jouer", "Fin de partie");
-		
-		if(this._cptTourJoueurs >= this._nbJoueursRestants) { // Cas fin de boucle
+			throw new FinPartieException("il ne reste plus de tours à jouer");
+
+		this._cptTourJoueurs++;
+
+		// Cas fin de boucle
+		if(this._cptTourJoueurs >= this._nbJoueursRestants) { 
 			this._cptTourJoueurs = 0;
 			this._toursRestants--;
-			for(int i = 0 ; i < NBMAXJOUEURS ; i++) {
-				IJoueur j;
-				if(this._joueurs.TryGetValue(i, out j)) {
-					this._joueurCourant = i;
-					break;
-				}
-			}
-			this._joueurCourant = 0;
-		} else {// Cas milieu de boucle
-			this._cptTourJoueurs--;
-			// On cherche un joueur existant a partir du joueur 
-			for(int i = (this._joueurCourant + 1) ; i < NBMAXJOUEURS ; i++) {
-				IJoueur j;
-				if(this._joueurs.TryGetValue(i, out j)) {
-					this._joueurCourant = i;
-					break;
-				}
-			}
 		}
-		_joueurCourant = (_joueurCourant + 1) % 2;
+
+		Tuple<int, IJoueur> t = this._joueurs[0];
+		// Suppression du joueur courant (t) de la file
+		this._joueurs.Remove(t);
+		// Ajout de l'ancien joueur courant en fin de file
+		this._joueurs.Add(t);
 	}
 
 	/**
@@ -214,8 +205,8 @@ public class Partie : IPartie {
 	 * Methode permettant le recalcul automatique des points de l'ensemble des joueurs
 	 */
 	private void recalculerPoints() {
-		foreach(KeyValuePair<int, IJoueur> j in this._joueurs)
-			j.Value.MAJPoints();
+		foreach (Tuple<int, IJoueur> t in this._joueurs)
+			t.Item2.MAJPoints();
 	}
 
 	/**
@@ -223,8 +214,8 @@ public class Partie : IPartie {
 	 */
 	private void miseAJourCarte() {
 		Dictionary<Coordonnee, List<IUnite>> res = new Dictionary<Coordonnee, List<IUnite>>();
-		foreach (KeyValuePair<int, IJoueur> j in this._joueurs)	{
-			foreach (Unite u in j.Value.Peuple.Unites) {
+		foreach (Tuple<int, IJoueur> t in this._joueurs)	{
+			foreach (Unite u in t.Item2.Peuple.Unites) {
 				if(res.ContainsKey(u.Coordonnees)) {
 					res[u.Coordonnees].Add(u);
 				} else {
@@ -240,7 +231,7 @@ public class Partie : IPartie {
 	private List<IUnite> unitesEnemiesSurCase(Coordonnee c) {
 		List<IUnite> res = new List<IUnite>();
 		foreach(IUnite u in this._carte.GrilleUnites[c]) {
-			if(u.Joueur != this._joueurCourant)
+			if(u.Joueur != this._joueurs[0].Item1)
 				res.Add(u);
 		}
 		return res;

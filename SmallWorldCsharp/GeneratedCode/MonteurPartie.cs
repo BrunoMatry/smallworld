@@ -14,7 +14,7 @@ public abstract class MonteurPartie : IMonteurPartie {
 	 * tp Les peuples choisis par les joueurs
 	 * nomPartie Le nom de la partie
 	 */
-	public IPartie CreerPartie(TypeCarte tc, List<TypePeuple> tp, string nomPartie) {
+	public static IPartie CreerPartie(TypeCarte tc, List<TypePeuple> tp, string nomPartie) {
 		StrategiePartie s;
 		switch (tc) {
 			case TypeCarte.DEMO:

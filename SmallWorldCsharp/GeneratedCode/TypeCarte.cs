@@ -1,3 +1,3 @@
 ﻿public enum TypeCarte : int {
-	DEMO, PETIT, NORMAL
+	DEMO, PETIT, NORMAL, INIT
 }

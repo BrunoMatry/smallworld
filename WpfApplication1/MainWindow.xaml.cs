@@ -20,11 +20,12 @@ namespace SmallWorldGraphics
     /// </summary>
     public partial class MainWindow : Window
     {
-        private String nomPartie;
-        private TypeCarte typeCarte;
-        private TypePeuple j1;
-        private TypePeuple j2;
-        private MonteurPartie mp;
+        private String nomPartie = null;
+        private TypeCarte typeCarte = TypeCarte.INIT;
+        private TypePeuple j1 = TypePeuple.INIT;
+        private TypePeuple j2 = TypePeuple.INIT;
+        private int nbUnite = 0;
+        private Partie partie;
 
         public MainWindow()
         {
@@ -47,14 +48,17 @@ namespace SmallWorldGraphics
         {
             case ("Demo (5 Tours - 5x5 cases"):
                 this.typeCarte = TypeCarte.DEMO;
+                this.nbUnite = 4;
                 break;
             
             case("Petit (20 Tours - 10x10 cases"):
                 this.typeCarte = TypeCarte.PETIT;
+                this.nbUnite = 6;
                 break;
             
             case("Normale (30 Tours - 15x15 cases)"):
                 this.typeCarte = TypeCarte.NORMAL;
+                this.nbUnite = 8;
                 break;
             
             default:
@@ -122,6 +126,21 @@ namespace SmallWorldGraphics
                     break;
                 default:
                     break;
+            }
+
+        }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (nomPartie == null | typeCarte == TypeCarte.INIT | j1 == TypePeuple.INIT | j2 == TypePeuple.INIT )
+                MessageBox.Show("Vous devez compléter tout les champs pour lancer une partie !");
+                
+            else {
+                List<TypePeuple> tPeuple = new List<TypePeuple>();
+                tPeuple.Add(j1);
+                tPeuple.Add(j2);
+               partie = (Partie)MonteurPartie.CreerPartie(typeCarte, tPeuple, nomPartie);
+
+
             }
 
         }

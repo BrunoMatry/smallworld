@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 public interface IPartie {
 
-	public TypeCase[,] Grille { get ; }
+    TypeCase[,] Grille { get ; }
 
-	Boolean NouveauTour();
+	bool NouveauTour();
 	void Selectionner(IUnite unite);
     IUnite UniteCourante {get;}
 	void Attaque(Direction dir);
@@ -16,7 +16,7 @@ public interface IPartie {
 	void Enregistrer();
 	void EnregistrerSous(string chemin);
 
-	Dictionary<Coordonnee, List<IUnite>> UnitesGrille { get; }
+    Dictionary<Coordonnee, List<IUnite>> GrilleUnites { get; }
     List<int> PointsJoueurs { get; }
 }
 

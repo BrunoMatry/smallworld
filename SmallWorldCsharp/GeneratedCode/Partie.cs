@@ -10,8 +10,6 @@ public class Partie : IPartie {
 	private int _toursRestants;
 	private IUnite _uniteCourante;
 	private List<int> _pointsJoueurs;
-	// A quoi ca correspond ?
-	// -> a eviter de recalculer a chaque fois la somme des points des joueurs de chaque adversaire
 	private int _nbJoueursRestants;
 	private int _joueurCourant;
     private string _nomPartie;
@@ -139,7 +137,7 @@ public class Partie : IPartie {
 	//TODO
 	public void EnregistrerSous(string s) {	throw new System.NotImplementedException(); }
 
-    private Boolean NouveauTour() { throw new System.NotImplementedException(); }
+    public bool NouveauTour() { throw new System.NotImplementedException(); }
 
 	public void PasserTourJoueur() { changerJoueur(); }
 	public void Selectionner(IUnite unite) { this._uniteCourante = unite; }

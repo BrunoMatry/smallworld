@@ -23,13 +23,14 @@ public class FabriqueUnite : IFabriqueUnite {
 				break;
 
 			case TypePeuple.VIKING:
-				for (int i = 0; i < nb; i++)
-					res.Add(new UniteViking(j, c));
+                for (int i = 0; i < nb; i++)
+                {
+                    UniteViking u = new UniteViking(j, c);
+                    res.Add(u);
+                }
 				break;
 
 			default:
-				for (int i = 0; i < nb; i++)
-					res.Add(new UniteViking(j, c));
 				break;
 		}
 		return res;

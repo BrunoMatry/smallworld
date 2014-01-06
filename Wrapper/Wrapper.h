@@ -35,6 +35,10 @@ namespace Wrapper {
 				}
 				return res;
 			}
+
+			Tuple<int, int>^ get_dimensions() {
+				return gcnew Tuple<int, int>(api->getLongueur(), api->getHauteur());
+			}
 	};
 }
 #endif

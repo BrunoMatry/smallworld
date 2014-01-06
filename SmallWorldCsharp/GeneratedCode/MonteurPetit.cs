@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Wrapper;
 
 public class MonteurPetit : StrategiePartie
 {
@@ -10,11 +11,13 @@ public class MonteurPetit : StrategiePartie
 
     public override IPartie CreerPartie(string nomPartie, List<TypePeuple> tp) {
 		/* Meme methode que pour la classe MonteurDemo */
-		FabriqueCase f = new FabriqueCase(LARGEURCARTE, HAUTEURCARTE);
-		ICarte c = new CartePetit(f.CreerGrille(), f.CreerCases());
+		FabriqueCase f = new FabriqueCase();
+		WrapperLib w = new WrapperLib(LARGEURCARTE, HAUTEURCARTE);
+		ICarte c = new CartePetit(f.CreerGrille(w), f.CreerCases());
         Dictionary<int, IJoueur> joueurs = new Dictionary<int, IJoueur>();
-        joueurs.Add(0, new Joueur(tp[0], 6, new Coordonnee(0, 0)));
-        joueurs.Add(0, new Joueur(tp[1], 6, new Coordonnee (9, 9)));
+		List<Tuple<int, int>> l = w.placer_unites(2);
+		joueurs.Add(0, new Joueur(tp[0], 6, new Coordonnee(l[0].Item1, l[0].Item2)));
+		joueurs.Add(0, new Joueur(tp[1], 6, new Coordonnee(l[1].Item1, l[1].Item2)));
         Random begin = new Random();
         return new Partie(nomPartie, c, joueurs, 20, begin.Next(0, 2));
     }

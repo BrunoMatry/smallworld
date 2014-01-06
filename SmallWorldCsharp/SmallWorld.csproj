@@ -55,6 +55,7 @@
     <Compile Include="GeneratedCode\CaseForet.cs" />
     <Compile Include="GeneratedCode\CaseMontagne.cs" />
     <Compile Include="GeneratedCode\CasePlaine.cs" />
+    <Compile Include="GeneratedCode\FinPartieException.cs" />
     <Compile Include="GeneratedCode\PartieException.cs" />
     <Compile Include="GeneratedCode\Coordonnee.cs" />
     <Compile Include="GeneratedCode\Direction.cs" />

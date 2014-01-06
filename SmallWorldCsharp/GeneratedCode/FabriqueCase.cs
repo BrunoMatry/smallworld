@@ -1,15 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Wrapper;
 
 public class FabriqueCase : IFabriqueCase {
 
-    private static int LARGEURCARTE;
-    private static int HAUTEURCARTE;
-
-    public FabriqueCase(int l, int h) {
-        LARGEURCARTE = l;
-        HAUTEURCARTE = h;
-    }
+    public FabriqueCase() {}
 
 	/**
 	 * Methode retournant les instances (singleton) des classes Case associees a leur type
@@ -28,14 +23,14 @@ public class FabriqueCase : IFabriqueCase {
 	/**
 	 * Methode permettant de generer une nouvelle grille en utilisant le wrapper
 	 */
-    public TypeCase[,] CreerGrille() {
-		WrapperLib w = new WrapperLib(LARGEURCARTE, HAUTEURCARTE);
+	public TypeCase[,] CreerGrille(WrapperLib w) {
         List<int> lcases =  w.generer_carte((int) TypeCase.NB_VAL);
-        TypeCase[,] grille = new TypeCase[LARGEURCARTE, HAUTEURCARTE];
-        for(int i = 0 ; i < LARGEURCARTE ; i++) {
-            for (int j = 0; j < HAUTEURCARTE; j++) {
+		Tuple<int, int> dim = w.get_dimensions();
+		TypeCase[,] grille = new TypeCase[dim.Item1, dim.Item2];
+		for (int i = 0 ; i < dim.Item1 ; i++) {
+			for (int j = 0 ; j < dim.Item2 ; j++){
                 TypeCase t;
-                switch (lcases[((i * LARGEURCARTE) + j)]) {
+				switch (lcases[((i * dim.Item1) + j)]) {
                     case 0:
                         t = TypeCase.DESERT;
                         break;

@@ -59,6 +59,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SmallWorldCsharp\SmallWorld.csproj">
+      <Project>{ad83ac8b-ae97-4dcb-bbb4-68d9fba814b2}</Project>
+      <Name>SmallWorld</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Wrapper\Wrapper.vcxproj">
       <Project>{3f695ca3-c7a2-444d-86a2-69953bfb3d49}</Project>
       <Name>Wrapper</Name>

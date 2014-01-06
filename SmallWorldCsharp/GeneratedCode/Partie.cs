@@ -182,6 +182,8 @@ public class Partie : IPartie {
 		this._joueurs.Remove(t);
 		// Ajout de l'ancien joueur courant en fin de file
 		this._joueurs.Add(t);
+		// Mise a jour de l'unite courante
+		this._uniteCourante = this.Joueurs[0].Item2.Peuple.Unites[0];
 	}
 
 	/**

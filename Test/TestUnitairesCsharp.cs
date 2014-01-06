@@ -266,7 +266,7 @@ namespace Test {
 		}
 
 		[TestMethod]
-		public void Test_Partie_PasserTourJoueur() {
+		public void Test_Partie_PasserTourJoueur_1() {
 			// Creation de la liste des peuples
 			List<TypePeuple> ld = new List<TypePeuple>();
 			ld.Add(TypePeuple.GAULOIS);
@@ -277,6 +277,35 @@ namespace Test {
 			int old_jc = p.Joueurs[0].Item1;
 			p.PasserTourJoueur();
 			Assert.IsFalse(p.Joueurs[0].Item1 == old_jc);
+		}
+
+		[TestMethod]
+		public void Test_Partie_PasserTourJoueur_2() {
+			// Creation de la liste des peuples
+			List<TypePeuple> ld = new List<TypePeuple>();
+			ld.Add(TypePeuple.GAULOIS);
+			ld.Add(TypePeuple.NAINS);
+
+			// Creation d'une partie DEMO ; choix de peuples Gaulois / Nains
+			IPartie p = MonteurPartie.CreerPartie(TypeCarte.DEMO, ld, "partieTestDemo");
+			int old_jc = p.UniteCourante.Joueur;
+			p.PasserTourJoueur();
+			Assert.IsFalse(p.UniteCourante.Joueur == old_jc);
+		}
+
+		[TestMethod]
+		public void Test_Partie_PasserTourJoueur_3() {
+			// Creation de la liste des peuples
+			List<TypePeuple> ld = new List<TypePeuple>();
+			ld.Add(TypePeuple.GAULOIS);
+			ld.Add(TypePeuple.NAINS);
+
+			// Creation d'une partie DEMO ; choix de peuples Gaulois / Nains
+			IPartie p = MonteurPartie.CreerPartie(TypeCarte.DEMO, ld, "partieTestDemo");
+			int old_jc = p.UniteCourante.Joueur;
+			p.PasserTourJoueur();
+			p.PasserTourJoueur();
+			Assert.IsTrue(p.UniteCourante.Joueur == old_jc);
 		}
 
 		[TestMethod]

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Serialization;
+using System.IO;
 
 
 public class Partie : IPartie {
@@ -134,10 +136,21 @@ public class Partie : IPartie {
 			this._uniteCourante = p.Unites[0];
 	}
 
-	//TODO
-	public void Enregistrer() { throw new System.NotImplementedException(); }
-	//TODO
-	public void EnregistrerSous(string s) {	throw new System.NotImplementedException(); }
+	
+	public void Enregistrer() {
+		this.EnregistrerSous(this._nomPartie + ".xml");
+	}
+
+	
+	public void EnregistrerSous(string fileName) {
+		//TODO
+		XmlSerializer xs = new XmlSerializer(typeof(Unite));
+		using (StreamWriter wr = new StreamWriter(fileName)) {
+
+			xs.Serialize(wr, new UniteGaulois(1, new Coordonnee(2, 2)));
+		} 
+		// throw new System.NotImplementedException();
+	}
 
     public bool NouveauTour() { throw new System.NotImplementedException(); }
 

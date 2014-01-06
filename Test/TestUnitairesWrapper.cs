@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Wrapper;
 
-namespace Test
-{
+namespace Test {
+
 	[TestClass]
 	public class TestUnitairesWrapper {
 

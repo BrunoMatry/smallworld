@@ -24,9 +24,7 @@ namespace SmallWorldGraphics
         private TypeCarte typeCarte = TypeCarte.INIT;
         private TypePeuple j1 = TypePeuple.INIT;
         private TypePeuple j2 = TypePeuple.INIT;
-        private int nbUnite = 0;
-        private Partie partie;
-
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -46,19 +44,16 @@ namespace SmallWorldGraphics
         string carte = button.Content.ToString();
         switch (carte)
         {
-            case ("Demo (5 Tours - 5x5 cases"):
+            case ("Demo (5 Tours - 5x5 cases)"):
                 this.typeCarte = TypeCarte.DEMO;
-                this.nbUnite = 4;
                 break;
             
-            case("Petit (20 Tours - 10x10 cases"):
+            case("Petit (20 Tours - 10x10 cases)"):
                 this.typeCarte = TypeCarte.PETIT;
-                this.nbUnite = 6;
                 break;
             
             case("Normale (30 Tours - 15x15 cases)"):
                 this.typeCarte = TypeCarte.NORMAL;
-                this.nbUnite = 8;
                 break;
             
             default:
@@ -138,7 +133,8 @@ namespace SmallWorldGraphics
                 List<TypePeuple> tPeuple = new List<TypePeuple>();
                 tPeuple.Add(j1);
                 tPeuple.Add(j2);
-               partie = (Partie)MonteurPartie.CreerPartie(typeCarte, tPeuple, nomPartie);
+               CarteGraph c = new CarteGraph((Partie)MonteurPartie.CreerPartie(typeCarte, tPeuple, nomPartie));
+               c.Show();
 
 
             }

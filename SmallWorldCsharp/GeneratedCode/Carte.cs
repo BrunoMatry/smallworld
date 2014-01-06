@@ -11,6 +11,8 @@ public abstract class Carte : ICarte
 
 	// Propriétés
 	public TypeCase[,] Grille { get { return this._grille; } }
+    public int Hauteur { get { return HAUTEURCARTE; } }
+    public int Largeur { get { return LARGEURCARTE; } }
 	public Dictionary<Coordonnee, List<IUnite>> GrilleUnites { get { return this._grilleUnites; } set { this._grilleUnites = value; } }
 
 	public Case GetCase(Coordonnee c) {

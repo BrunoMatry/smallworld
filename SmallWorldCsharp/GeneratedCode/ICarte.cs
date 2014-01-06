@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 
 public interface ICarte {
-
+    int Hauteur { get ; } 
+   int Largeur { get ; }
     TypeCase GetTypeCase(Coordonnee c);
     TypeCase[,] Grille { get; }
 	/**
@@ -10,6 +11,7 @@ public interface ICarte {
 	 * @return la case associee
 	 */
 	Case GetCase(Coordonnee c);
+
 	/**
 	 * Methode permettant d'obtenir les directions autorisees depuis une coordonnee c
 	 * @param c La coordonnée a tester

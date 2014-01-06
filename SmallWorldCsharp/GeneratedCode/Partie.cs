@@ -15,6 +15,8 @@ public class Partie : IPartie {
 	private static int NBMAXJOUEURS;
 	
 	// Propriétés
+    public int Hauteur { get { return this._carte.Hauteur; } }
+    public int Largeur { get { return this._carte.Largeur; } }
 	public IUnite UniteCourante { get { return this._uniteCourante; } }
 	public TypeCase[,] Grille { get { return this._carte.Grille; } }
 	public Dictionary<Coordonnee, List<IUnite>> GrilleUnites { get { return this._carte.GrilleUnites; } }

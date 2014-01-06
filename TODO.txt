@@ -2,6 +2,6 @@
 
 IHM
 
-A IMPLEMENTER:
-
-Partie: Enregistrer()
+Tester attaque
+Tester deplacement
+Implementer + Tester enregistrement

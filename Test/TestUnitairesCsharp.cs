@@ -40,20 +40,6 @@ namespace Test {
 		}
 
 		[TestMethod]
-		public void Test_Partie_1() {
-			// Creation de la liste des peuples
-			List<TypePeuple> ld = new List<TypePeuple>();
-			ld.Add(TypePeuple.GAULOIS);
-			ld.Add(TypePeuple.NAINS);
-
-			// Creation d'une partie DEMO ; choix de peuples Gaulois / Nains
-			IPartie p = MonteurPartie.CreerPartie(TypeCarte.DEMO, ld, "partieTestDemo");
-			int old_jc = p.UniteCourante.Joueur;
-			p.PasserTourJoueur();
-			Assert.IsTrue(p.UniteCourante.Joueur != old_jc);
-		}
-
-		[TestMethod]
 		public void Test_CreationPartiePetite_1() {
 			// Creation de la liste des peuples
 			List<TypePeuple> lp = new List<TypePeuple>();
@@ -267,15 +253,106 @@ namespace Test {
 		}
 
 		[TestMethod]
-		public void Test_Carte_1()
-		{
+		public void Test_Carte_3() {
 			IFabriqueCase f = new FabriqueCase();
-			WrapperLib w = new WrapperLib(5, 5);
-			ICarte c = new CarteDemo(f.CreerGrille(w), f.CreerCases());
-			List<Direction> l = c.GetDirectionsAutorisees(new Coordonnee(0, 0));
-			Assert.IsTrue(l.Contains(Direction.EST));
-			Assert.IsTrue(l.Contains(Direction.SUD));
-			Assert.IsTrue(l.Count == 2);
+			WrapperLib w = new WrapperLib(10, 10);
+			ICarte c = new CartePetit(f.CreerGrille(w), f.CreerCases());
+			TypeCase t = c.GetTypeCase(new Coordonnee(5,7));
+			Assert.IsTrue(t == TypeCase.DESERT
+						|| t == TypeCase.EAU
+						|| t == TypeCase.FORET
+						|| t == TypeCase.MONTAGNE
+						|| t == TypeCase.PLAINE);
+		}
+
+		[TestMethod]
+		public void Test_Partie_PasserTourJoueur() {
+			// Creation de la liste des peuples
+			List<TypePeuple> ld = new List<TypePeuple>();
+			ld.Add(TypePeuple.GAULOIS);
+			ld.Add(TypePeuple.NAINS);
+
+			// Creation d'une partie DEMO ; choix de peuples Gaulois / Nains
+			IPartie p = MonteurPartie.CreerPartie(TypeCarte.DEMO, ld, "partieTestDemo");
+			int old_jc = p.UniteCourante.Joueur;
+			p.PasserTourJoueur();
+			Assert.IsFalse(p.UniteCourante.Joueur == old_jc);
+		}
+
+		[TestMethod]
+		public void Test_Partie_Selectionner() {
+			// Creation de la liste des peuples
+			List<TypePeuple> ld = new List<TypePeuple>();
+			ld.Add(TypePeuple.GAULOIS);
+			ld.Add(TypePeuple.NAINS);
+
+			// Creation d'une partie DEMO ; choix de peuples Gaulois / Nains
+			IPartie p = MonteurPartie.CreerPartie(TypeCarte.DEMO, ld, "partieTestDemo");
+			IUnite u = p.Joueurs[1].Peuple.Unites[2];
+			p.Selectionner(u);
+			Assert.IsTrue(p.UniteCourante == u);
+		}
+
+		[TestMethod]
+		public void Test_Partie_GrilleUnite() {
+			// Creation de la liste des peuples
+			List<TypePeuple> ld = new List<TypePeuple>();
+			ld.Add(TypePeuple.GAULOIS);
+			ld.Add(TypePeuple.NAINS);
+
+			// Creation d'une partie DEMO ; choix de peuples Gaulois / Nains
+			IPartie p = MonteurPartie.CreerPartie(TypeCarte.DEMO, ld, "partieTestDemo");
+			Coordonnee c = p.Joueurs[1].Peuple.Unites[2].Coordonnees;
+			Assert.IsTrue(p.GrilleUnites[c].Contains(p.Joueurs[1].Peuple.Unites[2]));
+		}
+
+		[TestMethod]
+		public void Test_Partie_Grille() {
+			// Creation de la liste des peuples
+			List<TypePeuple> ld = new List<TypePeuple>();
+			ld.Add(TypePeuple.GAULOIS);
+			ld.Add(TypePeuple.NAINS);
+
+			// Creation d'une partie DEMO ; choix de peuples Gaulois / Nains
+			IPartie p = MonteurPartie.CreerPartie(TypeCarte.DEMO, ld, "partieTestDemo");
+			TypeCase t = p.Grille[3,1];
+			Assert.IsTrue(t == TypeCase.DESERT
+						|| t == TypeCase.EAU
+						|| t == TypeCase.FORET
+						|| t == TypeCase.MONTAGNE
+						|| t == TypeCase.PLAINE);
+		}
+
+		[TestMethod]
+		public void Test_Partie_PasserTourUniteCourante() {
+			// Creation de la liste des peuples
+			List<TypePeuple> ld = new List<TypePeuple>();
+			ld.Add(TypePeuple.GAULOIS);
+			ld.Add(TypePeuple.NAINS);
+
+			// Creation d'une partie DEMO ; choix de peuples Gaulois / Nains
+			IPartie p = MonteurPartie.CreerPartie(TypeCarte.DEMO, ld, "partieTestDemo");
+			IUnite u = p.UniteCourante;
+			p.PasserTourUniteCourante();
+			Assert.IsFalse(p.UniteCourante == u);
+		}
+
+		[TestMethod]
+		public void Test_Partie_Attaque() {
+			// TODO
+			Assert.IsTrue(false);
+		}
+
+		[TestMethod]
+		public void Test_Partie_Deplacement() {
+			// TODO
+			Assert.IsTrue(false);
+		}
+
+		[TestMethod]
+		public void Test_Partie_Enregistrer() {
+			// TODO
+			Assert.IsTrue(false);
 		}
 	}
 }

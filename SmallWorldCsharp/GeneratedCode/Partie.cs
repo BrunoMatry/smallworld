@@ -158,6 +158,7 @@ public class Partie : IPartie {
 	public void Selectionner(IUnite unite) { this._uniteCourante = unite; }
 
 	/**
+	 * TODO refaire cette methode
 	 * Methode permettant de changer de joueur et de recompter les points
 	 */
 	private void changerJoueur() {

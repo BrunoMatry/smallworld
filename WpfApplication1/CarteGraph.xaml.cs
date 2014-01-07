@@ -61,38 +61,30 @@ namespace SmallWorldGraphics
             double y = (double)bottom*41+translationh;
             Canvas.SetLeft(s,x);
             Canvas.SetBottom(s,y);
+            //Affichage de la case
             Image i;
-            TextBlock text;
             switch(t){
                 case (TypeCase.DESERT):
                     i = new Image { Height = 40, Source = new BitmapImage(new Uri("C:\\Users\\Sami\\Documents\\GitHub\\smallworld\\WpfApplication1\\Resources\\desert.png")), Width = 40 };
-                    text = new TextBlock { Text = "Desert", HorizontalAlignment = HorizontalAlignment.Center, FontSize = 10 };
                     s.Children.Add(i);
                     //s.Children.Add(text);
                     break;
                 case (TypeCase.EAU):
                     i = new Image { Height = 40, Source = new BitmapImage(new Uri("C:\\Users\\Sami\\Documents\\GitHub\\smallworld\\WpfApplication1\\Resources\\eau.png")), Width = 40 };
-                    text = new TextBlock { Text = "Eau", HorizontalAlignment = HorizontalAlignment.Center, FontSize = 10 };
                     s.Children.Add(i);
-                  //  s.Children.Add(text);
                     break;
                 case (TypeCase.FORET):
                     i = new Image { Height = 40, Source = new BitmapImage(new Uri("C:\\Users\\Sami\\Documents\\GitHub\\smallworld\\WpfApplication1\\Resources\\foret.png")), Width = 40 };
-                    text = new TextBlock { Text = "Forêt", HorizontalAlignment = HorizontalAlignment.Center, FontSize = 10 };
                     s.Children.Add(i);
-       //             s.Children.Add(text);
+
                     break;
                 case (TypeCase.MONTAGNE):
                     i = new Image { Height = 40, Source = new BitmapImage(new Uri("C:\\Users\\Sami\\Documents\\GitHub\\smallworld\\WpfApplication1\\Resources\\montagne.png")), Width = 40 };
-                    text = new TextBlock { Text = "Montagne", HorizontalAlignment = HorizontalAlignment.Center, FontSize = 10 };
                     s.Children.Add(i);
-                 //   s.Children.Add(text);
                     break;
                 case (TypeCase.PLAINE):
                     i = new Image { Height = 40, Source = new BitmapImage(new Uri("C:\\Users\\Sami\\Documents\\GitHub\\smallworld\\WpfApplication1\\Resources\\plaine.png")), Width = 40 };
-                    text = new TextBlock { Text = "Plaine", HorizontalAlignment = HorizontalAlignment.Center, FontSize = 10 };
                     s.Children.Add(i);
-                   // s.Children.Add(text);
                     break;
                 default:
                     break;

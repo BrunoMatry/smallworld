@@ -159,10 +159,13 @@ public class Partie : IPartie {
 
 	
 	public void EnregistrerSous(string fileName) {
-		//TODO
-		// Recharger les cases de la carte demo
-		// Recharger la grilleUnite
-		throw new System.NotImplementedException();
+
+		XmlSerializer serializer = new XmlSerializer(this.GetType());
+		using (StreamWriter writer = new StreamWriter(fileName)) {
+			serializer.Serialize(writer, this);
+		}
+		// Penser a recharger les cases de la carte demo
+		// Penser a recharger la grilleUnite
 	}
 
 	public void PasserTourJoueur() { changerJoueur(); }

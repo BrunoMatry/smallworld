@@ -2,6 +2,5 @@
 
 IHM
 
-Tester attaque
-Tester deplacement
 Implementer + Tester enregistrement
+Wrapper Suggestion Cases

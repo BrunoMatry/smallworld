@@ -17,7 +17,7 @@ namespace Test {
 
 			// Creation d'une partie DEMO ; choix de peuples Gaulois / Nains
 			IPartie p = MonteurPartie.CreerPartie(TypeCarte.DEMO, ld, "partieTestDemo");
-			Assert.IsTrue(p.GrilleUnites.Count == 2);
+			Assert.IsTrue(p.Joueurs[0].Item2.Peuple.Unites.Count == 4);
 		}
 
 		[TestMethod]
@@ -48,7 +48,7 @@ namespace Test {
 
 			// Creation d'une partie PETITE ; choix de peuples Gaulois / Viking
 			IPartie p = MonteurPartie.CreerPartie(TypeCarte.PETIT, lp, "partieTestPetite");
-			Assert.IsTrue(p.GrilleUnites.Count == 2);
+			Assert.IsTrue(p.Joueurs[0].Item2.Peuple.Unites.Count == 6);
 		}
 
 		[TestMethod]
@@ -60,7 +60,7 @@ namespace Test {
 
 			// Creation d'une partie PETITE ; choix de peuples Gaulois / Viking
 			IPartie p = MonteurPartie.CreerPartie(TypeCarte.PETIT, lp, "partieTestPetite");
-			Assert.IsTrue(p.GrilleUnites.Count == 2);
+			Assert.IsTrue(p.Joueurs[0].Item2.Peuple.Unites.Count == 6);
 		}
 
 		[TestMethod]
@@ -72,7 +72,7 @@ namespace Test {
 
 			// Creation d'une partie NORMALE ; choix de peuples Viking / Gaulois
 			IPartie p = MonteurPartie.CreerPartie(TypeCarte.NORMAL, ln, "partieTestNormale");
-			Assert.IsTrue(p.GrilleUnites.Count == 2);
+			Assert.IsTrue(p.Joueurs[0].Item2.Peuple.Unites.Count == 8);
 		}
 
 		[TestMethod]
@@ -93,6 +93,20 @@ namespace Test {
 			
 			Assert.IsFalse(c1.Equals(c2));
 			Assert.IsTrue(c1.Equals(c3));
+		}
+
+		[TestMethod]
+		public void Test_Coordonnee_3() {
+			Coordonnee c1 = new Coordonnee(0, 0);
+			Coordonnee c2 = new Coordonnee(0, 0);
+			Assert.IsTrue(c1 == c2);
+		}
+
+		[TestMethod]
+		public void Test_Coordonnee_4()	{
+			Coordonnee c1 = new Coordonnee(0, 0);
+			Coordonnee c2 = new Coordonnee(0, 0);
+			Assert.IsTrue(c1.Equals(c2));
 		}
 
 		[TestMethod]
@@ -331,8 +345,8 @@ namespace Test {
 
 			// Creation d'une partie DEMO ; choix de peuples Gaulois / Nains
 			IPartie p = MonteurPartie.CreerPartie(TypeCarte.DEMO, ld, "partieTestDemo");
-			Coordonnee c = p.Joueurs[1].Item2.Peuple.Unites[2].Coordonnees;
-			Assert.IsTrue(p.GrilleUnites[c].Contains(p.Joueurs[1].Item2.Peuple.Unites[2]));
+			Coordonnee c = p.UniteCourante.Coordonnees;
+			Assert.IsTrue(p.GrilleUnites[c].Contains(p.UniteCourante));
 		}
 
 		[TestMethod]
@@ -368,14 +382,44 @@ namespace Test {
 
 		[TestMethod]
 		public void Test_Partie_Attaque() {
-			// TODO
+			// Creation de la liste des peuples
+			List<TypePeuple> ld = new List<TypePeuple>();
+			ld.Add(TypePeuple.GAULOIS);
+			ld.Add(TypePeuple.NAINS);
+
+			// Creation d'une partie DEMO ; avec deux joueur Gaulois / Viking
+			List<Tuple<int, IJoueur>> l = new List<Tuple<int, IJoueur>>();
+			l.Add(new Tuple<int, IJoueur>(0, new Joueur(TypePeuple.GAULOIS, 1, new Coordonnee(0, 0))));
+			l.Add(new Tuple<int, IJoueur>(0, new Joueur(TypePeuple.VIKING, 1, new Coordonnee(0, 1))));
+			TypeCase[,] grille = new TypeCase[1, 2];
+			grille[0, 0] = TypeCase.MONTAGNE;
+			grille[0, 1] = TypeCase.MONTAGNE;
+			IPartie p = new Partie("PartieTest", new CarteDemo(grille, null), l, 5);
+
+			p.Attaque(Direction.NORD);
+
 			Assert.IsTrue(false);
 		}
 
 		[TestMethod]
 		public void Test_Partie_Deplacement() {
-			// TODO
-			Assert.IsTrue(false);
+			// Creation de la liste des peuples
+			List<TypePeuple> ld = new List<TypePeuple>();
+			ld.Add(TypePeuple.GAULOIS);
+			ld.Add(TypePeuple.NAINS);
+
+			// Creation d'une partie DEMO ; avec un joueur (Gaulois)
+			List<Tuple<int, IJoueur>> l = new List<Tuple<int, IJoueur>>();
+			l.Add(new Tuple<int, IJoueur>(0, new Joueur(TypePeuple.GAULOIS, 1, new Coordonnee(0, 0))));
+			TypeCase[,] grille = new TypeCase[1,2];
+			grille[0, 0] = TypeCase.MONTAGNE;
+			grille[0, 1] = TypeCase.MONTAGNE;
+			IPartie p = new Partie("PartieTest", new CarteDemo(grille, null), l, 5);
+			
+			p.Deplacement(Direction.NORD);
+			
+			// Assert.IsTrue(p.UniteCourante.Coordonnees.Equals(new Coordonnee(0, 1)));
+			Assert.IsTrue(p.UniteCourante.Joueur == p.Joueurs[0].Item1);
 		}
 
 		[TestMethod]

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class UniteViking : Unite {
 
-	public UniteViking(int j, Coordonnee c) {
+	public UniteViking(int j, Coordonnee c) : base() {
 		this._joueur = j;
 		this._coordonnee = c;
 		this._attaque = 2;

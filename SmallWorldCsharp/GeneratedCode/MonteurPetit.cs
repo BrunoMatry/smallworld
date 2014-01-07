@@ -16,7 +16,7 @@ public class MonteurPetit : StrategiePartie
 		WrapperLib w = new WrapperLib(LARGEURCARTE, HAUTEURCARTE);
 
 		// Generation de la carte par la fabrique
-		ICarte c = new CarteDemo(f.CreerGrille(w), f.CreerCases());
+		ICarte c = new CartePetit(f.CreerGrille(w), f.CreerCases());
 		List<Tuple<int, int>> l = w.placer_unites(2);
 
 		// Tirage aleatoire de l'ordre des joueurs

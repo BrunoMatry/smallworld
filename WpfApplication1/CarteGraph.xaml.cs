@@ -51,6 +51,11 @@ namespace SmallWorldGraphics
                 translationh = 203;
                 translationl = 273;
             }
+            if (partie.Hauteur == partie.Largeur & partie.Hauteur == 10)
+            {
+                translationh = 103;
+                translationl = 173;
+            }
             StackPanel s = new StackPanel(){Orientation=Orientation.Vertical};
             double x = (double)left*41 + 170+ translationl;
             double y = (double)bottom*41+translationh;

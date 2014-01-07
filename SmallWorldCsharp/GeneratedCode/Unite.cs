@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 
-public abstract class Unite : IUnite
-{
+[XmlInclude(typeof(UniteGaulois))]
+[XmlInclude(typeof(UniteNain))]
+[XmlInclude(typeof(UniteViking))]
+public abstract class Unite : IUnite {
 	protected static int NBUNITES = 0;
     protected int _attaque;
     protected int _defense;
@@ -13,18 +16,28 @@ public abstract class Unite : IUnite
     protected int _joueur;
 	protected int _id;
 
-	public int Attaque { get { return this._attaque; } }
-	public Coordonnee Coordonnees { get { return this._coordonnee; } }
-	public int Defense { get { return this._defense; } }
-	public int Valeur { get { return this._valeur; } }
+	public int Id { get { return this._id; } set { this._id = value; } }
+	public int Joueur { get { return this._joueur; } set { this._joueur = value; } }
+	public int Valeur { get { return this._valeur; } set { this._valeur = value; } }
+	public int Attaque { get { return this._attaque; } set { this._attaque = value; } }
+	public int Defense { get { return this._defense; } set { this._defense = value; } }
 	public int PointsDeVie { get { return this._pointsDeVie; } set { this._pointsDeVie = value; } }
-	public int Joueur { get { return this._joueur; } }
-	public int PointsDeplacement { get { return this._pointsDeplacement; } }
-	public int Id { get { return this._id; } }
+	public int PointsDeplacement { get { return this._pointsDeplacement; } set { this._pointsDeplacement = value; } }
+	public Coordonnee Coordonnees { get { return this._coordonnee; } set { this._coordonnee = value; } }
 
-	public Unite() {
+	// Constructeur par defaut pour serialisation
+	public Unite() {}
+
+	public Unite(int j, Coordonnee c) {
 		NBUNITES++;
 		this._id = NBUNITES;
+		this._joueur = j;
+		this._coordonnee = c;
+		this._attaque = 2;
+		this._defense = 1;
+		this._pointsDeVie = 2;
+		this._pointsDeplacement = 0;
+		this._valeur = -1;
 	}
 
 	/**

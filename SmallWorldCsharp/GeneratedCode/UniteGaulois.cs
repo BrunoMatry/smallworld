@@ -1,18 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
+[Serializable]
 public class UniteGaulois : Unite {
 
-	public UniteGaulois(int j, Coordonnee c) : base() {
-		this._joueur = j;
-		this._coordonnee = c;
-		this._attaque = 2;
-		this._defense = 1;
-		this._pointsDeVie = 2;
+	// Constructeur par defaut pour serialisation
+	public UniteGaulois() : base() {}
 
-		this._pointsDeplacement = 0;
-		this._valeur = -1;
-	}
+	public UniteGaulois(int j, Coordonnee c) : base(j, c) {}
 
 	public override void NouveauTour(TypeCase caseActuelle) {
 		switch (caseActuelle)

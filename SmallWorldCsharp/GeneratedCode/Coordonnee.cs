@@ -4,8 +4,12 @@
     private int _y;
 
 	// Propriétés (en lecture seule)
-	public int X { get { return this._x; } }
-	public int Y { get { return this._y; } }
+	public int X { get { return this._x; } set { this._x = value; } }
+	public int Y { get { return this._y; } set { this._y = value; } }
+
+	public Coordonnee() {
+		// Constructeur par defaut pour la serialisation
+	}
 
 	public Coordonnee(int x, int y) {
         this._x = x;

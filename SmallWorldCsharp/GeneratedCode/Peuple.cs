@@ -8,8 +8,13 @@ public class Peuple : IPeuple
 	private int _nbUnites;
 
 	// Propriétés
-	public int NombreUnites { get { return this._nbUnites; } }
+	public int NombreUnites { get { return this._nbUnites; } set { this._nbUnites = value; } }
 	public List<IUnite> Unites { get { return this._unites; } set { this._unites = value; } }
+	public TypePeuple Type { get { return this._type; } set { this._type = value; } }
+
+	public Peuple() {
+		// Constructeur par defaut pour la serialisation
+	}
 
 	/**
 	 * Constructeur de la classe Peuple

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Xml.Serialization;
 using System.IO;
 
-
 public class Partie : IPartie {
 
 	private string _nomPartie;
@@ -143,18 +142,14 @@ public class Partie : IPartie {
 
 	
 	public void Enregistrer() {
-		this.EnregistrerSous(this._nomPartie + ".xml");
+		this.EnregistrerSous(this._nomPartie + ".sav");
 	}
 
 	
 	public void EnregistrerSous(string fileName) {
 		//TODO
-		XmlSerializer xs = new XmlSerializer(typeof(Unite));
-		using (StreamWriter wr = new StreamWriter(fileName)) {
-
-			xs.Serialize(wr, new UniteGaulois(1, new Coordonnee(2, 2)));
-		} 
-		// throw new System.NotImplementedException();
+		
+		throw new System.NotImplementedException();
 	}
 
 	public void PasserTourJoueur() { changerJoueur(); }

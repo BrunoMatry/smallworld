@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-public class Peuple : IPeuple
-{
+[Serializable]
+public class Peuple : IPeuple {
+
 	private List<Unite> _unites;
 	private TypePeuple _type;
 	private int _nbUnites;

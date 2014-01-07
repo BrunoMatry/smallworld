@@ -5,7 +5,7 @@ public interface ICarte {
     int Hauteur { get ; } 
 	int Largeur { get ; }
     TypeCase GetTypeCase(Coordonnee c);
-    TypeCase[,] Grille { get; }
+    TypeCase[][] Grille { get; }
 	/**
 	 * Methode permettant d'obtenir la case associee a une coordonnee
 	 * @param c La coordonnee a tester

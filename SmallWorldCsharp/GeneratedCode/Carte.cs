@@ -4,22 +4,22 @@ using System.Collections.Generic;
 public abstract class Carte : ICarte {
 
     protected Dictionary<TypeCase, Case> _cases;
-    protected TypeCase[,] _grille;
+    protected TypeCase[][] _grille;
 	protected Dictionary<Coordonnee, List<Unite>> _grilleUnites;
 	protected  int HAUTEURCARTE;
 	protected  int LARGEURCARTE;
 
 	// Propriétés
-	public TypeCase[,] Grille { get { return this._grille; } }
-    public int Hauteur { get { return HAUTEURCARTE; } }
-    public int Largeur { get { return LARGEURCARTE; } }
+	public TypeCase[][] Grille { get { return this._grille; } set { this._grille = value; } }
+    public int Hauteur { get { return HAUTEURCARTE; } set { HAUTEURCARTE = value; } }
+	public int Largeur { get { return LARGEURCARTE; } set { LARGEURCARTE = value; } }
 	public Dictionary<Coordonnee, List<Unite>> GrilleUnites { get { return this._grilleUnites; } set { this._grilleUnites = value; } }
 
 	public Case GetCase(Coordonnee c) {
         // On verifie si la coordonnee est dans la carte
         if (this.appartient(c)) {
             // retourne l'instance de la case du bon type
-            return _cases[_grille[c.X, c.Y]]; 
+            return _cases[_grille[c.X][c.Y]]; 
         } else {
             return null;
         }
@@ -51,6 +51,6 @@ public abstract class Carte : ICarte {
 		return x >= 0 && x < LARGEURCARTE && y >= 0 && y < HAUTEURCARTE;
 	}
 
-	public TypeCase GetTypeCase(Coordonnee c) { return _grille[c.X, c.Y]; }
+	public TypeCase GetTypeCase(Coordonnee c) { return _grille[c.X][c.Y]; }
 }
 

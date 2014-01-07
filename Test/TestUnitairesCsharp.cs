@@ -234,12 +234,12 @@ namespace Test {
 		public void Test_FabriqueCase_2() {
 			IFabriqueCase f = new FabriqueCase();
 			WrapperLib w = new WrapperLib(5, 5);
-			TypeCase[,] grille = f.CreerGrille(w);
-			Assert.IsTrue(grille[3,4] == TypeCase.DESERT
-						|| grille[3,4] == TypeCase.EAU
-						|| grille[3,4] == TypeCase.FORET
-						|| grille[3,4] == TypeCase.MONTAGNE
-						|| grille[3,4] == TypeCase.PLAINE);
+			TypeCase[][] grille = f.CreerGrille(w);
+			Assert.IsTrue(grille[3][4] == TypeCase.DESERT
+						|| grille[3][4] == TypeCase.EAU
+						|| grille[3][4] == TypeCase.FORET
+						|| grille[3][4] == TypeCase.MONTAGNE
+						|| grille[3][4] == TypeCase.PLAINE);
 		}
 
 		[TestMethod]
@@ -356,7 +356,7 @@ namespace Test {
 
 			// Creation d'une partie DEMO ; choix de peuples Gaulois / Nains
 			IPartie p = MonteurPartie.CreerPartie(TypeCarte.DEMO, ld, "partieTestDemo");
-			TypeCase t = p.Grille[3,1];
+			TypeCase t = p.Grille[3][1];
 			Assert.IsTrue(t == TypeCase.DESERT
 						|| t == TypeCase.EAU
 						|| t == TypeCase.FORET
@@ -384,9 +384,10 @@ namespace Test {
 			List<Joueur> l = new List<Joueur>();
 			l.Add(new Joueur(TypePeuple.GAULOIS, 1, new Coordonnee(0, 0)));
 			l.Add(new Joueur(TypePeuple.NAINS, 1, new Coordonnee(0, 1)));
-			TypeCase[,] grille = new TypeCase[1, 2];
-			grille[0, 0] = TypeCase.MONTAGNE;
-			grille[0, 1] = TypeCase.MONTAGNE;
+			TypeCase[][] grille = new TypeCase[1][];
+			grille[0] = new TypeCase[2];
+			grille[0][0]  = TypeCase.MONTAGNE;
+			grille[0][1] = TypeCase.MONTAGNE;
 			IPartie p = new Partie("PartieTest", new CarteDemo(grille, null), l, 5);
 			try {
 				// p.Attaque(Direction.NORD);
@@ -407,9 +408,10 @@ namespace Test {
 			// Creation d'une partie DEMO ; avec un joueur (Gaulois)
 			List<Joueur> l = new List<Joueur>();
 			l.Add(new Joueur(TypePeuple.GAULOIS, 1, new Coordonnee(0, 0)));
-			TypeCase[,] grille = new TypeCase[1,2];
-			grille[0, 0] = TypeCase.MONTAGNE;
-			grille[0, 1] = TypeCase.MONTAGNE;
+			TypeCase[][] grille = new TypeCase[1][];
+			grille[0] = new TypeCase[2];
+			grille[0][0] = TypeCase.MONTAGNE;
+			grille[0][1] = TypeCase.MONTAGNE;
 			IPartie p = new Partie("PartieTest", new CarteDemo(grille, null), l, 5);
 			
 			p.Deplacement(Direction.NORD);

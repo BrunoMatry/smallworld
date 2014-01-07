@@ -18,7 +18,7 @@ public class Partie : IPartie {
     public int Largeur { get { return this._carte.Largeur; } }
 
 	public Unite UniteCourante { get { return this._uniteCourante; } }
-	public TypeCase[,] Grille { get { return this._carte.Grille; } }
+	public TypeCase[][] Grille { get { return this._carte.Grille; } }
 	public Dictionary<Coordonnee, List<Unite>> GrilleUnites { get { return this._carte.GrilleUnites; } }
 	public List<Joueur> Joueurs { get { return this._joueurs; } }
 

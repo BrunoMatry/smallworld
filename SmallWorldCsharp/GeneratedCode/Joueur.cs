@@ -1,7 +1,8 @@
 ﻿using System;
 
-public class Joueur : IJoueur
-{
+[Serializable]
+public class Joueur : IJoueur {
+
 	private int _id;
 	private static int NOMBREJOUEUR = 0;
 	private Peuple _peuple;

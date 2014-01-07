@@ -23,11 +23,12 @@ public class FabriqueCase : IFabriqueCase {
 	/**
 	 * Methode permettant de generer une nouvelle grille en utilisant le wrapper
 	 */
-	public TypeCase[,] CreerGrille(WrapperLib w) {
+	public TypeCase[][] CreerGrille(WrapperLib w) {
         List<int> lcases =  w.generer_carte((int) TypeCase.NB_VAL);
 		Tuple<int, int> dim = w.get_dimensions();
-		TypeCase[,] grille = new TypeCase[dim.Item1, dim.Item2];
+		TypeCase[][] grille = new TypeCase[dim.Item1][];
 		for (int i = 0; i < dim.Item1; i++) {
+			grille[i] = new TypeCase[dim.Item2];
 			for (int j = 0 ; j < dim.Item2 ; j++){
                 TypeCase t;
 				switch (lcases[((i * dim.Item1) + j)]) {
@@ -50,7 +51,7 @@ public class FabriqueCase : IFabriqueCase {
                         t = TypeCase.FORET;
                         break;
                 }
-                grille[i, j] = t;
+                grille[i][j] = t;
             }
         }
         return grille;

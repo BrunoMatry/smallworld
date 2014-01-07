@@ -42,9 +42,9 @@ namespace SmallWorldGraphics
         {
             for (int i = 0; i < partie.Hauteur; i++)
             {
-                for (int j = 0; j < partie.Largeur; j++)
+                for (int j = 0; j < partie.Largeur; j++) 
                 {
-                    canvas1.Children.Add(AfficherCase(partie.Grille[i, j], i, j));
+                    canvas1.Children.Add(AfficherCase(partie.Grille[i][j], i, j));
                 }
 
             }

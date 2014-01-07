@@ -6,6 +6,6 @@ public interface IFabriqueCase
 
     Dictionary<TypeCase, Case> CreerCases();
 
-    TypeCase[,] CreerGrille(WrapperLib w);
+    TypeCase[][] CreerGrille(WrapperLib w);
 
 }

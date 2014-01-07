@@ -22,13 +22,16 @@ namespace SmallWorldGraphics
     /// </summary>
     public partial class CarteGraph : Window
     {
-        Partie partie;
+        private Partie partie;
+        private int translationh; // Utile pour centrer la carte 
+        private int translationl;
         
         public CarteGraph(Partie p)
         {
             InitializeComponent();
             partie = p;
             AfficherCarte();
+            PlacerUnite();
         }
         public void AfficherCarte()
         {
@@ -45,8 +48,8 @@ namespace SmallWorldGraphics
         public StackPanel AfficherCase(TypeCase t, int left, int bottom)
         {
             //Centrage de la carte
-            int translationh = 0;
-            int translationl = 0;
+            translationh = 0;
+            translationl = 0;
             if (partie.Hauteur == partie.Largeur & partie.Hauteur == 5) { 
                 translationh = 203;
                 translationl = 273;
@@ -94,6 +97,45 @@ namespace SmallWorldGraphics
             return s;
             
         }
+        public void PlacerUnite(){
+            foreach (var pair in partie.GrilleUnites)
+            {
+                foreach (IUnite u in pair.Value)
+                {
+                    Unite v = (Unite)u;
+                    StackPanel s = new StackPanel() { Orientation = Orientation.Vertical };
+                    double x = (double)pair.Key.X * 41 + 170 + translationl+10;
+                    double y = (double)pair.Key.Y * 41 + translationh+10;
+                    Canvas.SetLeft(s, x);
+                    Canvas.SetBottom(s, y);
+                    //Affichage de l'unite
+                    Image i;
+                    switch (v.GetType().ToString())
+                    {
+                        case "UniteGaulois": 
+                             i = new Image { Height = 30, Source = new BitmapImage(new Uri("C:\\Users\\Sami\\Documents\\GitHub\\smallworld\\WpfApplication1\\Resources\\gaulois.png"))};
+                             s.Children.Add(i);
+                             break;
+                        case "UniteNain":
+                             i = new Image { Height = 30, Source = new BitmapImage(new Uri("C:\\Users\\Sami\\Documents\\GitHub\\smallworld\\WpfApplication1\\Resources\\nain.png"))};
+                             s.Children.Add(i);
+                             break;
+                        case "UniteViking":
+                            i = new Image { Height = 30, Source = new BitmapImage(new Uri("C:\\Users\\Sami\\Documents\\GitHub\\smallworld\\WpfApplication1\\Resources\\viking.png"))};
+                             s.Children.Add(i);
+                             break;
+                        default:
+                      
+                             break;
+                    }
+                    canvas1.Children.Add(s);
+                }
+
+            }
+        }
+
+        
+
        
     }
 }

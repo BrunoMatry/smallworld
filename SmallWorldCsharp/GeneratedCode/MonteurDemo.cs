@@ -25,11 +25,11 @@ public class MonteurDemo : StrategiePartie
 		int snd = (fst + 1) % 2;
 
 		// Remplissage de la table des joueurs en generant deux nouveaux joueurs
-		List<Tuple<int, Joueur>> joueurs = new List<Tuple<int, Joueur>>();
-		Tuple<int, Joueur> t1 = new Tuple<int, Joueur>(fst, new Joueur(tp[fst], 4, new Coordonnee(l[fst].Item1, l[fst].Item2)));
-		Tuple<int, Joueur> t2 = new Tuple<int, Joueur>(snd, new Joueur(tp[snd], 4, new Coordonnee(l[snd].Item1, l[snd].Item2)));
-        joueurs.Add(t1);
-		joueurs.Add(t2);    
+		List<Joueur> joueurs = new List<Joueur>();
+		Joueur j1 = new Joueur(tp[fst], 4, new Coordonnee(l[fst].Item1, l[fst].Item2));
+		Joueur j2 = new Joueur(tp[snd], 4, new Coordonnee(l[snd].Item1, l[snd].Item2));
+		joueurs.Add(j1);
+		joueurs.Add(j2); 
 
         return new Partie(nomPartie, c, joueurs, 5);
 	}

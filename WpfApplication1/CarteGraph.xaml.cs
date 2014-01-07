@@ -150,7 +150,7 @@ namespace SmallWorldGraphics
         }
         private void PlacerUniteListe()
         {
-            foreach (IUnite u in partie.Joueurs[0].Item2.Peuple.Unites)
+            foreach (IUnite u in partie.Joueurs[0].Peuple.Unites)
             {
 
                 Unite v = (Unite)u;

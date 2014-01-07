@@ -4,15 +4,17 @@ public class Joueur : IJoueur
 {
 	private int _id;
 	private static int NOMBREJOUEUR = 0;
-	private IPeuple _peuple;
+	private Peuple _peuple;
 	private int _points;
 
 	// Propriétés
-	public int Id { get { return this._id; } }
-	public int Points { get { return this._points; } }
+	public int Id { get { return this._id; } set { this._id = value; } }
+	public int Points { get { return this._points; } set { this._points = value; } }
 	public Boolean EnJeu { get { return (this._peuple.NombreUnites > 0); } }
-	public IPeuple Peuple { get {return this._peuple; } set { this._peuple = value; } }
+	public Peuple Peuple { get {return this._peuple; } set { this._peuple = value; } }
 
+	// Constructeur par defaut pour serialisation
+	public Joueur() {}
 
 	/**
 	 * Constructeur de la classe Joueur

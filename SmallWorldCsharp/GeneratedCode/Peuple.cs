@@ -12,9 +12,8 @@ public class Peuple : IPeuple
 	public List<Unite> Unites { get { return this._unites; } set { this._unites = value; } }
 	public TypePeuple Type { get { return this._type; } set { this._type = value; } }
 
-	public Peuple() {
-		// Constructeur par defaut pour la serialisation
-	}
+	// Constructeur par defaut pour serialisation
+	public Peuple() {}
 
 	/**
 	 * Constructeur de la classe Peuple

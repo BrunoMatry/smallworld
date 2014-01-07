@@ -27,7 +27,7 @@ public class FabriqueCase : IFabriqueCase {
         List<int> lcases =  w.generer_carte((int) TypeCase.NB_VAL);
 		Tuple<int, int> dim = w.get_dimensions();
 		TypeCase[,] grille = new TypeCase[dim.Item1, dim.Item2];
-		for (int i = 0 ; i < dim.Item1 ; i++) {
+		for (int i = 0; i < dim.Item1; i++) {
 			for (int j = 0 ; j < dim.Item2 ; j++){
                 TypeCase t;
 				switch (lcases[((i * dim.Item1) + j)]) {

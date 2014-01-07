@@ -17,7 +17,7 @@ namespace Test {
 
 			// Creation d'une partie DEMO ; choix de peuples Gaulois / Nains
 			IPartie p = MonteurPartie.CreerPartie(TypeCarte.DEMO, ld, "partieTestDemo");
-			Assert.IsTrue(p.Joueurs[0].Item2.Peuple.Unites.Count == 4);
+			Assert.IsTrue(p.Joueurs[0].Peuple.Unites.Count == 4);
 		}
 
 		[TestMethod]
@@ -29,8 +29,8 @@ namespace Test {
 
 			// Creation d'une partie DEMO ; choix de peuples Gaulois / Nains
 			IPartie p = MonteurPartie.CreerPartie(TypeCarte.DEMO, ld, "partieTestDemo");
-			IUnite uj1 = p.Joueurs[0].Item2.Peuple.Unites[0];
-			IUnite uj2 = p.Joueurs[1].Item2.Peuple.Unites[0];
+			IUnite uj1 = p.Joueurs[0].Peuple.Unites[0];
+			IUnite uj2 = p.Joueurs[1].Peuple.Unites[0];
 			Assert.IsTrue(uj1.Coordonnees.X == 0 || uj1.Coordonnees.X == 4);
 			Assert.IsTrue(uj1.Coordonnees.Y == 0 || uj1.Coordonnees.Y == 4);
 			Assert.IsTrue(uj2.Coordonnees.X == 0 || uj2.Coordonnees.X == 4);
@@ -48,7 +48,7 @@ namespace Test {
 
 			// Creation d'une partie PETITE ; choix de peuples Gaulois / Viking
 			IPartie p = MonteurPartie.CreerPartie(TypeCarte.PETIT, lp, "partieTestPetite");
-			Assert.IsTrue(p.Joueurs[0].Item2.Peuple.Unites.Count == 6);
+			Assert.IsTrue(p.Joueurs[0].Peuple.Unites.Count == 6);
 		}
 
 		[TestMethod]
@@ -60,7 +60,7 @@ namespace Test {
 
 			// Creation d'une partie PETITE ; choix de peuples Gaulois / Viking
 			IPartie p = MonteurPartie.CreerPartie(TypeCarte.PETIT, lp, "partieTestPetite");
-			Assert.IsTrue(p.Joueurs[0].Item2.Peuple.Unites.Count == 6);
+			Assert.IsTrue(p.Joueurs[0].Peuple.Unites.Count == 6);
 		}
 
 		[TestMethod]
@@ -72,7 +72,7 @@ namespace Test {
 
 			// Creation d'une partie NORMALE ; choix de peuples Viking / Gaulois
 			IPartie p = MonteurPartie.CreerPartie(TypeCarte.NORMAL, ln, "partieTestNormale");
-			Assert.IsTrue(p.Joueurs[0].Item2.Peuple.Unites.Count == 8);
+			Assert.IsTrue(p.Joueurs[0].Peuple.Unites.Count == 8);
 		}
 
 		[TestMethod]
@@ -286,9 +286,9 @@ namespace Test {
 
 			// Creation d'une partie DEMO ; choix de peuples Gaulois / Nains
 			IPartie p = MonteurPartie.CreerPartie(TypeCarte.DEMO, ld, "partieTestDemo");
-			int old_jc = p.Joueurs[0].Item1;
+			int old_jc = p.Joueurs[0].Id;
 			p.PasserTourJoueur();
-			Assert.IsFalse(p.Joueurs[0].Item1 == old_jc);
+			Assert.IsFalse(p.Joueurs[0].Id == old_jc);
 		}
 
 		[TestMethod]
@@ -329,7 +329,7 @@ namespace Test {
 
 			// Creation d'une partie DEMO ; choix de peuples Gaulois / Nains
 			IPartie p = MonteurPartie.CreerPartie(TypeCarte.DEMO, ld, "partieTestDemo");
-			Unite u = p.Joueurs[1].Item2.Peuple.Unites[2];
+			Unite u = p.Joueurs[1].Peuple.Unites[2];
 			p.Selectionner(u);
 			Assert.IsTrue(p.UniteCourante == u);
 		}
@@ -381,9 +381,9 @@ namespace Test {
 		[TestMethod]
 		public void Test_Partie_Attaque() {
 			// Creation d'une partie DEMO ; avec deux joueur Gaulois / Viking
-			List<Tuple<int, Joueur>> l = new List<Tuple<int, Joueur>>();
-			l.Add(new Tuple<int, Joueur>(0, new Joueur(TypePeuple.GAULOIS, 1, new Coordonnee(0, 0))));
-			l.Add(new Tuple<int, Joueur>(1, new Joueur(TypePeuple.NAINS, 1, new Coordonnee(0, 1))));
+			List<Joueur> l = new List<Joueur>();
+			l.Add(new Joueur(TypePeuple.GAULOIS, 1, new Coordonnee(0, 0)));
+			l.Add(new Joueur(TypePeuple.NAINS, 1, new Coordonnee(0, 1)));
 			TypeCase[,] grille = new TypeCase[1, 2];
 			grille[0, 0] = TypeCase.MONTAGNE;
 			grille[0, 1] = TypeCase.MONTAGNE;
@@ -394,8 +394,8 @@ namespace Test {
 				Console.WriteLine(e.Message);
 			}
 
-			Assert.IsTrue(p.Joueurs[0].Item2.Peuple.Unites.Count == 1
-					   || p.Joueurs[0].Item2.Peuple.Unites.Count == 0);
+			Assert.IsTrue(p.Joueurs[0].Peuple.Unites.Count == 1
+					   || p.Joueurs[0].Peuple.Unites.Count == 0);
 		}
 
 		[TestMethod]
@@ -405,8 +405,8 @@ namespace Test {
 			ld.Add(TypePeuple.GAULOIS);
 
 			// Creation d'une partie DEMO ; avec un joueur (Gaulois)
-			List<Tuple<int, Joueur>> l = new List<Tuple<int, Joueur>>();
-			l.Add(new Tuple<int, Joueur>(0, new Joueur(TypePeuple.GAULOIS, 1, new Coordonnee(0, 0))));
+			List<Joueur> l = new List<Joueur>();
+			l.Add(new Joueur(TypePeuple.GAULOIS, 1, new Coordonnee(0, 0)));
 			TypeCase[,] grille = new TypeCase[1,2];
 			grille[0, 0] = TypeCase.MONTAGNE;
 			grille[0, 1] = TypeCase.MONTAGNE;

@@ -5,7 +5,7 @@ public interface IJoueur {
 	int Id { get; }
 	int Points { get; } 
 	Boolean EnJeu { get; }
-	IPeuple Peuple { get; set; }
+	Peuple Peuple { get; set; }
 	void MAJPoints();
 }
 

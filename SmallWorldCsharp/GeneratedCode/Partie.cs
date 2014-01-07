@@ -9,7 +9,7 @@ public class Partie : IPartie {
 	private string _nomPartie;
 	private Carte _carte;
 	private Unite _uniteCourante;
-	private List<Tuple<int, Joueur>> _joueurs;
+	private List<Joueur> _joueurs;
 	private int _toursRestants, _nbJoueursRestants, _cptTourJoueurs;
 	private static int NBMAXJOUEURS;
 	
@@ -20,7 +20,7 @@ public class Partie : IPartie {
 	public Unite UniteCourante { get { return this._uniteCourante; } }
 	public TypeCase[,] Grille { get { return this._carte.Grille; } }
 	public Dictionary<Coordonnee, List<Unite>> GrilleUnites { get { return this._carte.GrilleUnites; } }
-	public List<Tuple<int, Joueur>> Joueurs { get { return this._joueurs; } }
+	public List<Joueur> Joueurs { get { return this._joueurs; } }
 
 	/**
 	 * Constructeur de la classe Partie
@@ -30,14 +30,14 @@ public class Partie : IPartie {
 	 * nbTours Le nombre de tour a realiser ou restant a la partie
 	 * joueurCourant Le joueur courant
 	 */
-    public Partie(string nomPartie, Carte c, List<Tuple<int, Joueur>> joueurs, int nbTours) {
+    public Partie(string nomPartie, Carte c, List<Joueur> joueurs, int nbTours) {
         this._carte = c;
         this._joueurs = joueurs;
         this._toursRestants = nbTours;        
         this._nomPartie = nomPartie;
 
 		// Selection de la premiere unite courante
-		this._uniteCourante = this._joueurs[0].Item2.Peuple.Unites[0];
+		this._uniteCourante = this._joueurs[0].Peuple.Unites[0];
 
 		// Mise a zero du compteur de joueurs
 		this._cptTourJoueurs = 0;
@@ -71,12 +71,12 @@ public class Partie : IPartie {
                 def = u.Defense;
 			meilleurDef = u;
         }
-		Tuple<int, Joueur> defenseur = trouverJoueur(meilleurDef.Joueur);
+		Joueur defenseur = trouverJoueur(meilleurDef.Joueur);
         
 		if (this._uniteCourante.Attaquer(meilleurDef)) { // S'il y a victoire
 			// On verifie si l'unite cible est morte
 			if (meilleurDef.PointsDeVie <= 0) {
-				defenseur.Item2.Peuple.TuerUnite(meilleurDef);
+				defenseur.Peuple.TuerUnite(meilleurDef);
 				this._carte.GrilleUnites[cible].Remove(meilleurDef);
 				ciblee.Remove(meilleurDef);
             }
@@ -86,22 +86,21 @@ public class Partie : IPartie {
         } else { // S'il y a defaite
 			// On verifie si l'unite courante est morte
 			if (this._uniteCourante.PointsDeVie <= 0) {
-				this._joueurs[0].Item2.Peuple.TuerUnite(this._uniteCourante);
+				this._joueurs[0].Peuple.TuerUnite(this._uniteCourante);
 				this._carte.GrilleUnites[courante].Remove(this._uniteCourante);
-				if(this._joueurs[0].Item2.EnJeu)
-					this._uniteCourante = this._joueurs[0].Item2.Peuple.Unites[0];
+				if(this._joueurs[0].EnJeu)
+					this._uniteCourante = this._joueurs[0].Peuple.Unites[0];
 			}
 		}
-		if (!defenseur.Item2.EnJeu) {
+		if (!defenseur.EnJeu) {
 			this._joueurs.Remove(defenseur);
 			this._nbJoueursRestants--;
-			throw new PartieException("Le joueur " + defenseur.Item1 + " a perdu !");
-		} else if(!_joueurs[0].Item2.EnJeu) {
-			Tuple<int, Joueur> t = this._joueurs[0];
-			this._joueurs.Remove(t);
+			throw new PartieException("Le joueur " + defenseur.Id + " a perdu !");
+		} else if(!_joueurs[0].EnJeu) {
+			this._joueurs.Remove(this._joueurs[0]);
 			this._nbJoueursRestants--;
 			this.changerJoueur();
-			throw new PartieException("Le joueur " + this._joueurs[0].Item1 + " a perdu !");
+			throw new PartieException("Le joueur " + this._joueurs[0].Id + " a perdu !");
 		}
 	}
 
@@ -130,7 +129,7 @@ public class Partie : IPartie {
    
 	public void PasserTourUniteCourante() {
         // On recupere le numero de l'unite courante dans les unites du joueur
-		IPeuple p = this._joueurs[0].Item2.Peuple;
+		IPeuple p = this._joueurs[0].Peuple;
 		int id = p.Unites.IndexOf(this._uniteCourante);
 
         // Correspond à la place de l'unite courante dans la list Unites du peuple courant (numéroté de 0 à n-1)
@@ -175,13 +174,13 @@ public class Partie : IPartie {
 			this._toursRestants--;
 		}
 
-		Tuple<int, Joueur> t = this._joueurs[0];
+		Joueur j = this._joueurs[0];
 		// Suppression du joueur courant (t) de la file
-		this._joueurs.Remove(t);
+		this._joueurs.Remove(j);
 		// Ajout de l'ancien joueur courant en fin de file
-		this._joueurs.Add(t);
+		this._joueurs.Add(j);
 		// Mise a jour de l'unite courante
-		this._uniteCourante = this.Joueurs[0].Item2.Peuple.Unites[0];
+		this._uniteCourante = this.Joueurs[0].Peuple.Unites[0];
 	}
 
 	/**
@@ -205,8 +204,8 @@ public class Partie : IPartie {
 	 * Methode permettant le recalcul automatique des points de l'ensemble des joueurs
 	 */
 	private void recalculerPoints() {
-		foreach (Tuple<int, Joueur> t in this._joueurs)
-			t.Item2.MAJPoints();
+		foreach (Joueur j in this._joueurs)
+			j.MAJPoints();
 	}
 
 	/**
@@ -215,8 +214,8 @@ public class Partie : IPartie {
 	private void miseAJourGilleUnite() {
 		this._carte.GrilleUnites.Clear();
 		this.initGilleUnite();
-		foreach (Tuple<int, Joueur> t in this._joueurs) {
-			foreach (Unite u in t.Item2.Peuple.Unites) {
+		foreach (Joueur j in this._joueurs) {
+			foreach (Unite u in j.Peuple.Unites) {
 				this._carte.GrilleUnites[u.Coordonnees].Add(u);		
 			}
 		}
@@ -225,15 +224,15 @@ public class Partie : IPartie {
 	private List<Unite> unitesEnemiesSurCase(Coordonnee c) {
 		List<Unite> res = new List<Unite>();
 		foreach(Unite u in this._carte.GrilleUnites[c]) {
-			if(u.Joueur != this._joueurs[0].Item1)
+			if(u.Joueur != this._joueurs[0].Id)
 				res.Add(u);
 		}
 		return res;
 	}
 
 	private void initUnites() {
-		foreach(Tuple<int, Joueur> t in this._joueurs) {
-			foreach (Unite u in t.Item2.Peuple.Unites) {
+		foreach(Joueur j in this._joueurs) {
+			foreach (Unite u in j.Peuple.Unites) {
 				u.NouveauTour(this._carte.GetTypeCase(u.Coordonnees));
 			}
 		}
@@ -251,10 +250,10 @@ public class Partie : IPartie {
 		this._carte.GrilleUnites = res;
 	}
 
-	private Tuple<int, Joueur> trouverJoueur(int p) {
-		foreach(Tuple<int, Joueur> t in this._joueurs) {
-			if(t.Item1 == p)
-				return t;
+	private Joueur trouverJoueur(int p) {
+		foreach(Joueur j in this._joueurs) {
+			if(j.Id == p)
+				return j;
 		}
 		throw new Exception("Joueur non trouve");
 	}

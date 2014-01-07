@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
-public abstract class Carte : ICarte
-{
+public abstract class Carte : ICarte {
+
     protected Dictionary<TypeCase, Case> _cases;
     protected TypeCase[,] _grille;
 	protected Dictionary<Coordonnee, List<IUnite>> _grilleUnites;

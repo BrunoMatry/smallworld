@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
+[XmlInclude(typeof(CarteDemo))]
+[XmlInclude(typeof(CarteNormale))]
+[XmlInclude(typeof(CartePetit))]
 public abstract class Carte : ICarte {
 
     protected Dictionary<TypeCase, Case> _cases;

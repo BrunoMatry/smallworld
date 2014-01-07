@@ -46,7 +46,6 @@
             return false;
        Coordonnee c = o as Coordonnee;
 	   return this._x == c.X && this._y == c.Y;
-        
 	}
 
 	public override int GetHashCode() {	

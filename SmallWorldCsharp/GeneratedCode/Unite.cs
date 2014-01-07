@@ -81,5 +81,12 @@ public abstract class Unite : IUnite {
 				
 		return true;
 	}
+
+	public override bool Equals(object o) {
+		if (o == null)
+			return false;
+		Unite u = o as Unite;
+		return this._id == u._id;
+	}
 }
 

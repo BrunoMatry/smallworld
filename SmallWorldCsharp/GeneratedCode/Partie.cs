@@ -4,23 +4,36 @@ using System.Linq;
 using System.Xml.Serialization;
 using System.IO;
 
+[Serializable]
 public class Partie : IPartie {
 
-	private string _nomPartie;
-	private Carte _carte;
+	private string _nomPartie;	
 	private Unite _uniteCourante;
 	private List<Joueur> _joueurs;
+	private Carte _carte;
 	private int _toursRestants, _nbJoueursRestants, _cptTourJoueurs;
 	private static int NBMAXJOUEURS;
 	
 	// Propriétés
-    public int Hauteur { get { return this._carte.Hauteur; } }
+	public string Nom { get { return this._nomPartie; } set { this._nomPartie = value; } }
+	public int Tr { get { return this._toursRestants; } set { this._toursRestants = value; } }
+	public int Nbjr { get { return this._nbJoueursRestants; } set { this._nbJoueursRestants = value; } }
+	public int Ctj { get { return this._cptTourJoueurs; } set { this._cptTourJoueurs = value; } }
+	public Unite UniteCourante { get { return this._uniteCourante; } set { this._uniteCourante = value; } }
+	public List<Joueur> Joueurs { get { return this._joueurs; } set { this._joueurs = value; } }
+	public Carte Carte { get { return this._carte; } set { this._carte = value; } }
+	
+	
+	public int Hauteur { get { return this._carte.Hauteur; } }
     public int Largeur { get { return this._carte.Largeur; } }
-
-	public Unite UniteCourante { get { return this._uniteCourante; } }
 	public TypeCase[][] Grille { get { return this._carte.Grille; } }
+	[XmlIgnoreAttribute]
 	public Dictionary<Coordonnee, List<Unite>> GrilleUnites { get { return this._carte.GrilleUnites; } }
-	public List<Joueur> Joueurs { get { return this._joueurs; } }
+	
+	
+
+	// Constructeur par defaut pour serialisation
+	public Partie() {}
 
 	/**
 	 * Constructeur de la classe Partie
@@ -147,7 +160,8 @@ public class Partie : IPartie {
 	
 	public void EnregistrerSous(string fileName) {
 		//TODO
-		
+		// Recharger les cases de la carte demo
+		// Recharger la grilleUnite
 		throw new System.NotImplementedException();
 	}
 

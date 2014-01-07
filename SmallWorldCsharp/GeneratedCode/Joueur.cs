@@ -35,5 +35,12 @@ public class Joueur : IJoueur {
 			points += u.Valeur;
 		this._points = points;
 	}
+
+	public override bool Equals(object o) {
+		if (o == null)
+			return false;
+		Joueur j = o as Joueur;
+		return this._id == j._id;
+	}
 }
 

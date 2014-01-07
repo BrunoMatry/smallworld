@@ -11,7 +11,7 @@ public class Partie : IPartie {
 	private ICarte _carte;
 	private IUnite _uniteCourante;
 	private List<Tuple<int, IJoueur>> _joueurs;
-	private int _toursRestants, _nbJoueursRestants, _joueurCourant, _cptTourJoueurs;
+	private int _toursRestants, _nbJoueursRestants, _cptTourJoueurs;
 	private static int NBMAXJOUEURS;
 	
 	// Propriétés
@@ -48,7 +48,7 @@ public class Partie : IPartie {
 		NBMAXJOUEURS = joueurs.Count;
 		this._nbJoueursRestants = joueurs.Count;
 		this.initUnites();
-		this.initGilleUnite();
+		this._carte.GrilleUnites = new Dictionary<Coordonnee,List<IUnite>>();
 		this.miseAJourGilleUnite();
     }
 
@@ -220,13 +220,13 @@ public class Partie : IPartie {
 	 * Mise a jour de la grille d'unites
 	 */
 	private void miseAJourGilleUnite() {
-		Dictionary<Coordonnee, List<IUnite>> res = new Dictionary<Coordonnee, List<IUnite>>();
+		this._carte.GrilleUnites.Clear();
+		this.initGilleUnite();
 		foreach (Tuple<int, IJoueur> t in this._joueurs) {
 			foreach (Unite u in t.Item2.Peuple.Unites) {
-				res[u.Coordonnees].Add(u);		
+				this._carte.GrilleUnites[u.Coordonnees].Add(u);		
 			}
 		}
-		this._carte.GrilleUnites = res;
 	}
 
 	private List<IUnite> unitesEnemiesSurCase(Coordonnee c) {

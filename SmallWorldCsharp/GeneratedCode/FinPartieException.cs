@@ -10,7 +10,7 @@ class FinPartieException : PartieException
 
 	// Propriétés (en lecture seule)
 	public override string Message { get { return this._message; } }
-	public string Type { get { return this._type; } }
+	public string TypeException { get { return this._type; } }
 
 	// Constructeur
 	public FinPartieException(string m) : base(m) {

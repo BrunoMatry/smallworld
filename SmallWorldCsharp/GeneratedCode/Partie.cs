@@ -7,9 +7,9 @@ using System.IO;
 public class Partie : IPartie {
 
 	private string _nomPartie;
-	private ICarte _carte;
-	private IUnite _uniteCourante;
-	private List<Tuple<int, IJoueur>> _joueurs;
+	private Carte _carte;
+	private Unite _uniteCourante;
+	private List<Tuple<int, Joueur>> _joueurs;
 	private int _toursRestants, _nbJoueursRestants, _cptTourJoueurs;
 	private static int NBMAXJOUEURS;
 	
@@ -17,10 +17,10 @@ public class Partie : IPartie {
     public int Hauteur { get { return this._carte.Hauteur; } }
     public int Largeur { get { return this._carte.Largeur; } }
 
-	public IUnite UniteCourante { get { return this._uniteCourante; } }
+	public Unite UniteCourante { get { return this._uniteCourante; } }
 	public TypeCase[,] Grille { get { return this._carte.Grille; } }
-	public Dictionary<Coordonnee, List<IUnite>> GrilleUnites { get { return this._carte.GrilleUnites; } }
-	public List<Tuple<int, IJoueur>> Joueurs { get { return this._joueurs; } }
+	public Dictionary<Coordonnee, List<Unite>> GrilleUnites { get { return this._carte.GrilleUnites; } }
+	public List<Tuple<int, Joueur>> Joueurs { get { return this._joueurs; } }
 
 	/**
 	 * Constructeur de la classe Partie
@@ -30,7 +30,7 @@ public class Partie : IPartie {
 	 * nbTours Le nombre de tour a realiser ou restant a la partie
 	 * joueurCourant Le joueur courant
 	 */
-    public Partie(string nomPartie, ICarte c, List<Tuple<int, IJoueur>> joueurs, int nbTours) {
+    public Partie(string nomPartie, Carte c, List<Tuple<int, Joueur>> joueurs, int nbTours) {
         this._carte = c;
         this._joueurs = joueurs;
         this._toursRestants = nbTours;        
@@ -47,7 +47,7 @@ public class Partie : IPartie {
 		NBMAXJOUEURS = joueurs.Count;
 		this._nbJoueursRestants = joueurs.Count;
 		this.initUnites();
-		this._carte.GrilleUnites = new Dictionary<Coordonnee,List<IUnite>>();
+		this._carte.GrilleUnites = new Dictionary<Coordonnee,List<Unite>>();
 		this.miseAJourGilleUnite();
     }
 
@@ -59,19 +59,19 @@ public class Partie : IPartie {
 
         Coordonnee courante = this._uniteCourante.Coordonnees;
         Coordonnee cible = courante + dir;
-        List<IUnite> ciblee = unitesEnemiesSurCase(cible);
+        List<Unite> ciblee = unitesEnemiesSurCase(cible);
         // On vérifie que la liste ciblee n'est pas vide:
         if (ciblee.Count <= 0)
             throw new PartieException("Aucune unite cible sur la case séléctionnee");
         // On séléctionne la meilleure unité en défense
-        IUnite meilleurDef = null;
+        Unite meilleurDef = null;
         int def = -1;
-        foreach (IUnite u in ciblee) {
+        foreach (Unite u in ciblee) {
             if (u.Defense > def)
                 def = u.Defense;
 			meilleurDef = u;
         }
-		Tuple<int, IJoueur> defenseur = trouverJoueur(meilleurDef.Joueur);
+		Tuple<int, Joueur> defenseur = trouverJoueur(meilleurDef.Joueur);
         
 		if (this._uniteCourante.Attaquer(meilleurDef)) { // S'il y a victoire
 			// On verifie si l'unite cible est morte
@@ -97,7 +97,7 @@ public class Partie : IPartie {
 			this._nbJoueursRestants--;
 			throw new PartieException("Le joueur " + defenseur.Item1 + " a perdu !");
 		} else if(!_joueurs[0].Item2.EnJeu) {
-			Tuple<int, IJoueur> t = this._joueurs[0];
+			Tuple<int, Joueur> t = this._joueurs[0];
 			this._joueurs.Remove(t);
 			this._nbJoueursRestants--;
 			this.changerJoueur();
@@ -120,7 +120,7 @@ public class Partie : IPartie {
 			// S'il n'yavait jamais eu d'unite sur cette case
 			if (!this._carte.GrilleUnites.ContainsKey(cible))
 				// Initialisation de la liste d'unite associee aux coordonnees "cible"
-				this._carte.GrilleUnites[cible] = new List<IUnite>();
+				this._carte.GrilleUnites[cible] = new List<Unite>();
 			// On ajoute l'unite courante a sa nouvelle place
 			this._carte.GrilleUnites[cible].Add(this._uniteCourante);
 		} else {
@@ -153,7 +153,7 @@ public class Partie : IPartie {
 	}
 
 	public void PasserTourJoueur() { changerJoueur(); }
-	public void Selectionner(IUnite unite) { this._uniteCourante = unite; }
+	public void Selectionner(Unite unite) { this._uniteCourante = unite; }
 
 	/**
 	 * Methode permettant de changer de joueur et de recompter les points
@@ -175,7 +175,7 @@ public class Partie : IPartie {
 			this._toursRestants--;
 		}
 
-		Tuple<int, IJoueur> t = this._joueurs[0];
+		Tuple<int, Joueur> t = this._joueurs[0];
 		// Suppression du joueur courant (t) de la file
 		this._joueurs.Remove(t);
 		// Ajout de l'ancien joueur courant en fin de file
@@ -205,7 +205,7 @@ public class Partie : IPartie {
 	 * Methode permettant le recalcul automatique des points de l'ensemble des joueurs
 	 */
 	private void recalculerPoints() {
-		foreach (Tuple<int, IJoueur> t in this._joueurs)
+		foreach (Tuple<int, Joueur> t in this._joueurs)
 			t.Item2.MAJPoints();
 	}
 
@@ -215,16 +215,16 @@ public class Partie : IPartie {
 	private void miseAJourGilleUnite() {
 		this._carte.GrilleUnites.Clear();
 		this.initGilleUnite();
-		foreach (Tuple<int, IJoueur> t in this._joueurs) {
+		foreach (Tuple<int, Joueur> t in this._joueurs) {
 			foreach (Unite u in t.Item2.Peuple.Unites) {
 				this._carte.GrilleUnites[u.Coordonnees].Add(u);		
 			}
 		}
 	}
 
-	private List<IUnite> unitesEnemiesSurCase(Coordonnee c) {
-		List<IUnite> res = new List<IUnite>();
-		foreach(IUnite u in this._carte.GrilleUnites[c]) {
+	private List<Unite> unitesEnemiesSurCase(Coordonnee c) {
+		List<Unite> res = new List<Unite>();
+		foreach(Unite u in this._carte.GrilleUnites[c]) {
 			if(u.Joueur != this._joueurs[0].Item1)
 				res.Add(u);
 		}
@@ -232,27 +232,27 @@ public class Partie : IPartie {
 	}
 
 	private void initUnites() {
-		foreach(Tuple<int, IJoueur> t in this._joueurs) {
-			foreach (IUnite u in t.Item2.Peuple.Unites) {
+		foreach(Tuple<int, Joueur> t in this._joueurs) {
+			foreach (Unite u in t.Item2.Peuple.Unites) {
 				u.NouveauTour(this._carte.GetTypeCase(u.Coordonnees));
 			}
 		}
 	}
 
 	private void initGilleUnite() {
-		Dictionary<Coordonnee, List<IUnite>> res = new Dictionary<Coordonnee, List<IUnite>>();
+		Dictionary<Coordonnee, List<Unite>> res = new Dictionary<Coordonnee, List<Unite>>();
 		int lg = this._carte.Largeur;
 		int ht = this._carte.Hauteur;
 		for(int i = 0 ; i < lg ; i++) {
 			for(int j = 0 ; j < ht ; j++) {
-				res.Add(new Coordonnee(i, j), new List<IUnite>());
+				res.Add(new Coordonnee(i, j), new List<Unite>());
 			}
 		}
 		this._carte.GrilleUnites = res;
 	}
 
-	private Tuple<int, IJoueur> trouverJoueur(int p) {
-		foreach(Tuple<int, IJoueur> t in this._joueurs) {
+	private Tuple<int, Joueur> trouverJoueur(int p) {
+		foreach(Tuple<int, Joueur> t in this._joueurs) {
 			if(t.Item1 == p)
 				return t;
 		}

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 public class Peuple : IPeuple
 {
-	private List<IUnite> _unites;
+	private List<Unite> _unites;
 	private TypePeuple _type;
 	private int _nbUnites;
 
 	// Propriétés
 	public int NombreUnites { get { return this._nbUnites; } set { this._nbUnites = value; } }
-	public List<IUnite> Unites { get { return this._unites; } set { this._unites = value; } }
+	public List<Unite> Unites { get { return this._unites; } set { this._unites = value; } }
 	public TypePeuple Type { get { return this._type; } set { this._type = value; } }
 
 	public Peuple() {
@@ -35,7 +35,7 @@ public class Peuple : IPeuple
 	 * Methode permettant la suppression d'une unite dans la table des unites
 	 * et la mise a jour du compteur d'unites
 	 */
-	public void TuerUnite(IUnite unite) {
+	public void TuerUnite(Unite unite) {
 		this._unites.Remove(unite);
 		this._nbUnites--;
 	}

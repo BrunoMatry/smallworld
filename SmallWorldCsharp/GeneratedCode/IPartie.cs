@@ -4,11 +4,11 @@ using System.Collections.Generic;
 public interface IPartie {
 
     TypeCase[,] Grille { get ; }
-	IUnite UniteCourante { get; }
-	Dictionary<Coordonnee, List<IUnite>> GrilleUnites { get; }
-	List<Tuple<int, IJoueur>> Joueurs { get; }
+	Unite UniteCourante { get; }
+	Dictionary<Coordonnee, List<Unite>> GrilleUnites { get; }
+	List<Tuple<int, Joueur>> Joueurs { get; }
 
-	void Selectionner(IUnite unite);
+	void Selectionner(Unite unite);
 	void Attaque(Direction dir);
 	void Deplacement(Direction dir);
 	void PasserTourUniteCourante();

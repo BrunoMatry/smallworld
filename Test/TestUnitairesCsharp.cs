@@ -176,7 +176,7 @@ namespace Test {
 		[TestMethod]
 		public void Test_Peuple_2() {
 			IPeuple p = new Peuple(TypePeuple.NAINS, 4, 0, new Coordonnee(0, 0));
-			IUnite uKilled = p.Unites[2];
+			Unite uKilled = p.Unites[2];
 			Assert.IsTrue(p.NombreUnites == 4);
 			Assert.IsTrue(p.Unites.Count == 4);
 			p.TuerUnite(uKilled);
@@ -198,7 +198,7 @@ namespace Test {
 		[TestMethod]
 		public void Test_Joueur_2() {
 			IJoueur j = new Joueur(TypePeuple.VIKING, 1, new Coordonnee(0, 0));
-			IUnite u = j.Peuple.Unites[0];
+			Unite u = j.Peuple.Unites[0];
 			u.NouveauTour(TypeCase.PLAINE);
 			j.MAJPoints();
 			Assert.IsTrue(j.Points == 1);
@@ -212,7 +212,7 @@ namespace Test {
 		[TestMethod]
 		public void Test_FabriqueUnite_1() {
 			IFabriqueUnite f = new FabriqueUnite();
-			List<IUnite> l = f.CreerUnites(TypePeuple.GAULOIS, 2, 0, new Coordonnee(0, 0));
+			List<Unite> l = f.CreerUnites(TypePeuple.GAULOIS, 2, 0, new Coordonnee(0, 0));
 			Assert.IsTrue(l[0].Coordonnees.Equals(new Coordonnee(0, 0)));
 			Assert.IsTrue(l[1].Coordonnees.Equals(new Coordonnee(0, 0)));
 			Assert.IsTrue(l[0].Joueur == 0);
@@ -329,7 +329,7 @@ namespace Test {
 
 			// Creation d'une partie DEMO ; choix de peuples Gaulois / Nains
 			IPartie p = MonteurPartie.CreerPartie(TypeCarte.DEMO, ld, "partieTestDemo");
-			IUnite u = p.Joueurs[1].Item2.Peuple.Unites[2];
+			Unite u = p.Joueurs[1].Item2.Peuple.Unites[2];
 			p.Selectionner(u);
 			Assert.IsTrue(p.UniteCourante == u);
 		}
@@ -381,9 +381,9 @@ namespace Test {
 		[TestMethod]
 		public void Test_Partie_Attaque() {
 			// Creation d'une partie DEMO ; avec deux joueur Gaulois / Viking
-			List<Tuple<int, IJoueur>> l = new List<Tuple<int, IJoueur>>();
-			l.Add(new Tuple<int, IJoueur>(0, new Joueur(TypePeuple.GAULOIS, 1, new Coordonnee(0, 0))));
-			l.Add(new Tuple<int, IJoueur>(1, new Joueur(TypePeuple.NAINS, 1, new Coordonnee(0, 1))));
+			List<Tuple<int, Joueur>> l = new List<Tuple<int, Joueur>>();
+			l.Add(new Tuple<int, Joueur>(0, new Joueur(TypePeuple.GAULOIS, 1, new Coordonnee(0, 0))));
+			l.Add(new Tuple<int, Joueur>(1, new Joueur(TypePeuple.NAINS, 1, new Coordonnee(0, 1))));
 			TypeCase[,] grille = new TypeCase[1, 2];
 			grille[0, 0] = TypeCase.MONTAGNE;
 			grille[0, 1] = TypeCase.MONTAGNE;
@@ -405,8 +405,8 @@ namespace Test {
 			ld.Add(TypePeuple.GAULOIS);
 
 			// Creation d'une partie DEMO ; avec un joueur (Gaulois)
-			List<Tuple<int, IJoueur>> l = new List<Tuple<int, IJoueur>>();
-			l.Add(new Tuple<int, IJoueur>(0, new Joueur(TypePeuple.GAULOIS, 1, new Coordonnee(0, 0))));
+			List<Tuple<int, Joueur>> l = new List<Tuple<int, Joueur>>();
+			l.Add(new Tuple<int, Joueur>(0, new Joueur(TypePeuple.GAULOIS, 1, new Coordonnee(0, 0))));
 			TypeCase[,] grille = new TypeCase[1,2];
 			grille[0, 0] = TypeCase.MONTAGNE;
 			grille[0, 1] = TypeCase.MONTAGNE;

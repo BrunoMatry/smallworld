@@ -3,7 +3,7 @@
 public interface IPeuple {
 
 	int NombreUnites { get; }
-	List<IUnite> Unites { get; set; }
-	void TuerUnite(IUnite unite);
+	List<Unite> Unites { get; set; }
+	void TuerUnite(Unite unite);
 }
 

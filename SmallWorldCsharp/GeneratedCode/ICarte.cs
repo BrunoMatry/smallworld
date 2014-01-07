@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 
 public interface ICarte {
+
     int Hauteur { get ; } 
-   int Largeur { get ; }
+	int Largeur { get ; }
     TypeCase GetTypeCase(Coordonnee c);
     TypeCase[,] Grille { get; }
 	/**
@@ -20,7 +21,7 @@ public interface ICarte {
 	List<Direction> GetDirectionsAutorisees(Coordonnee c);
 
 	// Propriete
-	Dictionary<Coordonnee, List<IUnite>> GrilleUnites { get; set; }
+	Dictionary<Coordonnee, List<Unite>> GrilleUnites { get; set; }
 
 
 }

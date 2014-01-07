@@ -16,7 +16,7 @@ public class MonteurPetit : StrategiePartie
 		WrapperLib w = new WrapperLib(LARGEURCARTE, HAUTEURCARTE);
 
 		// Generation de la carte par la fabrique
-		ICarte c = new CartePetit(f.CreerGrille(w), f.CreerCases());
+		Carte c = new CartePetit(f.CreerGrille(w), f.CreerCases());
 		List<Tuple<int, int>> l = w.placer_unites(2);
 
 		// Tirage aleatoire de l'ordre des joueurs
@@ -25,9 +25,9 @@ public class MonteurPetit : StrategiePartie
 		int snd = (fst + 1) % 2;
 
 		// Remplissage de la table des joueurs en generant deux nouveaux joueurs
-		List<Tuple<int, IJoueur>> joueurs = new List<Tuple<int, IJoueur>>();
-		Tuple<int, IJoueur> t1 = new Tuple<int, IJoueur>(fst, new Joueur(tp[fst], 6, new Coordonnee(l[fst].Item1, l[fst].Item2)));
-		Tuple<int, IJoueur> t2 = new Tuple<int, IJoueur>(snd, new Joueur(tp[snd], 6, new Coordonnee(l[snd].Item1, l[snd].Item2)));
+		List<Tuple<int, Joueur>> joueurs = new List<Tuple<int, Joueur>>();
+		Tuple<int, Joueur> t1 = new Tuple<int, Joueur>(fst, new Joueur(tp[fst], 6, new Coordonnee(l[fst].Item1, l[fst].Item2)));
+		Tuple<int, Joueur> t2 = new Tuple<int, Joueur>(snd, new Joueur(tp[snd], 6, new Coordonnee(l[snd].Item1, l[snd].Item2)));
 		joueurs.Add(t1);
 		joueurs.Add(t2);
 

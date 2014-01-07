@@ -10,8 +10,8 @@ public class FabriqueUnite : IFabriqueUnite {
 	 * c La coordonnee a laquelle sont placees les unites au depart
 	 * /!\ Cette case ne doit pas contenir d'unites enemies
 	 */
-	public List<IUnite> CreerUnites(TypePeuple type, int nb, int j, Coordonnee c) {
-		List<IUnite> res = new List<IUnite>();
+	public List<Unite> CreerUnites(TypePeuple type, int nb, int j, Coordonnee c) {
+		List<Unite> res = new List<Unite>();
 		switch (type) {
 			case TypePeuple.GAULOIS:
 				for(int i = 0 ; i < nb ; i++)

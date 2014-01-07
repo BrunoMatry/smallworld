@@ -2,6 +2,6 @@
 
 public interface IFabriqueUnite {
 
-	List<IUnite> CreerUnites(TypePeuple type, int nbUnites, int joueur, Coordonnee c);
+	List<Unite> CreerUnites(TypePeuple type, int nbUnites, int joueur, Coordonnee c);
 }
 

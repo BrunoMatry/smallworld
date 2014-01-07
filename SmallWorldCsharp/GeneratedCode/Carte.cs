@@ -5,7 +5,7 @@ public abstract class Carte : ICarte {
 
     protected Dictionary<TypeCase, Case> _cases;
     protected TypeCase[,] _grille;
-	protected Dictionary<Coordonnee, List<IUnite>> _grilleUnites;
+	protected Dictionary<Coordonnee, List<Unite>> _grilleUnites;
 	protected  int HAUTEURCARTE;
 	protected  int LARGEURCARTE;
 
@@ -13,7 +13,7 @@ public abstract class Carte : ICarte {
 	public TypeCase[,] Grille { get { return this._grille; } }
     public int Hauteur { get { return HAUTEURCARTE; } }
     public int Largeur { get { return LARGEURCARTE; } }
-	public Dictionary<Coordonnee, List<IUnite>> GrilleUnites { get { return this._grilleUnites; } set { this._grilleUnites = value; } }
+	public Dictionary<Coordonnee, List<Unite>> GrilleUnites { get { return this._grilleUnites; } set { this._grilleUnites = value; } }
 
 	public Case GetCase(Coordonnee c) {
         // On verifie si la coordonnee est dans la carte

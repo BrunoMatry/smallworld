@@ -382,23 +382,23 @@ namespace Test {
 
 		[TestMethod]
 		public void Test_Partie_Attaque() {
-			// Creation de la liste des peuples
-			List<TypePeuple> ld = new List<TypePeuple>();
-			ld.Add(TypePeuple.GAULOIS);
-			ld.Add(TypePeuple.NAINS);
-
 			// Creation d'une partie DEMO ; avec deux joueur Gaulois / Viking
 			List<Tuple<int, IJoueur>> l = new List<Tuple<int, IJoueur>>();
 			l.Add(new Tuple<int, IJoueur>(0, new Joueur(TypePeuple.GAULOIS, 1, new Coordonnee(0, 0))));
-			l.Add(new Tuple<int, IJoueur>(0, new Joueur(TypePeuple.VIKING, 1, new Coordonnee(0, 1))));
+			l.Add(new Tuple<int, IJoueur>(1, new Joueur(TypePeuple.NAINS, 1, new Coordonnee(0, 1))));
 			TypeCase[,] grille = new TypeCase[1, 2];
 			grille[0, 0] = TypeCase.MONTAGNE;
 			grille[0, 1] = TypeCase.MONTAGNE;
 			IPartie p = new Partie("PartieTest", new CarteDemo(grille, null), l, 5);
+			try {
+				p.Attaque(Direction.NORD);
+			} catch(PartieException e) {
+				Console.WriteLine("Erreur : " + e.Message);
+				Console.ReadLine();
+			}
 
-			p.Attaque(Direction.NORD);
-
-			Assert.IsTrue(false);
+			Assert.IsTrue(p.Joueurs[1].Item2.Peuple.Unites.Count == 1
+					   || p.Joueurs[1].Item2.Peuple.Unites.Count == 1);
 		}
 
 		[TestMethod]
@@ -406,7 +406,6 @@ namespace Test {
 			// Creation de la liste des peuples
 			List<TypePeuple> ld = new List<TypePeuple>();
 			ld.Add(TypePeuple.GAULOIS);
-			ld.Add(TypePeuple.NAINS);
 
 			// Creation d'une partie DEMO ; avec un joueur (Gaulois)
 			List<Tuple<int, IJoueur>> l = new List<Tuple<int, IJoueur>>();

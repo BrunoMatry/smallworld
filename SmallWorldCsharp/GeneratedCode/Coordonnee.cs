@@ -29,10 +29,10 @@
     }
     public static Coordonnee operator +(Coordonnee c1, Direction dir) {
         switch (dir) {
-            case Direction.NORD : return new Coordonnee(c1._x + 1, c1._y) ;
-            case Direction.SUD: return new Coordonnee(c1._x - 1, c1._y);
-            case Direction.EST: return new Coordonnee(c1._x, c1._y + 1);
-            case Direction.OUEST: return new Coordonnee(c1._x, c1._y - 1);
+			case Direction.NORD: return new Coordonnee(c1._x, c1._y + 1);
+            case Direction.SUD: return new Coordonnee(c1._x, c1._y - 1);
+			case Direction.EST: return new Coordonnee(c1._x + 1, c1._y);
+            case Direction.OUEST: return new Coordonnee(c1._x - 1, c1._y);
             default: return c1;
         }
     }

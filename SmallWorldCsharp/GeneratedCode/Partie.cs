@@ -56,9 +56,9 @@ public class Partie : IPartie {
 
 	public void Attaque(Direction dir) {
 		// Verification de la validite du deplacement
-		this.mouvement(dir);
+		this.mouvementValide(dir);
 
-        Coordonnee courante = _uniteCourante.Coordonnees;
+        Coordonnee courante = this._uniteCourante.Coordonnees;
         Coordonnee cible = courante + dir;
         List<IUnite> ciblee = unitesEnemiesSurCase(cible);
         // On vérifie que la liste ciblee n'est pas vide:
@@ -72,13 +72,14 @@ public class Partie : IPartie {
                 def = u.Defense;
 			meilleurDef = u;
         }
+		IJoueur defenseur = trouverJoueur(1);
         
 		if (this._uniteCourante.Attaquer(meilleurDef)) { // S'il y a victoire
 			// On verifie si l'unite cible est morte
 			if (meilleurDef.PointsDeVie <= 0) {
-					_joueurs[meilleurDef.Joueur].Item2.Peuple.TuerUnite(meilleurDef);
-					this._carte.GrilleUnites[cible].Remove(meilleurDef);
-					ciblee.Remove(meilleurDef);
+				defenseur.Peuple.TuerUnite(meilleurDef);
+				this._carte.GrilleUnites[cible].Remove(meilleurDef);
+				ciblee.Remove(meilleurDef);
             }
 			// S'il n'y a plus d'unites présentes sur la carte cible on effectue un déplacement
 			if (ciblee.Count <= 0)
@@ -92,7 +93,7 @@ public class Partie : IPartie {
 					this._uniteCourante = this._joueurs[0].Item2.Peuple.Unites[0];
 			}
 		}
-		if(!_joueurs[meilleurDef.Joueur].Item2.EnJeu) {
+		if (!defenseur.EnJeu) {
 			Tuple<int, IJoueur> t = this._joueurs.Find(x => x.Item1 == meilleurDef.Joueur);
 			if(t == null)
 				throw new Exception("Erreur element non trouve");
@@ -110,7 +111,7 @@ public class Partie : IPartie {
 
 	public void Deplacement(Direction dir) {
 		// Verification de la validite du deplacement
-		this.mouvement(dir);
+		this.mouvementValide(dir);
 
         Coordonnee courante = this._uniteCourante.Coordonnees;
         Coordonnee cible = courante + dir;
@@ -195,7 +196,7 @@ public class Partie : IPartie {
 	 * Methode permettant la verification de la validite du deplacement dans une direction donnee
 	 * /!\ ne verifie pas la presence d'unites enemies dans la case cible
 	 */
-	private void mouvement(Direction dir) {
+	private void mouvementValide(Direction dir) {
 		// On vérifie que une unité est bien séléctionné
 		if (this._uniteCourante == null)
 			throw new PartieException("Aucune unité n'a été séléctionné");
@@ -231,7 +232,6 @@ public class Partie : IPartie {
 
 	private List<IUnite> unitesEnemiesSurCase(Coordonnee c) {
 		List<IUnite> res = new List<IUnite>();
-		if(!this._carte.GrilleUnites.ContainsKey(c)) return res;
 		foreach(IUnite u in this._carte.GrilleUnites[c]) {
 			if(u.Joueur != this._joueurs[0].Item1)
 				res.Add(u);
@@ -257,5 +257,13 @@ public class Partie : IPartie {
 			}
 		}
 		this._carte.GrilleUnites = res;
+	}
+
+	private IJoueur trouverJoueur(int p) {
+		foreach(Tuple<int, IJoueur> t in this._joueurs) {
+			if(t.Item1 == p)
+				return t.Item2;
+		}
+		throw new Exception("Joueur non trouve");
 	}
 }

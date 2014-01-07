@@ -25,14 +25,18 @@ namespace SmallWorldGraphics
         private Partie partie;
         private int translationh; // Utile pour centrer la carte 
         private int translationl;
-        private Dictionary<String,StackPanel> UniteJ1 = new Dictionary<String,StackPanel>();
-        private Dictionary<String, StackPanel> UniteJ2 = new Dictionary<String, StackPanel>();
+        private Dictionary<int, StackPanel> UniteeList = new Dictionary<int, StackPanel>();
+        private Dictionary<int,Unite> Unitee = new Dictionary<int,Unite>();
+        private StackPanel unitsel;
+        private Unite uniteCourante;
+        private int idcourant;
         public CarteGraph(Partie p)
         {
             InitializeComponent();
             partie = p;
             AfficherCarte();
             PlacerUnite();
+            PlacerUniteListe();
         }
         private void AfficherCarte()
         {
@@ -108,20 +112,13 @@ namespace SmallWorldGraphics
                 {
                     Unite v = (Unite)u;
                     string n = "";
-                    StackPanel s = new StackPanel() { Orientation = Orientation.Vertical};
-                    if (partie.Joueurs[0].Item2.Peuple.Unites.IndexOf(v) != -1){
-                        n = "unitej1" + partie.Joueurs[0].Item2.Peuple.Unites.IndexOf(v);
-                        s.Name = n;
-                        UniteJ1.Add(n,s);
-                    }
-                    else if (partie.Joueurs[1].Item2.Peuple.Unites.IndexOf(v) != -1){
-                        n = "unitej2" + partie.Joueurs[1].Item2.Peuple.Unites.IndexOf(v);
-                        s.Name = n;
-                        UniteJ2.Add(n,s);
-                    }
-                    else
-                        throw new Exception("Bug: Unite introuvable");
-                    
+                    StackPanel s = new StackPanel() { Orientation = Orientation.Vertical };
+
+                    if (!UniteeList.ContainsKey(v.Id))
+                        UniteeList.Add(v.Id, s);
+                    if (!Unitee.ContainsKey(v.Id))
+                        Unitee.Add(v.Id, v);
+
                     double x = (double)pair.Key.X * 41 + 170 + translationl + 10;
                     double y = (double)pair.Key.Y * 41 + translationh + 10;
                     Canvas.SetLeft(s, x);
@@ -151,36 +148,80 @@ namespace SmallWorldGraphics
 
             }
         }
-   /*     private void PlacerUniteListe()
+        private void PlacerUniteListe()
         {
-                foreach (IUnite u in partie.Joueurs[0].Item2.Peuple.Unites)
+            foreach (IUnite u in partie.Joueurs[0].Item2.Peuple.Unites)
+            {
+
+                Unite v = (Unite)u;
+                unites.Items.Add(v.GetType().ToString() + " " + v.Id);
+            }
+
+        }
+        private void unites_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            String[] SelectID = unites.SelectedItem.ToString().Split();
+            idcourant = int.Parse(SelectID[1]);
+            unitsel = UniteeList[idcourant];
+            partie.Selectionner(Unitee[idcourant]);
+
+        }
+        
+        private void KeyEventHandler(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Up)
+            {
+                try
                 {
-                   
-                    Unite v = (Unite)u;
-                    ListBoxItem l = new ListBoxItem();
-
-                    switch (v.GetType().ToString())
-                    {
-                        case "UniteGaulois":
-                            unites.Items.Add(v.GetType().ToString() +);
-                            break;
-                        case "UniteNain":
-                            i = new Image { Height = 30, Source = new BitmapImage(new Uri("C:\\Users\\Sami\\Documents\\GitHub\\smallworld\\WpfApplication1\\Resources\\nain.png")) };
-                            s.Children.Add(i);
-                            break;
-                        case "UniteViking":
-                            i = new Image { Height = 30, Source = new BitmapImage(new Uri("C:\\Users\\Sami\\Documents\\GitHub\\smallworld\\WpfApplication1\\Resources\\viking.png")) };
-                            s.Children.Add(i);
-                            break;
-                        default:
-
-                            break;
-                    }
-                    canvas1.Children.Add(s);
+                    partie.Deplacement(Direction.NORD);
+                }
+                catch (PartieException exc)
+                {
+                    MessageBox.Show(exc.Message);
+                }
+               
+            }
+            if (e.Key == Key.Down)
+            {
+                try
+                {
+                    partie.Deplacement(Direction.SUD);
+                }
+                catch (PartieException exc)
+                {
+                    MessageBox.Show(exc.Message);
                 }
 
             }
+            if (e.Key == Key.Right)
+            {
+                try
+                {
+                    partie.Deplacement(Direction.OUEST);
+                }
+                catch (PartieException exc)
+                {
+                    MessageBox.Show(exc.Message);
+                }
+
+            }
+            if (e.Key == Key.Left)
+            {
+                try
+                {
+                    partie.Deplacement(Direction.EST);
+                }
+                catch (PartieException exc)
+                {
+                    MessageBox.Show(exc.Message);
+                }
+
+            }
+            canvas1.Children.Remove(unitsel);
+            UniteeList.Remove(idcourant);
+            PlacerUnite();
         }
+
         /*private void KeyEventHandler(object sender, KeyEventArgs e)
         {
             switch (e.Key)
@@ -244,3 +285,4 @@ namespace SmallWorldGraphics
     }*/
     }
 }
+

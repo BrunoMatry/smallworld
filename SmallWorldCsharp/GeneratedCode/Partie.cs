@@ -17,6 +17,7 @@ public class Partie : IPartie {
 	// Propriétés
     public int Hauteur { get { return this._carte.Hauteur; } }
     public int Largeur { get { return this._carte.Largeur; } }
+
 	public IUnite UniteCourante { get { return this._uniteCourante; } }
 	public TypeCase[,] Grille { get { return this._carte.Grille; } }
 	public Dictionary<Coordonnee, List<IUnite>> GrilleUnites { get { return this._carte.GrilleUnites; } }
@@ -127,7 +128,7 @@ public class Partie : IPartie {
 			throw new PartieException("Il y a des unites enemies sur la case cible", "Case cible occupee");
 		}
 	}
-
+   
 	public void PasserTourUniteCourante() {
         // On recupere le numero de l'unite courante dans les unites du joueur
 		IPeuple p = this._joueurs[0].Item2.Peuple;

@@ -20,6 +20,9 @@ public abstract class Carte : ICarte {
 	[XmlIgnoreAttribute]
 	public Dictionary<Coordonnee, List<Unite>> GrilleUnites { get { return this._grilleUnites; } set { this._grilleUnites = value; } }
 
+	// Constructeur par defaut pour serialisation
+	public Carte() {}
+
 	public Case GetCase(Coordonnee c) {
         // On verifie si la coordonnee est dans la carte
         if (this.appartient(c)) {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 
 public abstract class Carte : ICarte {
 
@@ -13,6 +14,7 @@ public abstract class Carte : ICarte {
 	public TypeCase[][] Grille { get { return this._grille; } set { this._grille = value; } }
     public int Hauteur { get { return HAUTEURCARTE; } set { HAUTEURCARTE = value; } }
 	public int Largeur { get { return LARGEURCARTE; } set { LARGEURCARTE = value; } }
+	[XmlIgnoreAttribute]
 	public Dictionary<Coordonnee, List<Unite>> GrilleUnites { get { return this._grilleUnites; } set { this._grilleUnites = value; } }
 
 	public Case GetCase(Coordonnee c) {

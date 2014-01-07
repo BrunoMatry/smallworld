@@ -72,7 +72,7 @@ public class Partie : IPartie {
                 def = u.Defense;
 			meilleurDef = u;
         }
-		Tuple<int, IJoueur> defenseur = trouverJoueur(1);
+		Tuple<int, IJoueur> defenseur = trouverJoueur(1); //TODO
         
 		if (this._uniteCourante.Attaquer(meilleurDef)) { // S'il y a victoire
 			// On verifie si l'unite cible est morte

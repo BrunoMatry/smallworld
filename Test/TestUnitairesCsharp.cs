@@ -393,12 +393,10 @@ namespace Test {
 			try {
 				p.Attaque(Direction.NORD);
 			} catch(PartieException e) {
-				Console.WriteLine("Erreur : " + e.Message);
-				Console.ReadLine();
 			}
 
-			Assert.IsTrue(p.Joueurs[1].Item2.Peuple.Unites.Count == 1
-					   || p.Joueurs[1].Item2.Peuple.Unites.Count == 1);
+			Assert.IsTrue(p.Joueurs[0].Item2.Peuple.Unites.Count == 1
+					   || p.Joueurs[0].Item2.Peuple.Unites.Count == 0);
 		}
 
 		[TestMethod]

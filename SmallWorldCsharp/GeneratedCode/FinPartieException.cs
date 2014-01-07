@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-class FinPartieException : PartieException
-{
+public class FinPartieException : PartieException {
 
 	private string _message;
 	private string _type;

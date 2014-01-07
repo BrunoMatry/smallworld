@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-class PartieException : Exception {
+public class PartieException : Exception {
 
     private string _message;
 	private string _type;

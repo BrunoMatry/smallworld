@@ -417,7 +417,7 @@ namespace Test {
 			
 			p.Deplacement(Direction.NORD);
 			
-			// Assert.IsTrue(p.UniteCourante.Coordonnees.Equals(new Coordonnee(0, 1)));
+			Assert.IsTrue(p.UniteCourante.Coordonnees.Equals(new Coordonnee(0, 1)));
 			Assert.IsTrue(p.UniteCourante.Joueur == p.Joueurs[0].Item1);
 		}
 

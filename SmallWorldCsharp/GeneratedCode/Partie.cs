@@ -72,12 +72,12 @@ public class Partie : IPartie {
                 def = u.Defense;
 			meilleurDef = u;
         }
-		IJoueur defenseur = trouverJoueur(1);
+		Tuple<int, IJoueur> defenseur = trouverJoueur(1);
         
 		if (this._uniteCourante.Attaquer(meilleurDef)) { // S'il y a victoire
 			// On verifie si l'unite cible est morte
 			if (meilleurDef.PointsDeVie <= 0) {
-				defenseur.Peuple.TuerUnite(meilleurDef);
+				defenseur.Item2.Peuple.TuerUnite(meilleurDef);
 				this._carte.GrilleUnites[cible].Remove(meilleurDef);
 				ciblee.Remove(meilleurDef);
             }
@@ -93,13 +93,10 @@ public class Partie : IPartie {
 					this._uniteCourante = this._joueurs[0].Item2.Peuple.Unites[0];
 			}
 		}
-		if (!defenseur.EnJeu) {
-			Tuple<int, IJoueur> t = this._joueurs.Find(x => x.Item1 == meilleurDef.Joueur);
-			if(t == null)
-				throw new Exception("Erreur element non trouve");
-			this._joueurs.Remove(t);
+		if (!defenseur.Item2.EnJeu) {
+			this._joueurs.Remove(defenseur);
 			this._nbJoueursRestants--;
-			throw new PartieException("Le joueur " + meilleurDef.Joueur + " a perdu !");
+			throw new PartieException("Le joueur " + defenseur.Item1 + " a perdu !");
 		} else if(!_joueurs[0].Item2.EnJeu) {
 			Tuple<int, IJoueur> t = this._joueurs[0];
 			this._joueurs.Remove(t);
@@ -259,10 +256,10 @@ public class Partie : IPartie {
 		this._carte.GrilleUnites = res;
 	}
 
-	private IJoueur trouverJoueur(int p) {
+	private Tuple<int, IJoueur> trouverJoueur(int p) {
 		foreach(Tuple<int, IJoueur> t in this._joueurs) {
 			if(t.Item1 == p)
-				return t.Item2;
+				return t;
 		}
 		throw new Exception("Joueur non trouve");
 	}

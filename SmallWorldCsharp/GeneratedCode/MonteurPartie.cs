@@ -1,10 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
+using System.IO;
 
 public abstract class MonteurPartie : IMonteurPartie {
 
-	//TODO
-	public IPartie CreerPartie(String file)	{ throw new System.NotImplementedException(); }
+	public static  IPartie ChargerPartie(String fileName) {
+		IPartie p;
+		XmlSerializer serializer = new XmlSerializer(typeof(Partie));
+		using (StreamReader reader = new StreamReader(fileName)) {
+			p = serializer.Deserialize(reader) as Partie;
+		}
+		return p;
+	}
 
 	/**
 	 * Methode permettant la creation d'une partie

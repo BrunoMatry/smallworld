@@ -33,12 +33,5 @@ public class MonteurDemo : StrategiePartie
 
         return new Partie(nomPartie, c, joueurs, 5);
 	}
-
-    public override IPartie CreerPartie(string nomPartie, List<TypePeuple> joueurs, List<List<Coordonnee>> unites, List<TypeCase> grille)
-    {
-		//TODO
-		throw new System.NotImplementedException();
-	}
-
 }
 

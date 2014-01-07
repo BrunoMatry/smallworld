@@ -417,11 +417,5 @@ namespace Test {
 			p.Deplacement(Direction.NORD);
 			Assert.IsTrue(p.UniteCourante.Coordonnees.Equals(new Coordonnee(0, 1)));
 		}
-
-		[TestMethod]
-		public void Test_Partie_Enregistrer() {
-			// TODO
-			Assert.IsTrue(false);
-		}
 	}
 }

@@ -38,11 +38,10 @@
     }
 
 	public override bool Equals(object o) {
-
-        if (o == null)
+       if (o == null)
             return false;
        Coordonnee c = o as Coordonnee;
-       return c == this;
+	   return this._x == c.X && this._y == c.Y;
         
 	}
 

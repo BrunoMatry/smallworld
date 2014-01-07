@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public abstract class Unite : IUnite
 {
+	protected static int NBUNITES = 0;
     protected int _attaque;
     protected int _defense;
     protected int _pointsDeVie;
@@ -10,6 +11,7 @@ public abstract class Unite : IUnite
     protected Coordonnee _coordonnee;
     protected int _valeur;
     protected int _joueur;
+	protected int _id;
 
 	public int Attaque { get { return this._attaque; } }
 	public Coordonnee Coordonnees { get { return this._coordonnee; } }
@@ -18,6 +20,12 @@ public abstract class Unite : IUnite
 	public int PointsDeVie { get { return this._pointsDeVie; } set { this._pointsDeVie = value; } }
 	public int Joueur { get { return this._joueur; } }
 	public int PointsDeplacement { get { return this._pointsDeplacement; } }
+	public int Id { get { return this._id; } }
+
+	public Unite() {
+		NBUNITES++;
+		this._id = NBUNITES;
+	}
 
 	/**
 	 * Methode permettant la mise a jour des attributs de l'unite

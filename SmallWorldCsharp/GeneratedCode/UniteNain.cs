@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class UniteNain : Unite {
 
-	public UniteNain(int j, Coordonnee c) {
+	public UniteNain(int j, Coordonnee c) : base() {
 		this._joueur = j;
 		this._coordonnee = c;
 		this._attaque = 2;

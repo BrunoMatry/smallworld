@@ -45,8 +45,10 @@ public class Partie : IPartie {
         // Calcul des points de joueurs
 		this.recalculerPoints();
 		NBMAXJOUEURS = joueurs.Count;
-		this._nbJoueursRestants = joueurs.Count;	
-		this.miseAJourCarte();
+		this._nbJoueursRestants = joueurs.Count;
+		this.initUnites();
+		this.initGilleUnite();
+		this.miseAJourGilleUnite();
     }
 
 	
@@ -118,7 +120,7 @@ public class Partie : IPartie {
 			// On retire l'unite de son ancien emplacement sur la grille
 			this._carte.GrilleUnites[courante].Remove(this._uniteCourante);
 			// S'il n'yavait jamais eu d'unite sur cette case
-			if (this._carte.GrilleUnites[cible] == null)
+			if (!this._carte.GrilleUnites.ContainsKey(cible))
 				// Initialisation de la liste d'unite associee aux coordonnees "cible"
 				this._carte.GrilleUnites[cible] = new List<IUnite>();
 			// On ajoute l'unite courante a sa nouvelle place
@@ -216,17 +218,11 @@ public class Partie : IPartie {
 	/**
 	 * Mise a jour de la grille d'unites
 	 */
-	private void miseAJourCarte() {
+	private void miseAJourGilleUnite() {
 		Dictionary<Coordonnee, List<IUnite>> res = new Dictionary<Coordonnee, List<IUnite>>();
-		foreach (Tuple<int, IJoueur> t in this._joueurs)	{
+		foreach (Tuple<int, IJoueur> t in this._joueurs) {
 			foreach (Unite u in t.Item2.Peuple.Unites) {
-				if(res.ContainsKey(u.Coordonnees)) {
-					res[u.Coordonnees].Add(u);
-				} else {
-					List<IUnite> l = new List<IUnite>();
-					l.Add(u);
-					res.Add(u.Coordonnees, l);
-				}			
+				res[u.Coordonnees].Add(u);		
 			}
 		}
 		this._carte.GrilleUnites = res;
@@ -234,10 +230,31 @@ public class Partie : IPartie {
 
 	private List<IUnite> unitesEnemiesSurCase(Coordonnee c) {
 		List<IUnite> res = new List<IUnite>();
+		if(!this._carte.GrilleUnites.ContainsKey(c)) return res;
 		foreach(IUnite u in this._carte.GrilleUnites[c]) {
 			if(u.Joueur != this._joueurs[0].Item1)
 				res.Add(u);
 		}
 		return res;
+	}
+
+	private void initUnites() {
+		foreach(Tuple<int, IJoueur> t in this._joueurs) {
+			foreach (IUnite u in t.Item2.Peuple.Unites) {
+				u.NouveauTour(this._carte.GetTypeCase(u.Coordonnees));
+			}
+		}
+	}
+
+	private void initGilleUnite() {
+		Dictionary<Coordonnee, List<IUnite>> res = new Dictionary<Coordonnee, List<IUnite>>();
+		int lg = this._carte.Largeur;
+		int ht = this._carte.Hauteur;
+		for(int i = 0 ; i < lg ; i++) {
+			for(int j = 0 ; j < ht ; j++) {
+				res.Add(new Coordonnee(i, j), new List<IUnite>());
+			}
+		}
+		this._carte.GrilleUnites = res;
 	}
 }

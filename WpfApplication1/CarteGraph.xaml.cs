@@ -110,25 +110,25 @@ namespace SmallWorldGraphics
             switch (t)
             {
                 case (TypeCase.DESERT):
-                    i = new Image { Height = 40, Source = new BitmapImage(new Uri("C:\\Users\\Sami\\Documents\\GitHub\\smallworld\\WpfApplication1\\Resources\\desert.png")), Width = 40 };
+					i = new Image { Height = 40, Source = new BitmapImage(new Uri(@".\Resources\desert.png", UriKind.Relative)), Width = 40 };
                     s.Children.Add(i);
                     //s.Children.Add(text);
                     break;
                 case (TypeCase.EAU):
-                    i = new Image { Height = 40, Source = new BitmapImage(new Uri("C:\\Users\\Sami\\Documents\\GitHub\\smallworld\\WpfApplication1\\Resources\\eau.png")), Width = 40 };
+					i = new Image { Height = 40, Source = new BitmapImage(new Uri(@".\Resources\eau.png", UriKind.Relative)), Width = 40 };
                     s.Children.Add(i);
                     break;
                 case (TypeCase.FORET):
-                    i = new Image { Height = 40, Source = new BitmapImage(new Uri("C:\\Users\\Sami\\Documents\\GitHub\\smallworld\\WpfApplication1\\Resources\\foret.png")), Width = 40 };
+                    i = new Image { Height = 40, Source = new BitmapImage(new Uri(@".\Resources\foret.png", UriKind.Relative)), Width = 40 };
                     s.Children.Add(i);
 
                     break;
                 case (TypeCase.MONTAGNE):
-                    i = new Image { Height = 40, Source = new BitmapImage(new Uri("C:\\Users\\Sami\\Documents\\GitHub\\smallworld\\WpfApplication1\\Resources\\montagne.png")), Width = 40 };
+					i = new Image { Height = 40, Source = new BitmapImage(new Uri(@".\Resources\montagne.png", UriKind.Relative)), Width = 40 };
                     s.Children.Add(i);
                     break;
                 case (TypeCase.PLAINE):
-                    i = new Image { Height = 40, Source = new BitmapImage(new Uri("C:\\Users\\Sami\\Documents\\GitHub\\smallworld\\WpfApplication1\\Resources\\plaine.png")), Width = 40 };
+					i = new Image { Height = 40, Source = new BitmapImage(new Uri(@".\Resources\plaine.png", UriKind.Relative)), Width = 40 };
                     s.Children.Add(i);
                     break;
                 default:
@@ -162,15 +162,15 @@ namespace SmallWorldGraphics
                         switch (v.GetType().ToString())
                         {
                             case "UniteGaulois":
-                                i = new Image { Height = 30, Source = new BitmapImage(new Uri("C:\\Users\\Sami\\Documents\\GitHub\\smallworld\\WpfApplication1\\Resources\\gaulois.png")) };
+                                i = new Image { Height = 30, Source = new BitmapImage(new Uri(@".\Resources\gaulois.png", UriKind.Relative)) };
                                 s.Children.Add(i);
                                 break;
                             case "UniteNain":
-                                i = new Image { Height = 30, Source = new BitmapImage(new Uri("C:\\Users\\Sami\\Documents\\GitHub\\smallworld\\WpfApplication1\\Resources\\nain.png")) };
+                                i = new Image { Height = 30, Source = new BitmapImage(new Uri(@".\Resources\nain.png", UriKind.Relative)) };
                                 s.Children.Add(i);
                                 break;
                             case "UniteViking":
-                                i = new Image { Height = 30, Source = new BitmapImage(new Uri("C:\\Users\\Sami\\Documents\\GitHub\\smallworld\\WpfApplication1\\Resources\\viking.png")) };
+								i = new Image { Height = 30, Source = new BitmapImage(new Uri(@".\Resources\viking.png", UriKind.Relative)) };
                                 s.Children.Add(i);
                                 break;
                             default:

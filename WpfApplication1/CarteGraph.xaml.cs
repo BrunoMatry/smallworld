@@ -154,14 +154,17 @@ namespace SmallWorldGraphics
             {
 
                 Unite v = (Unite)u;
-                unites.Items.Add(v.GetType().ToString() + " " + v.Id);
+                ListBoxItem lb= new ListBoxItem(){
+                    Content = (v.GetType().ToString() + " " + v.Id)
+                };
+                unites.Items.Add(lb);
             }
 
         }
         private void unites_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             String[] SelectID = unites.SelectedItem.ToString().Split();
-            idcourant = int.Parse(SelectID[1]);
+            idcourant = int.Parse(SelectID[2]);
             unitsel = UniteeList[idcourant];
             partie.Selectionner(Unitee[idcourant]);
 
@@ -169,6 +172,9 @@ namespace SmallWorldGraphics
         
         private void KeyEventHandler(object sender, KeyEventArgs e)
         {
+            
+            if (unites.SelectedItem != null)
+                ((ListBoxItem)unites.SelectedItem).Focus();
             if (e.Key == Key.Up)
             {
                 try
@@ -178,6 +184,7 @@ namespace SmallWorldGraphics
                 catch (PartieException exc)
                 {
                     MessageBox.Show(exc.Message);
+                    e.Handled = true;
                 }
                
             }
@@ -197,7 +204,7 @@ namespace SmallWorldGraphics
             {
                 try
                 {
-                    partie.Deplacement(Direction.OUEST);
+                    partie.Deplacement(Direction.EST);
                 }
                 catch (PartieException exc)
                 {
@@ -209,7 +216,7 @@ namespace SmallWorldGraphics
             {
                 try
                 {
-                    partie.Deplacement(Direction.EST);
+                    partie.Deplacement(Direction.OUEST);
                 }
                 catch (PartieException exc)
                 {

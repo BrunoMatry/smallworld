@@ -41,9 +41,9 @@ public abstract class Carte : ICarte {
 			dirAutorisees.Add(Direction.NORD);
 		if (x < (LARGEURCARTE - 1))
 			dirAutorisees.Add(Direction.EST);
-		if (x > 0)
-			dirAutorisees.Add(Direction.SUD);
 		if (y > 0)
+			dirAutorisees.Add(Direction.SUD);
+		if (x > 0)
 			dirAutorisees.Add(Direction.OUEST);
 		return dirAutorisees;
 	}

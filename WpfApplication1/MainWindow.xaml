@@ -1,7 +1,7 @@
 ﻿<Window x:Class="SmallWorldGraphics.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="SmallWorld" Height="381.343" Width="290.671">
+        Title="SmallWorld" Height="415.671" Width="290.671">
     <Grid Margin="76,0,-79,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="37*"/>
@@ -34,7 +34,8 @@
             <RadioButton Name= "VikingJ2" Content="Viking" Checked="J2_Checked" HorizontalAlignment="Left" Margin="166,26,0,0" VerticalAlignment="Top"/>
             
         </Grid>
-        <Button Content="Lancer la partie" HorizontalAlignment="Left" Margin="0,168,0,0" Grid.Row="1" VerticalAlignment="Top" Width="112" Grid.ColumnSpan="2" Click="Button_Click"/>
+        <Button Content="Nouvelle partie" AllowDrop="False" HorizontalAlignment="Left" Margin="0,168,0,0" Grid.Row="1" VerticalAlignment="Top" Width="112" Grid.ColumnSpan="2" Click="Button_Click"/>
+        <Button Content="Charger une partie" AllowDrop="False" HorizontalAlignment="Left" Margin="0,197,0,0" Grid.Row="1" VerticalAlignment="Top" Width="112" Grid.ColumnSpan="2" Click="ChargerPartie"/>
 
 
 

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace SmallWorldGraphics
 {
     /// <summary>
@@ -136,6 +137,22 @@ namespace SmallWorldGraphics
                CarteGraph c = new CarteGraph((Partie)MonteurPartie.CreerPartie(typeCarte, tPeuple, nomPartie));
                c.Show();
 
+
+            }
+
+        }
+        private void ChargerPartie(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            dlg.DefaultExt = ".sav";
+            dlg.Filter = "Fichier de sauvegarde (.sav)|*.sav";
+            Nullable<bool> result = dlg.ShowDialog();
+            if (result == true)
+            {
+
+                // Open document
+                string filename = dlg.FileName;
+                // TODO Charger (fileName)
 
             }
 

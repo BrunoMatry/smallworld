@@ -96,7 +96,8 @@ public class Partie : IPartie {
 			// S'il n'y a plus d'unites présentes sur la carte cible on effectue un déplacement
 			if (ciblee.Count <= 0)
                 this._uniteCourante.Deplacer(cible, this._carte.GetTypeCase(courante));
-        } else { // S'il y a defaite
+        }
+        else { // S'il y a defaite
 			// On verifie si l'unite courante est morte
 			if (this._uniteCourante.PointsDeVie <= 0) {
 				this._joueurs[0].Peuple.TuerUnite(this._uniteCourante);
@@ -136,7 +137,7 @@ public class Partie : IPartie {
 			// On ajoute l'unite courante a sa nouvelle place
 			this._carte.GrilleUnites[cible].Add(this._uniteCourante);
 		} else {
-			throw new PartieException("Il y a des unites enemies sur la case cible", "Case cible occupee");
+			throw new PartieException("Il y a des unités ennemies sur la case cible\n Souhaitez vous attaquer ?", "attaque");
 		}
 	}
    
@@ -168,7 +169,9 @@ public class Partie : IPartie {
 		// Penser a recharger la grilleUnite
 	}
 
-	public void PasserTourJoueur() { changerJoueur(); }
+	public void PasserTourJoueur() { changerJoueur();
+    initUnites();
+    }
 	public void Selectionner(Unite unite) { this._uniteCourante = unite; }
 
 	/**

@@ -1,4 +1,4 @@
 ﻿public enum Direction : int
 {
-	NORD, SUD, OUEST, EST
+	NORD, SUD, OUEST, EST,INIT
 }

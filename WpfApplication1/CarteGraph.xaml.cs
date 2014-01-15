@@ -63,8 +63,7 @@ namespace SmallWorldGraphics
 
 
         }
-        private void DefinirImage()
-        {
+        private void DefinirImage() {
             source = System.IO.Path.GetFullPath(@".\Resources\");
             sourceEau = source + "eau.png";
             sourceDesert = source + "desert.png";
@@ -72,12 +71,11 @@ namespace SmallWorldGraphics
             sourceForet = source + "foret.png";
             sourceMontagne = source + "montagne.png";
             sourceGaulois = source + "gaulois.png";
-            sourceNain = source + "nain.png";
+            sourceNain = source + "dwarf.png";
             sourceViking = source + "viking.png";
 
         }
-        private void MajPoint()
-        {
+        private void MajPoint() {
             nbTourRestant = partie.Tr.ToString();
 
             peupleJ1 = partie.Joueurs[0].GetType().ToString();

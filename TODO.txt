@@ -9,11 +9,11 @@ Affichage details unite
 
 ********************* BRUNO **************************
 
-Commentaire
 Doc utilisateur
-Calcul des points -> Point à -4 en debut de partie !!
+
 
 ****
 Verifier le fonctionnement du nouveau wrapper
 Gestion de l'attaque a verifier
 Verifier fonctionnement exception attaque
+Verifier fonctionnement Calcul des points

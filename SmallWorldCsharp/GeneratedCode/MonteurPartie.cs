@@ -5,13 +5,16 @@ using System.IO;
 
 public abstract class MonteurPartie : IMonteurPartie {
 
-	public static  IPartie ChargerPartie(String fileName) {
-		IPartie p;
+	public static  Partie ChargerPartie(String fileName) {
+		Partie p;
 		XmlSerializer serializer = new XmlSerializer(typeof(Partie));
 		using (StreamReader reader = new StreamReader(fileName)) {
 			p = serializer.Deserialize(reader) as Partie;
 		}
+		p.miseAJourGilleUnite();
 		return p;
+		// Penser a recharger les cases de la carte demo
+		// Penser a recharger la grilleUnite
 	}
 
 	/**

@@ -178,8 +178,6 @@ public class Partie : IPartie {
 		using (StreamWriter writer = new StreamWriter(fileName)) {
 			serializer.Serialize(writer, this);
 		}
-		// Penser a recharger les cases de la carte demo
-		// Penser a recharger la grilleUnite
 	}
 
 	public void PasserTourJoueur() { changerJoueur();
@@ -244,7 +242,7 @@ public class Partie : IPartie {
 	/**
 	 * Mise a jour de la grille d'unites
 	 */
-	private void miseAJourGilleUnite() {
+	public void miseAJourGilleUnite() {
 		this._carte.GrilleUnites.Clear();
 		this.initGilleUnite();
 		foreach (Joueur j in this._joueurs) {

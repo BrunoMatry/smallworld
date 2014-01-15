@@ -14,6 +14,7 @@ class DLL Api_sug {
 		int* _interdits;
 
 		bool valide(const int x, const int y);
+		bool dovalide(const int tx, const int ty, int& nbsugg, int** suggestions);
 
 	public:
 		static const int NBSUGGESTIONS = 3;

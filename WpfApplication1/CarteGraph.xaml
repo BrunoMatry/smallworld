@@ -4,14 +4,14 @@
         Title="Smallworld" Height="650" Width="1032.493"
         >
     <Window.Background>
-        <ImageBrush ImageSource="C:\Users\Sami\Documents\GitHub\smallworld\WpfApplication1\bin\Debug\Resources\backgnd.png"></ImageBrush>
+        <ImageBrush ImageSource="C:\Users\Bruno\Downloads\ddd\Resources\backgnd.png"></ImageBrush>
     </Window.Background>
 
     <Canvas Name="canvas1" Margin="0,0,-331,0">
         <Label Name="NbToursRestant" Content="Tours restants:" Canvas.Left="10" Canvas.Top="20" Foreground="White"/>
         <StackPanel Orientation ="Vertical" Height="94" Canvas.Left="10" Canvas.Top="51" Width="121">
             <StackPanel.Background>
-                <ImageBrush  ImageSource="C:\Users\Sami\Documents\GitHub\smallworld\WpfApplication1\bin\Debug\Resources\bg.png"></ImageBrush>
+                <ImageBrush  ImageSource="C:\Users\Bruno\Downloads\ddd\Resources\bg.png"></ImageBrush>
             </StackPanel.Background>
             <Label x:Name="PeupleJ1" Content="" />
             <Label x:Name="NbTourJ1" Content="Tour : "/>
@@ -20,20 +20,20 @@
         
         <StackPanel Orientation ="Vertical" Height="94" Canvas.Left="10" Canvas.Top="145" Width="121">
             <StackPanel.Background>
-                <ImageBrush  ImageSource="C:\Users\Sami\Documents\GitHub\smallworld\WpfApplication1\bin\Debug\Resources\bg2.png"></ImageBrush>
+                <ImageBrush  ImageSource="C:\Users\Bruno\Downloads\ddd\Resources\bg2.png"></ImageBrush>
             </StackPanel.Background>
             <Label x:Name="PeupleJ2" Content="" />
             <Label x:Name="NbTourJ2" Content="Tour : "/>
             <Label x:Name="NbPointJ2" Content="Points : "/>
         </StackPanel>
 
-        <StackPanel Orientation ="Vertical" Height="170" Canvas.Left="10" Canvas.Top="250" Width="121">
+        <StackPanel Orientation ="Vertical" Height="170" Canvas.Left="10" Canvas.Top="250" Width="121" Background="White" Opacity="0.75">
             
-            <Label x:Name="UniteCourante" Content=""/>
+            <Label x:Name="UniteCourante" Content="Infos unite courante" FontStyle="Italic"/>
             <Label x:Name="Uatt" Content="Attaque : "/>
             <Label x:Name="Udef" Content="Defense : "/>
-            <Label x:Name="Updv" Content="Points de vie : "/>
-            <Label x:Name="Updd" Content="Points de déplacements : "/>
+            <Label x:Name="Updv" Content="Pts de vie : "/>
+            <Label x:Name="Updd" Content="Pts de dépl : "/>
             <Label x:Name="Uval" Content="Valeur : "/>
         </StackPanel>
 

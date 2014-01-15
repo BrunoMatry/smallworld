@@ -52,7 +52,7 @@ namespace Wrapper {
 
 				return res;
 			}
-			// TypeCase
+			/*
 			private int** convGrille(TypeCase** t) {
 				int ht = api->getHauteur();
 				int lg = api->getLongueur();
@@ -85,7 +85,8 @@ namespace Wrapper {
 				}
 			}
 			return res;
-			}
+			} On y était presque ! :'(
+			*/
 	};
 }
 #endif

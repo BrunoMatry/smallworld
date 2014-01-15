@@ -12,10 +12,23 @@ namespace Wrapper {
 		private:
 			Api_sug* api;
 		public:
-			/* TODO conversion int** */
+			/* 
+			 * Methode permettant de 
+			 * @param l la longueur de la carte
+			 * @param h la hauteur de la carte
+			 * @param g la grille (de la carte)
+			 * @param i le tableau contenant la valeur des TypeCase interdits
+			 * @param nb le nombre de parametres interdits
+			 */
 			WrapperSug(const int l, const int h, int** g, int* i, int nb) { api = ApiSug_new(l, h, g, i, nb); }
 			~WrapperSug(){ ApiSug_delete(api); }
 
+			/*
+			 * Methode permettant de recuperer une liste avec l'ensemble des cases suggerees depuis une case donnee
+			 * @param x la coordonnee x de la case donnee
+			 * @param y la coordonnee y de la case donnee
+			 * @param pt les points de deplacement de l'unite
+			 */
 			List<Tuple<int, int>^>^ suggerer_cases(const int x, const int y, const int pt) {
 				int** tab;
 				int nbsugg = api->suggerer_cases(x, y, pt, tab);

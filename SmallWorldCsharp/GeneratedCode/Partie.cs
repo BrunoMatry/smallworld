@@ -121,12 +121,12 @@ public class Partie : IPartie {
 			if (!defenseur.EnJeu) {
 				this._joueurs.Remove(defenseur);
 				this._nbJoueursRestants--;
-				throw new PartieException("Le joueur " + defenseur.Id + " a perdu !");
+				throw new PartieException("Le joueur " + defenseur.Id + " a perdu !","perdu");
 			} else if(!_joueurs[0].EnJeu) {
 				this._joueurs.Remove(this._joueurs[0]);
 				this._nbJoueursRestants--;
 				this.changerJoueur();
-				throw new PartieException("Le joueur " + this._joueurs[0].Id + " a perdu !");
+				throw new PartieException("Le joueur " + this._joueurs[0].Id + " a perdu !","perdu");
 			}
 		}
 	}

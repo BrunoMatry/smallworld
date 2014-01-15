@@ -71,9 +71,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Api.h" />
+    <ClInclude Include="Api_sug.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Api.cpp" />
+    <ClCompile Include="Api_sug.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

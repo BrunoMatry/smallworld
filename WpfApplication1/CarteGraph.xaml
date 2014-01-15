@@ -26,6 +26,17 @@
             <Label x:Name="NbTourJ2" Content="Tour : "/>
             <Label x:Name="NbPointJ2" Content="Points : "/>
         </StackPanel>
+
+        <StackPanel Orientation ="Vertical" Height="170" Canvas.Left="10" Canvas.Top="250" Width="121">
+            
+            <Label x:Name="UniteCourante" Content=""/>
+            <Label x:Name="Uatt" Content="Attaque : "/>
+            <Label x:Name="Udef" Content="Defense : "/>
+            <Label x:Name="Updv" Content="Points de vie : "/>
+            <Label x:Name="Updd" Content="Points de déplacements : "/>
+            <Label x:Name="Uval" Content="Valeur : "/>
+        </StackPanel>
+
         <ListBox Canvas.Left="830" Canvas.Top="64" Height="429" Name="unites" Width="200" 
                  RenderTransformOrigin="0.5,0.5" SelectionChanged="unites_SelectedIndexChanged"
                  PreviewKeyDown="KeyEventHandler"

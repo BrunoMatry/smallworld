@@ -17,7 +17,7 @@ public class UniteMorteException : PartieException {
 
 	// Constructeur
 	public UniteMorteException(string m, int u, int j) : base(m) {
-		this._message = "L'unite " + u + "du joueur " + j + " est morte. " + m;
+		this._message = "L'unite " + u + " du joueur " + j + " est morte. " + m;
 		this._type = "Unite morte";
 		this._umorte = u;
 		this._j = j;

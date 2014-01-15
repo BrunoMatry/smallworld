@@ -230,7 +230,7 @@ namespace SmallWorldGraphics
                 partie.Selectionner(Unitee[idcourant]);
                 myBorder1.Background = Brushes.SkyBlue;
                 myBorder1.BorderBrush = Brushes.Red;
-                myBorder1.BorderThickness = new Thickness(10);
+                myBorder1.BorderThickness = new Thickness(1);
                 myBorder1.Width = 40;
                 unitsel.Children.Add(myBorder1);
                 
@@ -316,9 +316,24 @@ namespace SmallWorldGraphics
 
                     if (result == MessageBoxResult.Yes)
                     {
+                        try { 
                         partie.Attaque(courante);
+                            }
+                        catch (UniteGagnanteException exc1)
+                        {
+                            try
+                            {
+                                MessageBox.Show(exc1.Message);
+                            }
+                            catch(UniteGagnanteException exc2)
+                                {
+                                    MessageBox.Show(exc2.Message);
+                                }
+                        }
                     }
-                }
+                    }
+                
+                
                 else
                 {
                     MessageBox.Show(exc.Message);

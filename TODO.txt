@@ -2,5 +2,8 @@
 
 IHM
 
-Implementer + Tester enregistrement
-Wrapper Suggestion Cases
+Verifier le fonctionnement du nouveau wrapper
+Gestion de l'attaque a verifier
+Commentaire
+Doc utilisateur
+Exception attaque

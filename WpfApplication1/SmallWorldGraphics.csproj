@@ -36,6 +36,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -105,6 +106,30 @@
       <Project>{ad83ac8b-ae97-4dcb-bbb4-68d9fba814b2}</Project>
       <Name>SmallWorld</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\desert.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eau.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\foret.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gaulois.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\montagne.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plaine.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\viking.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -41,10 +41,19 @@ namespace SmallWorldGraphics
         private String nbPointJ2;
         private String nbTourRestant;
         private Border myBorder1 = new Border();
+        private string source ;
+        private string sourceEau;
+        private string sourceDesert;
+        private string sourcePlaine;
+        private string sourceForet;
+        private string sourceMontagne;
+        private string sourceGaulois;
+        private string sourceNain;
+        private string sourceViking;
         public CarteGraph(Partie p)
         {
             InitializeComponent();
-
+            DefinirImage();
             partie = p;
             idcourant = p.UniteCourante.Id;
             MajPoint();
@@ -52,6 +61,19 @@ namespace SmallWorldGraphics
             PlacerUnite();
             PlacerUniteListe();
 
+
+        }
+        private void DefinirImage()
+        {
+            source = System.IO.Path.GetFullPath(@".\Resources\");
+            sourceEau = source + "eau.png";
+            sourceDesert = source + "desert.png";
+            sourcePlaine = source + "plaine.png";
+            sourceForet = source + "foret.png";
+            sourceMontagne = source + "montagne.png";
+            sourceGaulois = source + "gaulois.png";
+            sourceNain = source + "nain.png";
+            sourceViking = source + "viking.png";
 
         }
         private void MajPoint()
@@ -107,28 +129,28 @@ namespace SmallWorldGraphics
             Canvas.SetBottom(s, y);
             //Affichage de la case
             Image i;
+            
             switch (t)
             {
                 case (TypeCase.DESERT):
-					i = new Image { Height = 40, Source = new BitmapImage(new Uri(@".\Resources\desert.png", UriKind.Relative)), Width = 40 };
+					i = new Image { Height = 40, Source = new BitmapImage(new Uri(sourceDesert)), Width = 40 };
                     s.Children.Add(i);
                     //s.Children.Add(text);
                     break;
                 case (TypeCase.EAU):
-					i = new Image { Height = 40, Source = new BitmapImage(new Uri(@".\Resources\eau.png", UriKind.Relative)), Width = 40 };
+                    i = new Image { Height = 40, Source = new BitmapImage(new Uri(sourceEau)), Width = 40 };
                     s.Children.Add(i);
                     break;
                 case (TypeCase.FORET):
-                    i = new Image { Height = 40, Source = new BitmapImage(new Uri(@".\Resources\foret.png", UriKind.Relative)), Width = 40 };
+                    i = new Image { Height = 40, Source = new BitmapImage(new Uri(sourceForet)), Width = 40 };
                     s.Children.Add(i);
-
                     break;
                 case (TypeCase.MONTAGNE):
-					i = new Image { Height = 40, Source = new BitmapImage(new Uri(@".\Resources\montagne.png", UriKind.Relative)), Width = 40 };
+                    i = new Image { Height = 40, Source = new BitmapImage(new Uri(sourceMontagne)), Width = 40 };
                     s.Children.Add(i);
                     break;
                 case (TypeCase.PLAINE):
-					i = new Image { Height = 40, Source = new BitmapImage(new Uri(@".\Resources\plaine.png", UriKind.Relative)), Width = 40 };
+					i = new Image { Height = 40, Source = new BitmapImage(new Uri(sourcePlaine)), Width = 40 };
                     s.Children.Add(i);
                     break;
                 default:
@@ -162,15 +184,15 @@ namespace SmallWorldGraphics
                         switch (v.GetType().ToString())
                         {
                             case "UniteGaulois":
-                                i = new Image { Height = 30, Source = new BitmapImage(new Uri(@".\Resources\gaulois.png", UriKind.Relative)) };
+                                i = new Image { Height = 30, Source = new BitmapImage(new Uri(sourceGaulois)) };
                                 s.Children.Add(i);
                                 break;
                             case "UniteNain":
-                                i = new Image { Height = 30, Source = new BitmapImage(new Uri(@".\Resources\nain.png", UriKind.Relative)) };
+                                i = new Image { Height = 30, Source = new BitmapImage(new Uri(sourceNain)) };
                                 s.Children.Add(i);
                                 break;
                             case "UniteViking":
-								i = new Image { Height = 30, Source = new BitmapImage(new Uri(@".\Resources\viking.png", UriKind.Relative)) };
+								i = new Image { Height = 30, Source = new BitmapImage(new Uri(sourceViking)) };
                                 s.Children.Add(i);
                                 break;
                             default:

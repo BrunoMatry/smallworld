@@ -12,9 +12,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Wrapper.h" />
+    <ClInclude Include="WrapperSuggestion.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Wrapper.cpp" />
+    <ClCompile Include="WrapperSuggestion.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{3F695CA3-C7A2-444D-86A2-69953BFB3D49}</ProjectGuid>

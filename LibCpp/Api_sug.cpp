@@ -10,17 +10,15 @@ bool Api_sug::valide(const int x, const int y) {
 	return true;
 }
 
-bool Api_sug::dovalide (const int tx, const int ty, int& nbsugg, int** suggestions) {
-	bool res = valide(tx, ty);
-	if(res) {
+void Api_sug::dovalide (const int tx, const int ty, int& nbsugg, int** suggestions) {
+	if(valide(tx, ty)) {
 		suggestions[nbsugg][0] = tx;
 		suggestions[nbsugg][1] = ty;
 		nbsugg++;
 	}
-	return res;
 }
 
-int** Api_sug::suggerer_cases(const int x, const int y, const int pt) {
+int Api_sug::suggerer_cases(const int x, const int y, const int pt, int** sug) {
 	int nbsugg = 0;
 	int tx, ty;
 	// Initialisation du tableau résultat
@@ -31,38 +29,33 @@ int** Api_sug::suggerer_cases(const int x, const int y, const int pt) {
 	ty = y;
 	for(int dx = 1 ; dx <= pt ; dx++) {
 		tx = x + dx;
-		if(dovalide (tx, ty, nbsugg, suggestions) || nbsugg >= NBSUGGESTIONS)
-			return suggestions;
+		dovalide (tx, ty, nbsugg, suggestions);
 		tx = x - dx;
-		if(dovalide (tx, ty, nbsugg, suggestions) || nbsugg >= NBSUGGESTIONS)
-			return suggestions;
+		dovalide (tx, ty, nbsugg, suggestions);
 	}
 	tx = x;
 	for(int dy = 1 ; dy <= pt ; dy++) {
 		ty = y + dy;
-		if(dovalide (tx, ty, nbsugg, suggestions) || nbsugg >= NBSUGGESTIONS)
-			return suggestions;
+		dovalide (tx, ty, nbsugg, suggestions);
 		ty = y - dy;
-		if(dovalide (tx, ty, nbsugg, suggestions) || nbsugg >= NBSUGGESTIONS)
-			return suggestions;
+		dovalide (tx, ty, nbsugg, suggestions);
 	}
 	for(int dx = 1 ; dx < pt ; dx++) {
 		tx = x + dx;
 		for(int dy = 1 ; dy < (pt - dx) ; dy++) {
 			ty = y + dy;
-			if(dovalide (tx, ty, nbsugg, suggestions) || nbsugg >= NBSUGGESTIONS)
-				return suggestions;
+			dovalide (tx, ty, nbsugg, suggestions);
 		}
 		tx = x - dx;
 		for(int dy = 1 ; dy < (pt - dx) ; dy++) {
 			ty = y - dy;
-			if(dovalide (tx, ty, nbsugg, suggestions) || nbsugg >= NBSUGGESTIONS)
-				return suggestions;
+			dovalide (tx, ty, nbsugg, suggestions);
 		}
 	}
-	return suggestions;
+	sug = suggestions;
+	return nbsugg;
 }
 
 Api_sug* ApiSug_new(const int l, const int h, int** g, int* i, int nb) { return new Api_sug(l, h, g, i, nb); }
 void ApiSug_delete(Api_sug* a) { delete a; }
-int** ApiSug_suggerer_cases(Api_sug* api, const int x, const int y, const int pt) { return api->suggerer_cases(x, y, pt); }
+int ApiSug_suggerer_cases(Api_sug* api, const int x, const int y, const int pt, int** sug) { return api->suggerer_cases(x, y, pt, sug); }

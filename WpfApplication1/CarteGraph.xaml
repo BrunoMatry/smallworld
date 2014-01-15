@@ -30,11 +30,11 @@
         <StackPanel Orientation ="Vertical" Height="170" Canvas.Left="10" Canvas.Top="250" Width="121">
             
             <Label x:Name="UniteCourante" Content=""/>
-            <Label x:Name="Uatt" Content="Attaque : "/>
-            <Label x:Name="Udef" Content="Defense : "/>
-            <Label x:Name="Updv" Content="Points de vie : "/>
-            <Label x:Name="Updd" Content="Points de déplacements : "/>
-            <Label x:Name="Uval" Content="Valeur : "/>
+            <Label x:Name="Uatt" Content=""/>
+            <Label x:Name="Udef" Content=""/>
+            <Label x:Name="Updv" Content=""/>
+            <Label x:Name="Updd" Content=""/>
+            <Label x:Name="Uval" Content=""/>
         </StackPanel>
 
         <ListBox Canvas.Left="830" Canvas.Top="64" Height="429" Name="unites" Width="200" 
@@ -55,7 +55,7 @@
             </ListBox.RenderTransform>
         </ListBox>
         <Button Content="Enregistrer" Canvas.Left="10" Canvas.Top="537" Width="143" Height="28" Click="Enregistrer"/>
-        <Button Content="Enregistrer Sous" Canvas.Left="10" Canvas.Top="570" Width="143" Height="28"/>
+        <Button Content="Enregistrer Sous" Canvas.Left="10" Canvas.Top="570" Width="143" Height="28" Click="EnregistrerSous"/>
 
         <Button HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Content="Fin du tour"  Width="85" Canvas.Left="31" Canvas.Top="479" Click="FinDuTour"/>
         <Label Content="Unités:" Canvas.Left="906" Canvas.Top="20" Width="38" Foreground="White"/>

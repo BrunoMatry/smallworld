@@ -60,6 +60,7 @@ namespace SmallWorldGraphics
                 partie = p;
                 idcourant = p.UniteCourante.Id;
                 MajPoint();
+                MajInfoUniteCourant();
                 AfficherCarte();
                 PlacerUnite();
                 PlacerUniteListe();
@@ -117,6 +118,15 @@ namespace SmallWorldGraphics
 
             }
 
+        }
+        private void MajInfoUniteCourant()
+        {
+            Unite uniteCour = partie.UniteCourante;
+            Uatt.Content="Attaque :  "+uniteCour.Attaque;
+            Udef.Content="Defense : "+uniteCour.Defense;
+            Updv.Content="Pts de vie : "+uniteCour.PointsDeVie;
+            Updd.Content="Pts de dépl : "+uniteCour.PointsDeplacement;
+            Uval.Content ="Valeur : "+uniteCour.Valeur;
         }
         private StackPanel AfficherCase(TypeCase t, int left, int bottom)
         {
@@ -322,10 +332,12 @@ namespace SmallWorldGraphics
                     unitsel.Children.Remove(myBorder1);
                     partie.PasserTourUniteCourante();
                     idcourant = partie.UniteCourante.Id;
+                    MajInfoUniteCourant();
                 }
                 if (e.Key == Key.F)
                 {
                     finirTour();
+                    MajInfoUniteCourant();
                 }
             }
             catch (PartieException exc)
@@ -380,6 +392,7 @@ namespace SmallWorldGraphics
         private void FinDuTour(object sender, RoutedEventArgs e)
         {
             finirTour();
+
         }
         private void finirTour()
         {
@@ -390,12 +403,23 @@ namespace SmallWorldGraphics
             UniteeListBox.Clear();
             PlacerUniteListe();
             MajPoint();
+            MajInfoUniteCourant();
         }
         private void Enregistrer(object sender, RoutedEventArgs e)
         {
             partie.Enregistrer();
         }
-
+        private void EnregistrerSous(object sender, RoutedEventArgs e){
+            Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
+            dlg.DefaultExt = ".sav";
+            dlg.Filter = "Fichier de sauvegarde (.sav)|*.sav";
+            dlg.Title = "Save a game file (sav)";
+            Nullable<bool> result = dlg.ShowDialog();
+            dlg.ShowDialog();
+            if(dlg.FileName != "")
+                partie.EnregistrerSous(dlg.FileName);
+            
+        }
 
     }
 

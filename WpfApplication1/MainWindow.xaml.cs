@@ -152,7 +152,10 @@ namespace SmallWorldGraphics
 
                 // Open document
                 string filename = dlg.FileName;
-                // TODO Charger (fileName)
+
+                CarteGraph c = new CarteGraph((Partie)MonteurPartie.ChargerPartie(filename));
+                c.Show();
+                this.Close();
 
             }
 

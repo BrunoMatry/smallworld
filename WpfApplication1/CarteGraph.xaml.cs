@@ -30,7 +30,7 @@ namespace SmallWorldGraphics
         private Dictionary<int, Unite> Unitee = new Dictionary<int, Unite>();
         private Dictionary<int, ListBoxItem> UniteeListBox = new Dictionary<int, ListBoxItem>();
         private StackPanel unitsel;
-        private Unite uniteCourante;
+        private Unite uniteMorte;
         private int idcourant;
         private Direction courante = Direction.INIT;
         private String peupleJ1;
@@ -53,14 +53,25 @@ namespace SmallWorldGraphics
 		private string sourceBackground;
         public CarteGraph(Partie p)
         {
-            InitializeComponent();
-            DefinirImage();
-            partie = p;
-            idcourant = p.UniteCourante.Id;
-            MajPoint();
-            AfficherCarte();
-            PlacerUnite();
-            PlacerUniteListe();
+            try
+            {
+                InitializeComponent();
+                DefinirImage();
+                partie = p;
+                idcourant = p.UniteCourante.Id;
+                MajPoint();
+                AfficherCarte();
+                PlacerUnite();
+                PlacerUniteListe();
+            }
+            catch(PartieException exc){
+                if (exc.Type == "perdu" || exc.Type == "Fin")
+                {
+                    MessageBox.Show(exc.Message);
+                    this.Close();
+                }
+            }   
+            
 
 
         }
@@ -80,13 +91,13 @@ namespace SmallWorldGraphics
         private void MajPoint() {
             nbTourRestant = partie.Tr.ToString();
 
-            peupleJ1 = partie.Joueurs[0].GetType().ToString();
+            peupleJ1 = partie.Joueurs[0].GetType().ToString() + " " + (partie.Joueurs[0].Id+1);
             nbTourJ1 = partie.Joueurs[0].Ctj.ToString();
             nbPointJ1 = partie.Joueurs[0].Points.ToString();
             PeupleJ1.Content = peupleJ1;
             NbTourJ1.Content = "Tour : " + nbTourJ1;
             NbPointJ1.Content = "Points : " + nbPointJ1;
-            peupleJ2 = partie.Joueurs[1].GetType().ToString();
+            peupleJ2 = partie.Joueurs[1].GetType().ToString() + " " + (partie.Joueurs[1].Id+1);
             nbTourJ2 = partie.Joueurs[1].Ctj.ToString();
             nbPointJ2 = partie.Joueurs[1].Points.ToString();
             PeupleJ2.Content = peupleJ2;
@@ -205,6 +216,11 @@ namespace SmallWorldGraphics
 
             }
         }
+        private void MajUniteMorte(int u)
+        {
+            StackPanel unit = UniteeList[u];
+            canvas1.Children.Remove(unit);
+        }
         private void PlacerUniteListe()
         {
             foreach (IUnite u in partie.Joueurs[0].Peuple.Unites)
@@ -300,12 +316,16 @@ namespace SmallWorldGraphics
                     UniteeList.Remove(idcourant);
                     PlacerUnite();
 
-                   }
+                }
                 if (e.Key == Key.Space)
                 {
                     unitsel.Children.Remove(myBorder1);
                     partie.PasserTourUniteCourante();
                     idcourant = partie.UniteCourante.Id;
+                }
+                if (e.Key == Key.F)
+                {
+                    finirTour();
                 }
             }
             catch (PartieException exc)
@@ -318,36 +338,50 @@ namespace SmallWorldGraphics
 
                     if (result == MessageBoxResult.Yes)
                     {
-                        try { 
-                        partie.Attaque(courante);
-                            }
-                        catch (UniteGagnanteException exc1)
+                        try
                         {
-                            try
-                            {
-                                MessageBox.Show(exc1.Message);
-                            }
-                            catch(UniteGagnanteException exc2)
+                            partie.Attaque(courante);
+                        }
+                        catch (UniteMorteException exc1)
+                        {
+                            MessageBox.Show(exc1.Message);
+                            MajUniteMorte(exc1.UniteMorte);
+                        }
+                        catch (UniteGagnanteException exc2)
+                        {
+                            MessageBox.Show(exc2.Message);
+                        }
+                        catch (PartieException exc3)
+                        {
+                           if (exc.Type == "perdu" || exc.Type == "Fin")
                                 {
-                                    MessageBox.Show(exc2.Message);
+                                    MessageBox.Show(exc.Message);
+                                    this.Close();
                                 }
                         }
+
                     }
-                    }
-                
-                
+                }
+
+
+
                 else
                 {
                     MessageBox.Show(exc.Message);
                 }
             }
+            
 
             unites.Items.Clear();
             UniteeListBox.Clear();
             PlacerUniteListe();
         }
-
+       
         private void FinDuTour(object sender, RoutedEventArgs e)
+        {
+            finirTour();
+        }
+        private void finirTour()
         {
             unitsel.Children.Remove(myBorder1);
             partie.Joueurs[0].Ctj++;

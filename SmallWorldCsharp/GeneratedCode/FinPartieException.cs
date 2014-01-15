@@ -14,7 +14,8 @@ public class FinPartieException : PartieException {
 	// Constructeur
 	public FinPartieException(string m) : base(m) {
 		this._message = "La partie est terminee : " + m;
-		this._type = "Fin de partie";
+		this._type = "Fin";
 	}
+    
 }
 

@@ -33,18 +33,36 @@ public abstract class Carte : ICarte {
         }
 	}
 
+	/*
+	 * Methode permettant de recuperer la liste des directions autorisees depuis une case donnee
+	 * @param c les coordonnees de la case donnee
+	 * @return la liste des directions autorisees
+	 */
 	public List<Direction> GetDirectionsAutorisees(Coordonnee c) {
 		int x = c.X;
 		int y = c.Y;
+		Coordonnee ctmp;
 		List<Direction> dirAutorisees = new List<Direction>();
-		if (y < (HAUTEURCARTE - 1))
-			dirAutorisees.Add(Direction.NORD);
-		if (x < (LARGEURCARTE - 1))
-			dirAutorisees.Add(Direction.EST);
-		if (y > 0)
-			dirAutorisees.Add(Direction.SUD);
-		if (x > 0)
-			dirAutorisees.Add(Direction.OUEST);
+		if (y < (HAUTEURCARTE - 1)) {
+			ctmp = c + Direction.NORD;
+			if(_grille[ctmp.X][ctmp.Y] != TypeCase.EAU)
+				dirAutorisees.Add(Direction.NORD);
+		}
+		if (x < (LARGEURCARTE - 1)) {
+			ctmp = c + Direction.EST;
+			if (_grille[ctmp.X][ctmp.Y] != TypeCase.EAU)
+				dirAutorisees.Add(Direction.EST);
+		}
+		if (y > 0) {
+			ctmp = c + Direction.SUD;
+			if (_grille[ctmp.X][ctmp.Y] != TypeCase.EAU)
+				dirAutorisees.Add(Direction.SUD);
+		}
+		if (x > 0) {
+			ctmp = c + Direction.OUEST;
+			if (_grille[ctmp.X][ctmp.Y] != TypeCase.EAU)
+				dirAutorisees.Add(Direction.OUEST);
+		}
 		return dirAutorisees;
 	}
 

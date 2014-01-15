@@ -22,8 +22,8 @@ int Api_sug::suggerer_cases(const int x, const int y, const int pt, int** sug) {
 	int nbsugg = 0;
 	int tx, ty;
 	// Initialisation du tableau résultat
-	int** suggestions = (int**) malloc(NBSUGGESTIONS * sizeof(int *));
-	for (int i = 0; i < NBSUGGESTIONS ; i++)
+	int** suggestions = new int*[NBMAXSUGGESTIONS];
+	for (int i = 0; i < NBMAXSUGGESTIONS ; i++)
 		suggestions[i] = new int[2];
 
 	ty = y;

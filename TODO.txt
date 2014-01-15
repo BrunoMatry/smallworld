@@ -3,19 +3,17 @@
 ********************* SAMI **************************
 
 Catcher l'exception de fin de partie
-Affichage unite selectionnee
-Affichage infos unites sur case enemie
 Affichage numeros joueurs
 Scrollbar partie normale
-
+Affichage details unite
 
 ********************* BRUNO **************************
 
 Commentaire
 Doc utilisateur
-Exception attaque
 Calcul des points -> Point à -4 en debut de partie !!
 
 ****
 Verifier le fonctionnement du nouveau wrapper
 Gestion de l'attaque a verifier
+Verifier fonctionnement exception attaque

@@ -247,10 +247,8 @@ namespace Test {
 			IFabriqueCase f = new FabriqueCase();
 			WrapperLib w = new WrapperLib(5, 5);
 			ICarte c = new CarteDemo(f.CreerGrille(w), f.CreerCases());
-			List<Direction> l = c.GetDirectionsAutorisees(new Coordonnee(0, 0));
-			Assert.IsTrue(l.Contains(Direction.EST));
-			Assert.IsTrue(l.Contains(Direction.NORD));
-			Assert.IsTrue(l.Count == 2);
+			Assert.IsTrue(c.Hauteur == 5);
+			Assert.IsTrue(c.Largeur == 5);
 		}
 
 		[TestMethod]
@@ -258,10 +256,8 @@ namespace Test {
 			IFabriqueCase f = new FabriqueCase();
 			WrapperLib w = new WrapperLib(15, 15);
 			ICarte c = new CarteNormale(f.CreerGrille(w), f.CreerCases());
-			List<Direction> l = c.GetDirectionsAutorisees(new Coordonnee(14, 14));
-			Assert.IsTrue(l.Contains(Direction.SUD));
-			Assert.IsTrue(l.Contains(Direction.OUEST));
-			Assert.IsTrue(l.Count == 2);
+			Assert.IsTrue(c.Hauteur == 15);
+			Assert.IsTrue(c.Largeur == 15);
 		}
 
 		[TestMethod]
@@ -397,25 +393,6 @@ namespace Test {
 
 			Assert.IsTrue(p.Joueurs[0].Peuple.Unites.Count == 1
 					   || p.Joueurs[0].Peuple.Unites.Count == 0);
-		}
-
-		[TestMethod]
-		public void Test_Partie_Deplacement() {
-			// Creation de la liste des peuples
-			List<TypePeuple> ld = new List<TypePeuple>();
-			ld.Add(TypePeuple.GAULOIS);
-
-			// Creation d'une partie DEMO ; avec un joueur (Gaulois)
-			List<Joueur> l = new List<Joueur>();
-			l.Add(new Joueur(TypePeuple.GAULOIS, 1, new Coordonnee(0, 0)));
-			TypeCase[][] grille = new TypeCase[1][];
-			grille[0] = new TypeCase[2];
-			grille[0][0] = TypeCase.MONTAGNE;
-			grille[0][1] = TypeCase.MONTAGNE;
-			IPartie p = new Partie("PartieTest", new CarteDemo(grille, null), l, 5);
-			
-			p.Deplacement(Direction.NORD);
-			Assert.IsTrue(p.UniteCourante.Coordonnees.Equals(new Coordonnee(0, 1)));
 		}
 	}
 }

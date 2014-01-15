@@ -17,10 +17,15 @@ namespace Wrapper {
 			 * @param l la longueur de la carte
 			 * @param h la hauteur de la carte
 			 * @param g la grille (de la carte)
-			 * @param i le tableau contenant la valeur des TypeCase interdits
+			 * @param inter le tableau contenant la valeur des TypeCase interdits
 			 * @param nb le nombre de parametres interdits
 			 */
-			WrapperSug(const int l, const int h, int** g, int* i, int nb) { api = ApiSug_new(l, h, g, i, nb); }
+			WrapperSug(const int l, const int h, int** g, List<int>^ inter, int nb) {
+				int* it = new int[inter->Count];
+				for(int i = 0 ; i < inter->Count ; i++)
+					it[i] = inter[i];
+				api = ApiSug_new(l, h, g, it, nb);
+			}
 			~WrapperSug(){ ApiSug_delete(api); }
 
 			/*
@@ -38,6 +43,13 @@ namespace Wrapper {
 					Tuple<int, int>^ tp = gcnew Tuple<int, int>(tab[i][0], tab[i][1]);
 					res->Add(tp);
 				}
+				
+				// Suppression du tableau temporaire
+				int max = api->NBMAXSUGGESTIONS;
+				for(int i = 0 ; i < max ; i++)
+					delete [] tab[i];
+				delete [] tab;
+
 				return res;
 			}
 	};

@@ -82,6 +82,7 @@
     <Compile Include="GeneratedCode\TypeCase.cs" />
     <Compile Include="GeneratedCode\TypePeuple.cs" />
     <Compile Include="GeneratedCode\Unite.cs" />
+    <Compile Include="GeneratedCode\UniteGagnanteException.cs" />
     <Compile Include="GeneratedCode\UniteGaulois.cs" />
     <Compile Include="GeneratedCode\UniteNain.cs" />
     <Compile Include="GeneratedCode\UniteViking.cs" />

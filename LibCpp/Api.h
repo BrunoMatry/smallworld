@@ -14,16 +14,23 @@ class DLL Api {
 		  bool taken_;
 		};
 
+		/* Parametres */
 		int _lg;
 		int _ht;
 		Triplet* _coins;
 
+		/* Methodes privees */
 		int** getRandomCorners(const int nb);
 		void initCoins();
 
 	public:
+		/**
+		  * Constructeur de la classe Api
+		  * @param l largeur de la carte
+		  * @param h hauteur de la carte
+		  */
 		Api(const int l, const int h);
-		~Api() {}
+		~Api() { delete [] _coins; }
 		/**
 		 * Methode permettant la génération aléatoire de la carte
 		 * @param nbtc le nombre de types de cases differents

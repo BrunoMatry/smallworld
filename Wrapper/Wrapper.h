@@ -22,6 +22,11 @@ namespace Wrapper {
 				for (int i = 0 ; i < ht ; i++)
 					for(int j = 0 ; j < lg ; j++)
 						res->Add(tab[i][j]);
+
+				// Suppression du tableau temporaire
+				for(int i = 0 ; i < ntc ; i++)
+					delete [] tab[i];
+
 				return res;
 			}
 
@@ -33,6 +38,11 @@ namespace Wrapper {
 					Tuple<int, int>^ tp = gcnew Tuple<int, int>(tab[i][0], tab[i][1]);
 					res->Add(tp);
 				}
+
+				// Suppression du tableau temporaire
+				for(int i = 0 ; i < nbJ ; i++)
+					delete [] tab[i];
+
 				return res;
 			}
 
@@ -42,10 +52,3 @@ namespace Wrapper {
 	};
 }
 #endif
-
-	/*int* tab = api->gen_carte(ntc);
-		List<int>^ res = gcnew List<int>();
-		int nc = api->getNbCases();
-		for (int i = 0 ; i < nc ; i++) {
-			res->Add(tab[i]);
-		} */

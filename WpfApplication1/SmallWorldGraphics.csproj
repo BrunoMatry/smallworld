@@ -36,6 +36,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -106,7 +107,35 @@
       <Name>SmallWorld</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\desert.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eau.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\foret.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gaulois.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\montagne.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plaine.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\viking.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

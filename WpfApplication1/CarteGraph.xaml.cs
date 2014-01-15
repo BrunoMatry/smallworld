@@ -86,12 +86,12 @@ namespace SmallWorldGraphics
             PeupleJ1.Content = peupleJ1;
             NbTourJ1.Content = "Tour : " + nbTourJ1;
             NbPointJ1.Content = "Points : " + nbPointJ1;
-            peupleJ2 = partie.Joueurs[0].GetType().ToString();
-            nbTourJ2 = partie.Joueurs[0].Ctj.ToString();
-            nbPointJ2 = partie.Joueurs[0].Points.ToString();
-            PeupleJ2.Content = peupleJ1;
-            NbTourJ2.Content = "Tour : " + nbTourJ1;
-            NbPointJ2.Content = "Points : " + nbPointJ1;
+            peupleJ2 = partie.Joueurs[1].GetType().ToString();
+            nbTourJ2 = partie.Joueurs[1].Ctj.ToString();
+            nbPointJ2 = partie.Joueurs[1].Points.ToString();
+            PeupleJ2.Content = peupleJ2;
+            NbTourJ2.Content = "Tour : " + nbTourJ2;
+            NbPointJ2.Content = "Points : " + nbPointJ2;
             NbToursRestant.Content = "Tours restants : " + nbTourRestant;
 
         }

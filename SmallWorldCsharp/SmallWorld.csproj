@@ -84,6 +84,7 @@
     <Compile Include="GeneratedCode\Unite.cs" />
     <Compile Include="GeneratedCode\UniteGagnanteException.cs" />
     <Compile Include="GeneratedCode\UniteGaulois.cs" />
+    <Compile Include="GeneratedCode\UniteMorteException.cs" />
     <Compile Include="GeneratedCode\UniteNain.cs" />
     <Compile Include="GeneratedCode\UniteViking.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

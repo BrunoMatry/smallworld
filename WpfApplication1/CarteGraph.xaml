@@ -4,14 +4,14 @@
         Title="Smallworld" Height="650" Width="1032.493"
         >
     <Window.Background>
-        <ImageBrush ImageSource="C:\Users\Sami\Documents\GitHub\smallworld\Resources\backgnd.png"></ImageBrush>
+        <ImageBrush ImageSource="C:\Users\Bruno\Downloads\ddd\Resources\backgnd.png"></ImageBrush>
     </Window.Background>
 
     <Canvas Name="canvas1" Margin="0,0,-331,0">
         <Label Name="NbToursRestant" Content="Tours restants:" Canvas.Left="10" Canvas.Top="20" Foreground="White"/>
         <StackPanel Orientation ="Vertical" Height="94" Canvas.Left="10" Canvas.Top="51" Width="121">
             <StackPanel.Background>
-                <ImageBrush  ImageSource="C:\Users\Sami\Documents\GitHub\smallworld\Resources\bg.png"></ImageBrush>
+                <ImageBrush  ImageSource="C:\Users\Bruno\Downloads\ddd\Resources\bg.png"></ImageBrush>
             </StackPanel.Background>
             <Label x:Name="PeupleJ1" Content="" />
             <Label x:Name="NbTourJ1" Content="Tour : "/>
@@ -20,7 +20,7 @@
         
         <StackPanel Orientation ="Vertical" Height="94" Canvas.Left="10" Canvas.Top="145" Width="121">
             <StackPanel.Background>
-                <ImageBrush  ImageSource="C:\Users\Sami\Documents\GitHub\smallworld\Resources\bg2.png"></ImageBrush>
+                <ImageBrush  ImageSource="C:\Users\Bruno\Downloads\ddd\Resources\bg2.png"></ImageBrush>
             </StackPanel.Background>
             <Label x:Name="PeupleJ2" Content="" />
             <Label x:Name="NbTourJ2" Content="Tour : "/>

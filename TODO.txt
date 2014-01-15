@@ -6,6 +6,7 @@ Catcher l'exception de fin de partie
 Affichage unite selectionnee
 Affichage infos unites sur case enemie
 Affichage numeros joueurs
+Scrollbar partie normale
 
 
 ********************* BRUNO **************************

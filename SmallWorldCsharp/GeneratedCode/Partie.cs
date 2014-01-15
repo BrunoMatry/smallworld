@@ -122,7 +122,7 @@ public class Partie : IPartie {
 				this._nbJoueursRestants--;
 				this.changerJoueur();
 				throw new PartieException("Le joueur " + this._joueurs[0].Id + " a perdu !");
-		}
+			}
 		}
 	}
 

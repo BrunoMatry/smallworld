@@ -52,6 +52,40 @@ namespace Wrapper {
 
 				return res;
 			}
+			// TypeCase
+			private int** convGrille(TypeCase** t) {
+				int ht = api->getHauteur();
+				int lg = api->getLongueur();
+				int** res = new int*[ht];
+				for(int i = 0 ; i < ht; i++)
+					res[i] = new int[lg];
+
+				for (int i = 0; i < ht; i++) {
+					for (int j = 0 ; j < lg ; j++){
+						switch (t[i][j]) {
+						case TypeCase.DESERT:
+							res[i][j] = 0;
+							break;
+						case TypeCase.EAU:
+							res[i][j] = 1;
+							break;
+						case TypeCase.FORET:
+							res[i][j] = 2;
+							break;
+						case TypeCase.MONTAGNE:
+							res[i][j] = 3;
+							break;
+						case TypeCase.PLAINE:
+							res[i][j] = 4;
+							break;
+						default:
+							res[i][j] = 4;
+							break;
+					}
+				}
+			}
+			return res;
+			}
 	};
 }
 #endif

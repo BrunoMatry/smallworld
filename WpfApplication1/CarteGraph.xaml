@@ -4,14 +4,22 @@
         Title="Smallworld" Height="650" Width="1032.493"
         >
     <Window.Background>
+<<<<<<< HEAD
         <ImageBrush ImageSource="C:\Users\Sami\Documents\GitHub\smallworld\Resources\backgnd.png"></ImageBrush>
+=======
+        <ImageBrush ImageSource="C:\Users\Bruno\Downloads\ddd\Resources\backgnd.png"></ImageBrush>
+>>>>>>> 86f34bf6e9fd400b49af7ba303dcaa4c44139098
     </Window.Background>
 
     <Canvas Name="canvas1" Margin="0,0,-331,0">
         <Label Name="NbToursRestant" Content="Tours restants:" Canvas.Left="10" Canvas.Top="20" Foreground="White"/>
         <StackPanel Orientation ="Vertical" Height="94" Canvas.Left="10" Canvas.Top="51" Width="121">
             <StackPanel.Background>
+<<<<<<< HEAD
                 <ImageBrush  ImageSource="C:\Users\Sami\Documents\GitHub\smallworld\Resources\bg.png"></ImageBrush>
+=======
+                <ImageBrush  ImageSource="C:\Users\Bruno\Downloads\ddd\Resources\bg.png"></ImageBrush>
+>>>>>>> 86f34bf6e9fd400b49af7ba303dcaa4c44139098
             </StackPanel.Background>
             <Label x:Name="PeupleJ1" Content="" />
             <Label x:Name="NbTourJ1" Content="Tour : "/>
@@ -20,7 +28,11 @@
         
         <StackPanel Orientation ="Vertical" Height="94" Canvas.Left="10" Canvas.Top="145" Width="121">
             <StackPanel.Background>
+<<<<<<< HEAD
                 <ImageBrush  ImageSource="C:\Users\Sami\Documents\GitHub\smallworld\Resources\bg2.png"></ImageBrush>
+=======
+                <ImageBrush  ImageSource="C:\Users\Bruno\Downloads\ddd\Resources\bg2.png"></ImageBrush>
+>>>>>>> 86f34bf6e9fd400b49af7ba303dcaa4c44139098
             </StackPanel.Background>
             <Label x:Name="PeupleJ2" Content="" />
             <Label x:Name="NbTourJ2" Content="Tour : "/>
@@ -29,6 +41,7 @@
 
         <StackPanel Orientation ="Vertical" Height="170" Canvas.Left="10" Canvas.Top="250" Width="121" Background="White" Opacity="0.75">
             
+<<<<<<< HEAD
             <Label x:Name="UniteCourante" Content=""/>
             <Label x:Name="Uatt" Content=""/>
             <Label x:Name="Udef" Content=""/>
@@ -36,6 +49,14 @@
             <Label x:Name="Updd" Content=""/>
             <Label x:Name="Uval" Content=""/>
 
+=======
+            <Label x:Name="UniteCourante" Content="Infos unite courante" FontStyle="Italic"/>
+            <Label x:Name="Uatt" Content="Attaque : "/>
+            <Label x:Name="Udef" Content="Defense : "/>
+            <Label x:Name="Updv" Content="Pts de vie : "/>
+            <Label x:Name="Updd" Content="Pts de dépl : "/>
+            <Label x:Name="Uval" Content="Valeur : "/>
+>>>>>>> 86f34bf6e9fd400b49af7ba303dcaa4c44139098
         </StackPanel>
 
         <ListBox Canvas.Left="830" Canvas.Top="64" Height="429" Name="unites" Width="200" 

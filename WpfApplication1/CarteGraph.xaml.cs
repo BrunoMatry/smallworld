@@ -50,6 +50,7 @@ namespace SmallWorldGraphics
         private string sourceGaulois;
         private string sourceNain;
         private string sourceViking;
+		private string sourceBackground;
         public CarteGraph(Partie p)
         {
             InitializeComponent();
@@ -63,6 +64,7 @@ namespace SmallWorldGraphics
 
 
         }
+
         private void DefinirImage() {
             source = System.IO.Path.GetFullPath(@".\Resources\");
             sourceEau = source + "eau.png";
@@ -73,7 +75,7 @@ namespace SmallWorldGraphics
             sourceGaulois = source + "gaulois.png";
             sourceNain = source + "dwarf.png";
             sourceViking = source + "viking.png";
-
+			sourceBackground = source + "backgnd.png";
         }
         private void MajPoint() {
             nbTourRestant = partie.Tr.ToString();

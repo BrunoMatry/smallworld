@@ -136,7 +136,7 @@ namespace SmallWorldGraphics
                 tPeuple.Add(j2);
                CarteGraph c = new CarteGraph((Partie)MonteurPartie.CreerPartie(typeCarte, tPeuple, nomPartie));
                c.Show();
-
+			   this.Close();
 
             }
 

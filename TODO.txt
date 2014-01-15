@@ -2,15 +2,13 @@
 
 ********************* SAMI **************************
 
-Catcher l'exception de fin de partie
-Affichage numeros joueurs
-Scrollbar partie normale
-Affichage details unite
+!! Catcher l'exception de fin de partie
+!! Affichage numeros joueurs
 
 ********************* BRUNO **************************
 
 Doc utilisateur
-
+~ Scrollbar partie normale
 
 ****
 Verifier le fonctionnement du nouveau wrapper

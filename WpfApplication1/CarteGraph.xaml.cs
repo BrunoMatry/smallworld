@@ -307,6 +307,10 @@ namespace SmallWorldGraphics
                     partie.PasserTourUniteCourante();
                     idcourant = partie.UniteCourante.Id;
                 }
+                if (e.Key == Key.F)
+                {
+                    finirTour();
+                }
             }
             catch (PartieException exc)
             {
@@ -346,8 +350,12 @@ namespace SmallWorldGraphics
             UniteeListBox.Clear();
             PlacerUniteListe();
         }
-
+       
         private void FinDuTour(object sender, RoutedEventArgs e)
+        {
+            finirTour();
+        }
+        private void finirTour()
         {
             unitsel.Children.Remove(myBorder1);
             partie.Joueurs[0].Ctj++;

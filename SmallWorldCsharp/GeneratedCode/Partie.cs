@@ -62,6 +62,7 @@ public class Partie : IPartie {
 		this.initUnites();
 		this._carte.GrilleUnites = new Dictionary<Coordonnee,List<Unite>>();
 		this.miseAJourGilleUnite();
+		this.recalculerPoints();
     }
 
 	
@@ -85,36 +86,43 @@ public class Partie : IPartie {
 			meilleurDef = u;
         }
 		Joueur defenseur = trouverJoueur(meilleurDef.Joueur);
-        
-		if (this._uniteCourante.Attaquer(meilleurDef)) { // S'il y a victoire
-			// On verifie si l'unite cible est morte
-			if (meilleurDef.PointsDeVie <= 0) {
-				defenseur.Peuple.TuerUnite(meilleurDef);
-				this._carte.GrilleUnites[cible].Remove(meilleurDef);
-				ciblee.Remove(meilleurDef);
-            }
-			// S'il n'y a plus d'unites présentes sur la carte cible on effectue un déplacement
-			if (ciblee.Count <= 0)
-                this._uniteCourante.Deplacer(cible, this._carte.GetTypeCase(courante));
-        }
-        else { // S'il y a defaite
-			// On verifie si l'unite courante est morte
-			if (this._uniteCourante.PointsDeVie <= 0) {
-				this._joueurs[0].Peuple.TuerUnite(this._uniteCourante);
-				this._carte.GrilleUnites[courante].Remove(this._uniteCourante);
-				if(this._joueurs[0].EnJeu)
-					this._uniteCourante = this._joueurs[0].Peuple.Unites[0];
+        try {
+			if (this._uniteCourante.Attaquer(meilleurDef)) { // S'il y a victoire
+				// On verifie si l'unite cible est morte
+				if (meilleurDef.PointsDeVie <= 0) {
+					defenseur.Peuple.TuerUnite(meilleurDef);
+					this._carte.GrilleUnites[cible].Remove(meilleurDef);
+					ciblee.Remove(meilleurDef);
+				}
+				// S'il n'y a plus d'unites présentes sur la carte cible on effectue un déplacement
+				if (ciblee.Count <= 0)
+					this._uniteCourante.Deplacer(cible, this._carte.GetTypeCase(courante));
+
+				throw new UniteGagnanteException("", this._joueurs[0].Id, defenseur.Id);
 			}
+			else { // S'il y a defaite
+				// On verifie si l'unite courante est morte
+				if (this._uniteCourante.PointsDeVie <= 0) {
+					this._joueurs[0].Peuple.TuerUnite(this._uniteCourante);
+					this._carte.GrilleUnites[courante].Remove(this._uniteCourante);
+					if(this._joueurs[0].EnJeu)
+						this._uniteCourante = this._joueurs[0].Peuple.Unites[0];
+				}
+				throw new UniteGagnanteException("", defenseur.Id, this._joueurs[0].Id);
+			}
+		} catch (UniteGagnanteException uge) {
+			throw uge;
+		} finally {
+			if (!defenseur.EnJeu) {
+				this._joueurs.Remove(defenseur);
+				this._nbJoueursRestants--;
+				throw new PartieException("Le joueur " + defenseur.Id + " a perdu !");
+			} else if(!_joueurs[0].EnJeu) {
+				this._joueurs.Remove(this._joueurs[0]);
+				this._nbJoueursRestants--;
+				this.changerJoueur();
+				throw new PartieException("Le joueur " + this._joueurs[0].Id + " a perdu !");
 		}
-		if (!defenseur.EnJeu) {
-			this._joueurs.Remove(defenseur);
-			this._nbJoueursRestants--;
-			throw new PartieException("Le joueur " + defenseur.Id + " a perdu !");
-		} else if(!_joueurs[0].EnJeu) {
-			this._joueurs.Remove(this._joueurs[0]);
-			this._nbJoueursRestants--;
-			this.changerJoueur();
-			throw new PartieException("Le joueur " + this._joueurs[0].Id + " a perdu !");
 		}
 	}
 

@@ -11,6 +11,7 @@ public abstract class MonteurPartie : IMonteurPartie {
 		using (StreamReader reader = new StreamReader(fileName)) {
 			p = serializer.Deserialize(reader) as Partie;
 		}
+        p.initGrilleUnite();
 		p.miseAJourGilleUnite();
 		return p;
 		// Penser a recharger les cases de la carte demo

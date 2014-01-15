@@ -35,6 +35,12 @@ public class Partie : IPartie {
 	// Constructeur par defaut pour serialisation
 	public Partie() {}
 
+    public void initGrilleUnite() {
+        this._carte.GrilleUnites = new Dictionary<Coordonnee, List<Unite>>();
+    }
+
+
+
 	/**
 	 * Constructeur de la classe Partie
 	 * nomPartie Le nom de la partie
